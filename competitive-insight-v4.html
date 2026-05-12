@@ -43,31 +43,57 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .ci-filter-tab:hover{color:#475569}
 .ci-filter-tab.active{background:#fff;color:#1e293b;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.08)}
 
-/* ===== 行动中心（诊断 + 三步行动 整合） ===== */
-.hero-action-wrap{background:linear-gradient(180deg,#fafbff 0%,#fff 100%);border-bottom:1px solid #e2e8f0;position:relative;padding:14px 20px 16px}
+/* ===== 诊断 Hero + 行动主线 一体化容器 ===== */
+.hero-action-wrap{background:linear-gradient(180deg,#f5f7ff 0%,#fafbff 50%,#fff 100%);border-bottom:1px solid #e2e8f0;position:relative}
 .hero-action-wrap::before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:linear-gradient(90deg,#ef4444 0%,#ef4444 38%,#f59e0b 38%,#f59e0b 76%,#6366f1 76%,#6366f1 100%);opacity:.85}
 
-/* 一句话诊断条 */
-.diag-bar{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#fff;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:12px;flex-wrap:wrap}
-.diag-tag{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:3px;background:#eef2ff;color:#4f46e5;font-size:11px;font-weight:600;flex-shrink:0}
-.diag-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:#4f46e5}
-.diag-text{font-size:13px;color:#0f172a;line-height:1.6;flex:1;min-width:200px}
-.diag-text .num-loss{color:#dc2626;font-weight:700;font-size:15px}
-.diag-text .num-gain{color:#16a34a;font-weight:700;font-size:15px}
-.diag-text .num-action{color:#d97706;font-weight:700}
-.diag-meta{font-size:11px;color:#94a3b8;flex-shrink:0}
-.diag-progress{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;flex-shrink:0}
-.diag-progress-label{font-size:10px;color:#64748b}
-.diag-progress-bar{display:inline-block;width:48px;height:4px;border-radius:2px;background:#e2e8f0;overflow:hidden}
-.diag-progress-fill{display:block;height:100%;border-radius:2px;background:linear-gradient(90deg,#6366f1,#8b5cf6)}
-.diag-progress-num{font-size:10px;color:#475569;font-weight:600}
-.diag-progress-num strong{color:#6366f1}
+/* ===== 诊断 Hero（漏斗式，与下方行动主线视觉串联） ===== */
+.diagnosis-hero{padding:22px 24px 14px;background:transparent;border-bottom:none;position:relative}
+.dh-title-row{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.dh-title-tag{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:4px;background:linear-gradient(135deg,#eef2ff,#e0e7ff);color:#4f46e5;font-size:11px;font-weight:600}
+.dh-title-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:#4f46e5}
+.dh-title-text{font-size:14px;font-weight:600;color:#0f172a}
+.dh-title-meta{font-size:11px;color:#94a3b8;margin-left:auto}
+.dh-progress-mini{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:#fff;border:1px solid #e2e8f0;border-radius:14px;margin-left:8px}
+.dh-progress-label{font-size:10px;color:#64748b}
+.dh-progress-bar{display:inline-block;width:54px;height:5px;border-radius:3px;background:#f1f5f9;overflow:hidden;position:relative}
+.dh-progress-fill{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,#6366f1,#8b5cf6)}
+.dh-progress-num{font-size:10px;color:#475569}
+.dh-progress-num strong{color:#6366f1;font-weight:700}
+
+/* 漏斗与下方三步卡片宽度对齐：1.2 / 1.2 / 1（与 .al-grid 一致） */
+.dh-funnel{display:grid;grid-template-columns:1.2fr 28px 1.2fr 28px 1fr;gap:12px;align-items:stretch;padding:0}
+.dh-step{display:flex;flex-direction:column;gap:4px;padding:14px 16px 12px;border-radius:10px;border:1px solid #e2e8f0;background:#fff;position:relative;transition:all .2s;cursor:pointer}
+.dh-step:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.06)}
+.dh-step.problem{border-color:#fecaca;background:linear-gradient(135deg,#fff 0%,#fef2f2 100%)}
+.dh-step.action{border-color:#fde68a;background:linear-gradient(135deg,#fff 0%,#fffbeb 100%)}
+.dh-step.gain{border-color:#bbf7d0;background:linear-gradient(135deg,#fff 0%,#f0fdf4 100%)}
+.dh-step-label{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.4px}
+.dh-step-label-dot{width:6px;height:6px;border-radius:50%}
+.dh-step.problem .dh-step-label-dot{background:#ef4444}
+.dh-step.action .dh-step-label-dot{background:#f59e0b}
+.dh-step.gain .dh-step-label-dot{background:#16a34a}
+.dh-step-value{display:flex;align-items:baseline;gap:4px;margin-top:4px}
+.dh-step-num{font-size:28px;font-weight:800;line-height:1;letter-spacing:-.5px}
+.dh-step.problem .dh-step-num{color:#dc2626}
+.dh-step.action .dh-step-num{color:#d97706}
+.dh-step.gain .dh-step-num{color:#16a34a}
+.dh-step-unit{font-size:12px;color:#64748b;font-weight:500}
+.dh-step-desc{font-size:11px;color:#64748b;line-height:1.5;margin-top:4px}
+.dh-step-desc strong{color:#1e293b;font-weight:600}
+.dh-step-trend{position:absolute;top:12px;right:12px;font-size:10px;padding:1px 6px;border-radius:3px;font-weight:600}
+.dh-step-trend.up{background:#fef2f2;color:#dc2626}
+.dh-step-trend.down{background:#f0fdf4;color:#16a34a}
+/* 漏斗箭头：垂直居中、连接两个卡片 */
+.dh-arrow{display:flex;align-items:center;justify-content:center;font-size:20px;color:#cbd5e1;font-weight:300;user-select:none}
+/* 漏斗向下连接到行动主线 */
+.dh-step::after{content:"";position:absolute;left:50%;bottom:-14px;width:1px;height:14px;background:linear-gradient(to bottom,#cbd5e1,transparent);opacity:.6}
 
 /* ===== 行动主线（三步法） ===== */
-.action-lane{padding:0;background:transparent;border-bottom:none}
-.al-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;padding:0 2px}
-.al-head-title{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:#475569}
-.al-head-title-icon{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:4px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;font-size:10px;font-weight:700}
+.action-lane{padding:16px 20px;background:#fff;border-bottom:1px solid #e2e8f0}
+.al-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.al-head-title{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#0f172a}
+.al-head-title-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:4px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;font-size:11px;font-weight:700}
 .al-head-hint{font-size:11px;color:#94a3b8}
 .al-grid{display:grid;grid-template-columns:1.2fr 1.2fr 1fr;gap:12px}
 .al-card{position:relative;padding:14px 16px;border-radius:10px;background:#fff;border:1px solid #e2e8f0;display:flex;flex-direction:column;gap:10px;transition:all .2s}
@@ -525,20 +551,50 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         <span class="filter-active-clear" onclick="clearFilter()">清除筛选</span>
       </div>
 
-      <!-- ===== 行动中心（诊断 + 三步行动 整合） ===== -->
+      <!-- ===== Hero + 行动主线 一体化容器 ===== -->
       <div class="hero-action-wrap">
 
-      <!-- 一句话诊断条：把原 Hero 漏斗压缩为一行叙事 -->
-      <div class="diag-bar">
-        <span class="diag-tag">诊断</span>
-        <div class="diag-text">
-          本周 <span class="num-loss">867 人</span> 潜在流失，其中 <span class="num-action">72%（620 人）</span> 可挽回，完成下方三步预计恢复 <span class="num-gain">¥8.2 万</span> GMV
+      <!-- ===== 诊断 Hero（漏斗式） ===== -->
+      <div class="diagnosis-hero">
+        <div class="dh-title-row">
+          <span class="dh-title-tag">诊断</span>
+          <span class="dh-title-text">本周竞争态势分析</span>
+          <span class="dh-title-meta">基于近7天监控 128 个商品 · 25 个竞品的数据分析</span>
+          <span class="dh-progress-mini">
+            <span class="dh-progress-label">本周已完成</span>
+            <span class="dh-progress-bar"><span class="dh-progress-fill" style="width:25%"></span></span>
+            <span class="dh-progress-num"><strong>1</strong>/4 步</span>
+          </span>
         </div>
-        <span class="diag-progress">
-          <span class="diag-progress-label">本周</span>
-          <span class="diag-progress-bar"><span class="diag-progress-fill" style="width:25%"></span></span>
-          <span class="diag-progress-num"><strong>1</strong>/4 步</span>
-        </span>
+        <div class="dh-funnel">
+          <div class="dh-step problem" data-link="card-1">
+            <span class="dh-step-trend up">+12%</span>
+            <div class="dh-step-label"><span class="dh-step-label-dot"></span>问题</div>
+            <div class="dh-step-value">
+              <span class="dh-step-num">867</span>
+              <span class="dh-step-unit">人潜在流失</span>
+            </div>
+            <div class="dh-step-desc">用户搜索过本店商品但最终下单到了竞品店铺</div>
+          </div>
+          <div class="dh-arrow">→</div>
+          <div class="dh-step action">
+            <div class="dh-step-label"><span class="dh-step-label-dot"></span>可挽回</div>
+            <div class="dh-step-value">
+              <span class="dh-step-num">620</span>
+              <span class="dh-step-unit">人 (占 72%)</span>
+            </div>
+            <div class="dh-step-desc">通过<strong>补齐服务能力 + 价格优化</strong>即可挽回</div>
+          </div>
+          <div class="dh-arrow">→</div>
+          <div class="dh-step gain">
+            <div class="dh-step-label"><span class="dh-step-label-dot"></span>预期收益</div>
+            <div class="dh-step-value">
+              <span class="dh-step-num">¥8.2</span>
+              <span class="dh-step-unit">万 GMV</span>
+            </div>
+            <div class="dh-step-desc">完成下方<strong>三步行动</strong>后预计可恢复的销售额</div>
+          </div>
+        </div>
       </div>
 
       <!-- ===== 行动主线（三步法：止血 → 抢量 → 监控） ===== -->
@@ -546,9 +602,9 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         <div class="al-head">
           <div class="al-head-title">
             <span class="al-head-title-icon">→</span>
-            <span>行动主线 · 先止血 → 再抢量 → 续监控</span>
+            <span>行动主线 · 按优先级执行</span>
           </div>
-          <div class="al-head-hint">建议按优先级依次执行</div>
+          <div class="al-head-hint">建议顺序：先止血（挽回流失） → 再抢量（争取增量） → 持续监控（防御反击）</div>
         </div>
         <div class="al-grid">
 
