@@ -43,36 +43,51 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .ci-filter-tab:hover{color:#475569}
 .ci-filter-tab.active{background:#fff;color:#1e293b;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.08)}
 
-/* ===== 诊断 Hero（漏斗式） ===== */
-.diagnosis-hero{padding:18px 20px 16px;background:linear-gradient(135deg,#fff 0%,#fafbff 100%);border-bottom:1px solid #e2e8f0}
-.dh-title-row{display:flex;align-items:center;gap:8px;margin-bottom:14px}
-.dh-title-tag{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:4px;background:#eef2ff;color:#4f46e5;font-size:11px;font-weight:600}
+/* ===== 诊断 Hero + 行动主线 一体化容器 ===== */
+.hero-action-wrap{background:linear-gradient(180deg,#f5f7ff 0%,#fafbff 50%,#fff 100%);border-bottom:1px solid #e2e8f0;position:relative}
+.hero-action-wrap::before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:linear-gradient(90deg,#ef4444 0%,#ef4444 38%,#f59e0b 38%,#f59e0b 76%,#6366f1 76%,#6366f1 100%);opacity:.85}
+
+/* ===== 诊断 Hero（漏斗式，与下方行动主线视觉串联） ===== */
+.diagnosis-hero{padding:22px 24px 14px;background:transparent;border-bottom:none;position:relative}
+.dh-title-row{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.dh-title-tag{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:4px;background:linear-gradient(135deg,#eef2ff,#e0e7ff);color:#4f46e5;font-size:11px;font-weight:600}
 .dh-title-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:#4f46e5}
 .dh-title-text{font-size:14px;font-weight:600;color:#0f172a}
 .dh-title-meta{font-size:11px;color:#94a3b8;margin-left:auto}
+.dh-progress-mini{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:#fff;border:1px solid #e2e8f0;border-radius:14px;margin-left:8px}
+.dh-progress-label{font-size:10px;color:#64748b}
+.dh-progress-bar{display:inline-block;width:54px;height:5px;border-radius:3px;background:#f1f5f9;overflow:hidden;position:relative}
+.dh-progress-fill{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,#6366f1,#8b5cf6)}
+.dh-progress-num{font-size:10px;color:#475569}
+.dh-progress-num strong{color:#6366f1;font-weight:700}
 
-.dh-funnel{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:center;padding:0 4px}
-.dh-step{display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:10px;border:1px solid #e2e8f0;background:#fff;position:relative;transition:all .2s}
+/* 漏斗与下方三步卡片宽度对齐：1.2 / 1.2 / 1（与 .al-grid 一致） */
+.dh-funnel{display:grid;grid-template-columns:1.2fr 28px 1.2fr 28px 1fr;gap:12px;align-items:stretch;padding:0}
+.dh-step{display:flex;flex-direction:column;gap:4px;padding:14px 16px 12px;border-radius:10px;border:1px solid #e2e8f0;background:#fff;position:relative;transition:all .2s;cursor:pointer}
+.dh-step:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.06)}
 .dh-step.problem{border-color:#fecaca;background:linear-gradient(135deg,#fff 0%,#fef2f2 100%)}
-.dh-step.action{border-color:#bfdbfe;background:linear-gradient(135deg,#fff 0%,#eff6ff 100%);box-shadow:0 2px 8px rgba(59,130,246,.08)}
+.dh-step.action{border-color:#fde68a;background:linear-gradient(135deg,#fff 0%,#fffbeb 100%)}
 .dh-step.gain{border-color:#bbf7d0;background:linear-gradient(135deg,#fff 0%,#f0fdf4 100%)}
-.dh-step-label{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.3px}
+.dh-step-label{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.4px}
 .dh-step-label-dot{width:6px;height:6px;border-radius:50%}
 .dh-step.problem .dh-step-label-dot{background:#ef4444}
-.dh-step.action .dh-step-label-dot{background:#3b82f6}
+.dh-step.action .dh-step-label-dot{background:#f59e0b}
 .dh-step.gain .dh-step-label-dot{background:#16a34a}
-.dh-step-value{display:flex;align-items:baseline;gap:4px;margin-top:2px}
-.dh-step-num{font-size:30px;font-weight:800;line-height:1;letter-spacing:-.5px}
+.dh-step-value{display:flex;align-items:baseline;gap:4px;margin-top:4px}
+.dh-step-num{font-size:28px;font-weight:800;line-height:1;letter-spacing:-.5px}
 .dh-step.problem .dh-step-num{color:#dc2626}
-.dh-step.action .dh-step-num{color:#2563eb}
+.dh-step.action .dh-step-num{color:#d97706}
 .dh-step.gain .dh-step-num{color:#16a34a}
-.dh-step-unit{font-size:13px;color:#64748b;font-weight:500}
+.dh-step-unit{font-size:12px;color:#64748b;font-weight:500}
 .dh-step-desc{font-size:11px;color:#64748b;line-height:1.5;margin-top:4px}
 .dh-step-desc strong{color:#1e293b;font-weight:600}
-.dh-step-trend{position:absolute;top:14px;right:14px;font-size:10px;padding:1px 6px;border-radius:3px;font-weight:600}
+.dh-step-trend{position:absolute;top:12px;right:12px;font-size:10px;padding:1px 6px;border-radius:3px;font-weight:600}
 .dh-step-trend.up{background:#fef2f2;color:#dc2626}
 .dh-step-trend.down{background:#f0fdf4;color:#16a34a}
-.dh-arrow{font-size:18px;color:#cbd5e1;font-weight:300;user-select:none}
+/* 漏斗箭头：垂直居中、连接两个卡片 */
+.dh-arrow{display:flex;align-items:center;justify-content:center;font-size:20px;color:#cbd5e1;font-weight:300;user-select:none}
+/* 漏斗向下连接到行动主线 */
+.dh-step::after{content:"";position:absolute;left:50%;bottom:-14px;width:1px;height:14px;background:linear-gradient(to bottom,#cbd5e1,transparent);opacity:.6}
 
 /* ===== 行动主线（三步法） ===== */
 .action-lane{padding:16px 20px;background:#fff;border-bottom:1px solid #e2e8f0}
@@ -536,15 +551,23 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         <span class="filter-active-clear" onclick="clearFilter()">清除筛选</span>
       </div>
 
+      <!-- ===== Hero + 行动主线 一体化容器 ===== -->
+      <div class="hero-action-wrap">
+
       <!-- ===== 诊断 Hero（漏斗式） ===== -->
       <div class="diagnosis-hero">
         <div class="dh-title-row">
           <span class="dh-title-tag">诊断</span>
           <span class="dh-title-text">本周竞争态势分析</span>
           <span class="dh-title-meta">基于近7天监控 128 个商品 · 25 个竞品的数据分析</span>
+          <span class="dh-progress-mini">
+            <span class="dh-progress-label">本周已完成</span>
+            <span class="dh-progress-bar"><span class="dh-progress-fill" style="width:25%"></span></span>
+            <span class="dh-progress-num"><strong>1</strong>/4 步</span>
+          </span>
         </div>
         <div class="dh-funnel">
-          <div class="dh-step problem">
+          <div class="dh-step problem" data-link="card-1">
             <span class="dh-step-trend up">+12%</span>
             <div class="dh-step-label"><span class="dh-step-label-dot"></span>问题</div>
             <div class="dh-step-value">
@@ -682,6 +705,8 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 
         </div>
       </div>
+
+      </div><!-- /.hero-action-wrap -->
 
       <!-- 三列内容（保留为详细数据透出，供商家钻取） -->
       <div class="top-row top-row-legacy" style="display:none">
