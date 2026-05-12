@@ -1,0 +1,2025 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竞争洞察</title>
+    <style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#1e293b;font-size:13px;line-height:1.5}
+.header{display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:48px;background:#fff;border-bottom:1px solid #e2e8f0}
+.h-l{display:flex;align-items:center;gap:10px}
+.logo{width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.h-t{font-size:13px;color:#64748b}
+.h-r{display:flex;align-items:center;gap:8px;font-size:12px;color:#475569}
+.avatar{width:28px;height:28px;border-radius:50%;background:#e2e8f0}
+.container{max-width:1600px;margin:0 auto;padding:20px 32px}
+.page-title{font-size:20px;font-weight:700;color:#0f172a}
+.page-desc{font-size:12px;color:#94a3b8;margin-top:2px}
+
+/* ===== 统一面板容器 ===== */
+.dash-wrap{margin-top:16px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden}
+.dash-head{padding:12px 20px;background:#fff;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between}
+.dash-title{font-size:14px;font-weight:600;color:#0f172a;display:flex;align-items:center;gap:8px}
+.dash-title-dot{width:6px;height:6px;border-radius:50%;background:#6366f1}
+.dash-hint{font-size:11px;color:#94a3b8}
+.dash-body{padding:0}
+.dash-section{background:#fff;border-bottom:1px solid #e2e8f0}
+.dash-section:last-child{border-bottom:none}
+.dash-section-head{display:flex;align-items:center;gap:8px;padding:8px 16px;background:#fafbfc;border-bottom:1px solid #f1f5f9}
+.dash-section-title{font-size:12px;font-weight:600;color:#475569;display:flex;align-items:center;gap:6px}
+.dash-section-title .d-count{font-size:10px;padding:1px 6px;border-radius:8px;background:#e2e8f0;color:#64748b;font-weight:500}
+
+/* ===== 竞争数据模块头部 ===== */
+.ci-header{display:flex;align-items:flex-end;justify-content:space-between;padding:14px 20px 12px;background:#fff;border-bottom:1px solid #e2e8f0}
+.ci-title{font-size:16px;font-weight:700;color:#0f172a}
+.ci-meta{font-size:11px;color:#94a3b8;margin-top:2px}
+.ci-filters{display:flex;align-items:center;gap:16px}
+.ci-filter-group{display:flex;align-items:center;gap:6px}
+.ci-filter-label{font-size:11px;color:#94a3b8;white-space:nowrap}
+.ci-filter-tabs{display:flex;gap:2px;background:#f1f5f9;border-radius:6px;padding:2px}
+.ci-filter-tab{font-size:11px;padding:3px 10px;border-radius:4px;color:#64748b;cursor:pointer;transition:all .15s;white-space:nowrap}
+.ci-filter-tab:hover{color:#475569}
+.ci-filter-tab.active{background:#fff;color:#1e293b;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+
+/* ===== 三列顶行布局 ===== */
+.top-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;padding:12px 16px;background:#fff}
+
+/* ===== 统一数据卡片风格 ===== */
+.stat-card{padding:16px;border-radius:8px;background:#fff;border:1px solid #e2e8f0;position:relative}
+.stat-card.loss{border-top:3px solid #ef4444}
+.stat-card.recover{border-top:3px solid #16a34a}
+.stat-card.monitor{border-top:3px solid #6366f1}
+
+.stat-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.stat-card-title{font-size:13px;font-weight:600;color:#1e293b}
+.stat-card-trend{font-size:10px;padding:1px 6px;border-radius:3px;font-weight:600}
+.stat-card-trend.up{background:#fef2f2;color:#dc2626}
+.stat-card-trend.down{background:#f0fdf4;color:#16a34a}
+
+.stat-hero{display:flex;align-items:baseline;gap:4px;margin-bottom:14px}
+.stat-hero-num{font-size:32px;font-weight:800;line-height:1}
+.stat-card.loss .stat-hero-num{color:#dc2626}
+.stat-card.recover .stat-hero-num{color:#16a34a}
+.stat-card.monitor .stat-hero-num{color:#6366f1}
+.stat-hero-unit{font-size:12px;color:#64748b}
+
+/* 指标列表 - 统一风格 */
+.stat-metric-list{display:flex;flex-direction:column;gap:6px;min-height:180px}
+.stat-metric{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;cursor:pointer;transition:all .15s}
+.stat-metric:hover{background:#f8fafc}
+.stat-metric.active{background:#f1f5f9}
+.sm-num{font-size:16px;font-weight:700;min-width:32px;text-align:right}
+.stat-card.loss .sm-num{color:#dc2626}
+.stat-card.recover .sm-num{color:#16a34a}
+.sm-body{flex:1;min-width:0}
+.sm-label{font-size:11px;color:#475569;font-weight:500;line-height:1.3}
+.sm-sub{font-size:10px;color:#94a3b8;margin-top:1px}
+.sm-bar{height:4px;border-radius:2px;background:#f1f5f9;margin-top:3px;overflow:hidden}
+.sm-bar-fill{height:100%;border-radius:2px}
+.stat-card.loss .sm-bar-fill{background:#fca5a5}
+.stat-card.recover .sm-bar-fill{background:#86efac}
+.sm-toggle{font-size:9px;color:#94a3b8;transition:transform .2s;flex-shrink:0}
+.stat-metric.expanded .sm-toggle{transform:rotate(90deg);color:#6366f1}
+
+/* 指标展开详情 */
+.sm-detail{display:none;margin-top:4px;padding:6px 8px;background:#f8fafc;border-radius:4px}
+.sm-detail.show{display:block}
+.sm-detail-products{display:flex;flex-wrap:wrap;gap:3px}
+.sm-detail-prod{display:flex;align-items:center;gap:3px;padding:2px 5px;border-radius:3px;background:#fff;border:1px solid #e2e8f0;font-size:9px;color:#475569}
+.sm-detail-prod img{width:16px;height:16px;border-radius:2px}
+
+/* ===== 竞品监控面板（右列） ===== */
+.monitor-panel{padding:14px 16px;border-radius:8px;background:#fff;border:1px solid #e2e8f0;border-top:3px solid #6366f1;display:flex;flex-direction:column}
+.mp-tabs{display:flex;gap:2px;background:#f1f5f9;border-radius:6px;padding:2px;margin-bottom:12px;width:fit-content}
+.mp-tab{font-size:11px;padding:3px 10px;border-radius:4px;color:#64748b;cursor:pointer;transition:all .15s}
+.mp-tab:hover{color:#475569}
+.mp-tab.active{background:#fff;color:#1e293b;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.mp-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.mp-title{font-size:13px;font-weight:600;color:#1e293b}
+.mp-add-btn{padding:3px 10px;background:none;border:1px dashed #c7d2fe;border-radius:4px;font-size:11px;color:#6366f1;cursor:pointer;transition:all .12s}
+.mp-add-btn:hover{background:#f5f3ff;border-style:solid}
+.mp-add-row{display:none;align-items:center;gap:6px;padding:6px 8px;background:#fafbff;border:1px solid #e2e8f0;border-radius:4px;margin-bottom:8px}
+.mp-input{flex:1;padding:5px 8px;border:1px solid #c7d2fe;border-radius:4px;font-size:12px;outline:none;background:#fff}
+.mp-input:focus{border-color:#6366f1;box-shadow:0 0 0 2px rgba(99,102,241,.1)}
+.mp-add-go{padding:4px 10px;background:#6366f1;color:#fff;border:none;border-radius:4px;font-size:11px;cursor:pointer}
+.mp-add-go:hover{background:#4f46e5}
+.mp-cancel{padding:4px 8px;background:none;border:1px solid #e2e8f0;border-radius:4px;font-size:11px;color:#64748b;cursor:pointer}
+.mp-cancel:hover{background:#f8fafc}
+.mp-divider{height:1px;background:#f1f5f9;margin:4px 0 8px}
+.monitor-list-compact{display:flex;flex-direction:column;gap:6px;flex:1}
+.mi-row{display:flex;align-items:center;gap:8px;padding:6px 8px;border:1px solid #f1f5f9;border-radius:6px;background:#fff;transition:all .12s}
+.mi-row:hover{border-color:#e2e8f0;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.mi-ico{width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:700;border-radius:4px;font-size:9px;flex-shrink:0}
+.mi-meta{min-width:0;flex:1}
+.mi-name{font-size:11px;font-weight:500;color:#374151;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mi-url{font-size:9px;color:#9ca3af;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px}
+.mi-remove{background:none;border:none;color:#d1d5db;font-size:14px;cursor:pointer;padding:0 2px;flex-shrink:0}
+.mi-remove:hover{color:#ef4444}
+.mi-action{transition:color .12s}
+.mi-action:hover{color:#4338ca}
+
+
+/* 竞品追踪内容 */
+.mp-track-content{display:none}
+.mp-track-content.active{display:flex;flex-direction:column;flex:1}
+
+/* 动态订阅追踪 */
+.mp-sub-toggle{display:flex;align-items:center;justify-content:space-between;padding:8px 0;cursor:pointer;user-select:none}
+.mp-sub-toggle-text{font-size:11px;font-weight:600;color:#475569}
+.mp-sub-toggle-arrow{font-size:10px;color:#94a3b8;transition:transform .2s}
+.mp-sub-toggle.expanded .mp-sub-toggle-arrow{transform:rotate(90deg);color:#6366f1}
+.mp-sub-list{display:none;flex-direction:column;gap:6px;padding-top:4px}
+.mp-sub-list.show{display:flex}
+.sub-row{display:flex;align-items:center;justify-content:space-between;padding:3px 6px;border-radius:4px;transition:background .12s}
+.sub-row:hover{background:#f1f5f9}
+.sub-info .sub-t{font-size:10px;font-weight:500;color:#1e293b}
+.sub-info .sub-s{font-size:9px;color:#6b7280;margin-top:1px}
+.toggle-sw{width:30px;height:15px;background:#e2e8f0;border-radius:8px;position:relative;cursor:pointer;transition:.2s;flex-shrink:0}
+.toggle-sw::before{content:"";position:absolute;left:2px;top:2px;width:11px;height:11px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 1px 2px rgba(0,0,0,.1)}
+.toggle-sw.on{background:#6366f1}
+.toggle-sw.on::before{left:17px}
+
+/* ===== 能力提升建议模块 ===== */
+.suggest-header{padding:14px 16px 10px}
+.suggest-title{font-size:15px;font-weight:700;color:#1e293b}
+.suggest-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 16px 16px}
+.suggest-panel{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:14px 16px}
+.suggest-panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.suggest-panel-title{font-size:13px;font-weight:600;color:#1e293b}
+.suggest-more{font-size:11px;color:#6366f1;cursor:pointer;text-decoration:none}
+.suggest-more:hover{text-decoration:underline}
+.suggest-cards-h{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.suggest-card-h{background:#fafbfc;border:1px solid #f1f5f9;border-radius:8px;padding:14px 16px;transition:all .12s}
+.suggest-card-h:hover{border-color:#e2e8f0;background:#fff}
+.suggest-card-h-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.suggest-card-h-name{font-size:13px;font-weight:600;color:#1e293b}
+.suggest-tag-h{font-size:10px;padding:2px 8px;border-radius:4px;font-weight:500}
+.suggest-tag-h.loss{background:#fef2f2;color:#dc2626}
+.suggest-tag-h.gain{background:#f0fdf4;color:#16a34a}
+.suggest-card-h-desc{font-size:11px;color:#64748b;margin-bottom:10px}
+.suggest-detail-btn{width:100%;padding:6px 0;background:#fff;border:1px solid #c7d2fe;border-radius:5px;font-size:12px;color:#6366f1;cursor:pointer;font-weight:500;transition:all .12s}
+.suggest-detail-btn:hover{background:#6366f1;color:#fff;border-color:#6366f1}
+.suggest-cards{display:flex;flex-direction:column;gap:8px}
+.suggest-card{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border:1px solid #f1f5f9;border-radius:6px;background:#fafbfc;transition:all .12s}
+.suggest-card:hover{border-color:#e2e8f0;background:#fff}
+.suggest-card-left{min-width:0;flex:1}
+.suggest-card-name{font-size:12px;font-weight:600;color:#1e293b}
+.suggest-card-desc{font-size:11px;color:#64748b;margin-top:2px}
+.suggest-card-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.suggest-tag{font-size:10px;padding:2px 6px;border-radius:3px;font-weight:500}
+.suggest-tag.loss{background:#fef2f2;color:#dc2626}
+.suggest-tag.gain{background:#f0fdf4;color:#16a34a}
+.suggest-btn{padding:4px 10px;background:#fff;border:1px solid #c7d2fe;border-radius:4px;font-size:11px;color:#6366f1;cursor:pointer;transition:all .12s;white-space:nowrap}
+.suggest-btn:hover{background:#6366f1;color:#fff;border-color:#6366f1}
+
+/* 筛选标签联动高亮 */
+.filter-active{display:none;align-items:center;gap:6px;padding:8px 16px;background:#eef2ff;border-bottom:1px solid #c7d2fe;font-size:11px;color:#4f46e5}
+.filter-active.show{display:flex}
+.filter-active-tag{padding:2px 8px;background:#6366f1;color:#fff;border-radius:3px;font-weight:500}
+.filter-active-clear{cursor:pointer;color:#6366f1;text-decoration:underline;margin-left:auto}
+
+/* ===== Tab + Filter ===== */
+.tab-bar{margin-top:8px;display:flex;gap:4px;border-bottom:1px solid #e2e8f0}
+.tab-item{padding:8px 16px;font-size:13px;color:#64748b;cursor:pointer;border-bottom:2px solid transparent;transition:all .15s}
+.tab-item:hover{color:#4f46e5}
+.tab-item.active{color:#4f46e5;font-weight:600;border-color:#4f46e5}
+.tab-count{font-size:11px;background:#f1f5f9;border-radius:8px;padding:1px 6px;margin-left:4px}
+.tab-item.active .tab-count{background:#ede9fe;color:#6366f1}
+
+.filter-bar{margin-top:12px;display:flex;align-items:center;gap:12px;padding:10px 16px;background:#fff;border-radius:8px;border:1px solid #e2e8f0;flex-wrap:wrap}
+.f-g{display:flex;align-items:center;gap:6px}
+.f-l{font-size:12px;color:#64748b;white-space:nowrap}
+.f-tag{font-size:12px;padding:3px 10px;border-radius:4px;color:#475569;cursor:pointer;transition:all .12s;border:1px solid transparent}
+.f-tag:hover{background:#f1f5f9}
+.f-tag.active{background:#ede9fe;color:#6366f1;border-color:#c4b5fd;font-weight:500}
+.f-sep{width:1px;height:20px;background:#e2e8f0;margin:0 4px}
+.search-box{margin-left:auto;display:flex;align-items:center;gap:4px;font-size:12px;color:#94a3b8}
+.search-box input{border:1px solid #e2e8f0;border-radius:4px;padding:4px 8px;font-size:12px;width:180px;outline:none}
+.search-box input:focus{border-color:#6366f1}
+
+/* ===== Table ===== */
+.th{display:grid;grid-template-columns:2.4fr 2fr 2.4fr 3.2fr;gap:20px;padding:8px 20px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px 8px 0 0;margin-top:12px;font-size:12px;font-weight:600;color:#64748b}
+.tr{display:grid;grid-template-columns:2.4fr 2fr 2.4fr 3.2fr;gap:20px;padding:14px 20px;background:#fff;border:1px solid #e2e8f0;border-top:none;align-items:start;transition:background .12s}
+.tr:hover{background:#fafbff}
+.tr:last-of-type{border-radius:0 0 8px 8px}
+
+/* Product info */
+.p-info{display:flex;gap:12px;align-items:center}
+.p-img{width:56px;height:56px;border-radius:6px;overflow:hidden;flex-shrink:0;background:#f8fafc;border:1px solid #e2e8f0}
+.p-img img{width:100%;height:100%;object-fit:cover}
+.p-detail{min-width:0}
+.p-name{font-size:12px;font-weight:500;color:#1e293b;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.p-meta{font-size:11px;color:#94a3b8;margin-top:2px}
+
+/* 竞争洞察列 */
+.insight-cell{display:flex;flex-direction:column;gap:4px}
+.dim-row{display:flex;align-items:center;gap:8px;font-size:11px;cursor:pointer;padding:4px 6px;border-radius:4px;transition:background .12s}
+.dim-row:hover{background:#f1f5f9}
+.dim-label{color:#64748b;width:32px;flex-shrink:0;font-weight:500}
+.dim-expand-icon{font-size:9px;color:#94a3b8;transition:transform .2s;margin-left:auto}
+.dim-row{display:flex;align-items:center;gap:6px;font-size:11px;cursor:pointer;padding:2px 4px;border-radius:4px;transition:background .12s}
+.dim-row:hover{background:#f1f5f9}
+.dim-label{color:#64748b;width:32px;flex-shrink:0}
+.dim-bar-wrap{flex:1;height:6px;border-radius:3px;background:#f1f5f9;position:relative;max-width:120px}
+.dim-bar{height:100%;border-radius:3px}
+.dim-bar.high{background:#16a34a}
+.dim-bar.mid{background:#f59e0b}
+.dim-bar.low{background:#dc2626}
+.dim-text{font-size:10px;font-weight:600;min-width:36px}
+.dim-text.high{color:#16a34a}
+.dim-text.mid{color:#f59e0b}
+.dim-text.low{color:#dc2626}
+.dim-expand-icon{font-size:9px;color:#94a3b8;transition:transform .2s;margin-left:auto}
+.dim-row.expanded .dim-expand-icon{transform:rotate(90deg);color:#6366f1}
+.insight-summary{font-size:10px;color:#64748b;margin-top:2px;padding-top:4px;border-top:1px dashed #e2e8f0}
+
+/* Expandable detail panel */
+.dim-detail{display:none;margin:2px 0 4px;padding:10px;border-radius:6px;background:#fff;border:1px solid #e2e8f0;box-shadow:0 2px 8px rgba(0,0,0,.04);animation:slideDown .2s ease}
+.dim-detail.show{display:block}
+@keyframes slideDown{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+
+/* Price trend mini chart */
+.price-chart{width:100%;height:80px;position:relative;margin-bottom:6px}
+.price-chart canvas{width:100%;height:100%}
+.price-chart-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.price-chart-title{font-size:11px;font-weight:600;color:#1e293b}
+.price-chart-tabs{display:flex;gap:4px}
+.price-chart-tab{font-size:10px;padding:1px 6px;border-radius:3px;color:#94a3b8;cursor:pointer}
+.price-chart-tab.active{background:#f1f5f9;color:#475569;font-weight:500}
+.price-stats{display:flex;gap:12px;margin-top:6px;padding-top:6px;border-top:1px solid #f1f5f9}
+.price-stat{display:flex;flex-direction:column;gap:1px}
+.price-stat-label{font-size:9px;color:#94a3b8}
+.price-stat-value{font-size:11px;font-weight:600;color:#1e293b}
+.price-stat-value.low-price{color:#dc2626}
+.price-stat-value.my-price{color:#6366f1}
+
+/* Price bar chart (simplified visual) */
+.price-bars{display:flex;flex-direction:column;gap:4px;margin-top:4px}
+.price-bar-row{display:flex;align-items:center;gap:6px;font-size:10px}
+.price-bar-label{width:56px;flex-shrink:0;color:#64748b;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.price-bar-track{flex:1;height:14px;border-radius:3px;background:#f8fafc;position:relative;overflow:hidden}
+.price-bar-fill{height:100%;border-radius:3px;display:flex;align-items:center;justify-content:flex-end;padding-right:4px;font-size:9px;color:#fff;font-weight:600}
+.price-bar-fill.mine{background:linear-gradient(90deg,#818cf8,#6366f1)}
+.price-bar-fill.comp{background:linear-gradient(90deg,#fca5a5,#dc2626)}
+.price-bar-fill.comp-ok{background:linear-gradient(90deg,#86efac,#16a34a)}
+.price-bar-amount{font-size:10px;color:#475569;margin-left:4px;white-space:nowrap}
+
+/* Service detail panel */
+.service-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.service-item{display:flex;align-items:center;gap:4px;padding:4px 6px;border-radius:4px;background:#f8fafc;font-size:10px}
+.service-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.service-dot.has{background:#16a34a}
+.service-dot.no{background:#dc2626}
+.service-name{color:#475569}
+.service-status{margin-left:auto;font-weight:600;font-size:9px}
+.service-status.has{color:#16a34a}
+.service-status.no{color:#dc2626}
+
+/* Content/素材 detail panel */
+.content-compare{display:flex;flex-direction:column;gap:6px}
+.content-row{display:flex;align-items:center;gap:6px;font-size:10px}
+.content-label{color:#64748b;width:48px;flex-shrink:0}
+.content-score{display:flex;gap:2px}
+.content-star{width:10px;height:10px;border-radius:2px}
+.content-star.filled{background:#f59e0b}
+.content-star.empty{background:#e2e8f0}
+
+/* Comp cell */
+.comp-cell{display:flex;flex-direction:column;gap:8px;font-size:11px}
+.comp-item{display:flex;gap:8px;align-items:flex-start;padding:6px;border-radius:6px;background:#f8fafc;border:1px solid #f1f5f9;transition:all .12s}
+.comp-item:hover{border-color:#c7d2fe;background:#fafbff}
+.comp-thumb{width:40px;height:40px;border-radius:4px;overflow:hidden;flex-shrink:0;background:#fff;border:1px solid #e2e8f0}
+.comp-thumb img{width:100%;height:100%;object-fit:cover}
+.comp-detail{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.comp-title{font-size:11px;color:#1e293b;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.comp-tags{display:flex;gap:4px;flex-wrap:wrap}
+.c-tag{font-size:10px;padding:1px 5px;border-radius:3px;white-space:nowrap}
+.t-price{background:#fef2f2;color:#dc2626}
+.t-stage{background:#dbeafe;color:#2563eb}
+.t-ship{background:#ecfeff;color:#0891b2}
+.t-return{background:#f0fdf4;color:#16a34a}
+.t-engrave{background:#faf5ff;color:#7c3aed}
+.t-warranty{background:#fff7ed;color:#ea580c}
+.comp-more{font-size:10px;color:#6366f1;padding-left:4px;cursor:pointer;user-select:none}
+.comp-more:hover{text-decoration:underline}
+.comp-more .comp-more-icon{display:inline-block;transition:transform .2s;font-size:9px;margin-right:2px}
+.comp-more.expanded .comp-more-icon{transform:rotate(90deg)}
+.comp-extra{display:none;margin-top:4px;padding-top:6px;border-top:1px dashed #e2e8f0;animation:slideDown .2s ease}
+.comp-extra.show{display:flex;flex-direction:column;gap:6px}
+.comp-report{font-size:11px;color:#6366f1;text-decoration:none;cursor:pointer}
+.comp-report:hover{text-decoration:underline}
+
+/* 提升建议 - 卡片式布局 */
+/* 提升建议 - 卡片式布局（紧凑） */
+.suggest-cell{padding:8px 10px;display:flex;flex-direction:column;gap:6px}
+.sg-header{font-size:10px;font-weight:600;color:#64748b;margin-bottom:0}
+.sg-options{display:flex;gap:6px}
+.sg-opt{flex:1;padding:8px 8px;border-radius:6px;border:1px solid #e2e8f0;background:#fff;cursor:pointer;transition:all .15s;position:relative}
+.sg-opt:hover{border-color:#c7d2fe;box-shadow:0 1px 4px rgba(99,102,241,.08)}
+.sg-opt.recommended{border-color:#6366f1;background:linear-gradient(135deg,#fafbff,#eef2ff);box-shadow:0 1px 6px rgba(99,102,241,.1)}
+.sg-opt-badge{position:absolute;top:-7px;right:6px;font-size:9px;padding:1px 5px;border-radius:3px;background:#6366f1;color:#fff;font-weight:600;line-height:1.3}
+.sg-opt-label{font-size:9px;color:#94a3b8;margin-bottom:1px}
+.sg-opt-title{font-size:11px;font-weight:600;color:#1e293b;margin-bottom:2px}
+.sg-opt-price{font-size:13px;font-weight:700;color:#dc2626;margin-bottom:1px}
+.sg-opt-desc{font-size:10px;color:#64748b;line-height:1.3}
+.sg-opt-gain{font-size:10px;color:#16a34a;font-weight:600;margin-top:3px}
+.sg-opt-btn{display:block;width:100%;margin-top:5px;padding:3px 0;background:#f8fafc;color:#6366f1;border:1px solid #e2e8f0;border-radius:3px;font-size:10px;font-weight:500;cursor:pointer;text-align:center;transition:all .12s}
+.sg-opt-btn:hover{background:#eef2ff;border-color:#c7d2fe}
+.sg-opt.recommended .sg-opt-btn{background:#6366f1;color:#fff;border-color:#6366f1}
+.sg-opt.recommended .sg-opt-btn:hover{background:#4f46e5}
+.sg-btn{padding:4px 10px;background:#6366f1;color:#fff;border:none;border-radius:4px;font-size:10px;font-weight:500;cursor:pointer;white-space:nowrap;flex-shrink:0}
+.sg-btn:hover{background:#4f46e5}
+
+/* 权益白盒化 */
+.sg-benefit{padding:8px 10px;border:1.5px solid #6366f1;border-radius:6px;background:linear-gradient(135deg,#fafbff,#eef2ff)}
+.sg-benefit-title{font-size:11px;font-weight:600;color:#1e293b;margin-bottom:5px;line-height:1.4}
+.sg-benefit-items{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:5px}
+.sg-benefit-item{padding:2px 6px;border-radius:3px;font-size:9px;font-weight:500;background:#ede9fe;color:#6366f1;border:1px solid #c7d2fe}
+.sg-benefit-gain{font-size:10px;color:#16a34a;font-weight:600;margin-bottom:5px}
+.sg-benefit-footer{display:flex;align-items:center;justify-content:space-between;padding-top:5px;border-top:1px solid #e0e0f6}
+.sg-benefit-note{font-size:10px;color:#6366f1;font-weight:600}
+
+/* 已享受状态 */
+.sg-done{padding:8px 10px;border-radius:6px;background:#f0fdf4;border:1px solid #bbf7d0}
+.sg-done-title{font-size:11px;font-weight:600;color:#16a34a;margin-bottom:4px}
+.sg-done-desc{font-size:10px;color:#475569;margin-bottom:4px}
+.sg-done-items{display:flex;gap:4px;flex-wrap:wrap}
+.sg-done-item{padding:2px 6px;border-radius:3px;font-size:9px;font-weight:500;background:#dcfce7;color:#16a34a;border:1px solid #86efac}
+
+/* Pagination */
+.pgn-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;margin-top:12px}
+.pgn-info{font-size:12px;color:#94a3b8}
+.pgn{display:flex;gap:4px}
+.pg-btn{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:12px;cursor:pointer;border:1px solid #e2e8f0;background:#fff;transition:all .12s}
+.pg-btn:hover{border-color:#6366f1}
+.pg-btn.active{background:#6366f1;color:#fff;border-color:#6366f1}
+
+.up{color:#16a34a}
+.down{color:#dc2626}
+
+/* 执行成功弹窗 */
+.exec-modal-mask{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.4);z-index:9998;opacity:0;pointer-events:none;transition:opacity .25s}
+.exec-modal-mask.show{opacity:1;pointer-events:auto}
+.exec-modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.9);background:#fff;border-radius:12px;padding:32px 28px 24px;box-shadow:0 20px 60px rgba(0,0,0,.15);z-index:9999;width:360px;text-align:center;opacity:0;pointer-events:none;transition:all .25s ease}
+.exec-modal.show{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
+.exec-modal-icon{width:48px;height:48px;border-radius:50%;background:#f0fdf4;border:2px solid #86efac;color:#16a34a;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;margin:0 auto 14px}
+.exec-modal-title{font-size:16px;font-weight:700;color:#1e293b;margin-bottom:6px}
+.exec-modal-desc{font-size:13px;color:#475569;line-height:1.6;margin-bottom:16px}
+.exec-modal-highlight{display:inline-flex;align-items:center;gap:4px;padding:6px 12px;background:#fffbeb;border:1px solid #fde68a;border-radius:6px;font-size:12px;color:#92400e;font-weight:500;margin-bottom:18px}
+.exec-modal-btn{padding:8px 24px;background:#6366f1;color:#fff;border:none;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;transition:background .12s}
+.exec-modal-btn:hover{background:#4f46e5}
+
+/* 明细弹窗 - 右侧抽屉 */
+.detail-modal-mask{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.3);z-index:9998;opacity:0;pointer-events:none;transition:opacity .3s}
+.detail-modal-mask.show{opacity:1;pointer-events:auto}
+.detail-modal{position:fixed;top:0;right:0;bottom:0;width:720px;background:#fff;box-shadow:-4px 0 20px rgba(0,0,0,.1);z-index:9999;transform:translateX(100%);transition:transform .3s ease;display:flex;flex-direction:column}
+.detail-modal.show{transform:translateX(0)}
+.detail-modal-header{display:flex;align-items:center;justify-content:space-between;padding:18px 20px 14px;border-bottom:1px solid #f1f5f9;flex-shrink:0}
+.detail-modal-title{font-size:15px;font-weight:700;color:#1e293b}
+.detail-modal-sub{font-size:12px;color:#64748b;margin-top:2px}
+.detail-modal-close{background:none;border:none;font-size:20px;color:#94a3b8;cursor:pointer;padding:4px 8px;line-height:1;border-radius:4px;transition:all .12s}
+.detail-modal-close:hover{background:#f1f5f9;color:#475569}
+.detail-modal-actions{padding:12px 20px;border-bottom:1px solid #f1f5f9;flex-shrink:0}
+.detail-modal-batch{padding:7px 16px;background:#6366f1;color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;transition:background .12s}
+.detail-modal-batch:hover{background:#4f46e5}
+.detail-modal-list{overflow-y:auto;flex:1;padding:14px 20px 20px}
+.detail-item{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid #f1f5f9;border-radius:8px;margin-bottom:8px;background:#fafbfc;transition:all .12s}
+.detail-item:hover{border-color:#e2e8f0;background:#fff}
+.detail-item-img{width:48px;height:48px;border-radius:6px;object-fit:cover;flex-shrink:0}
+.detail-item-info{flex:1;min-width:0}
+.detail-item-name{font-size:12px;font-weight:600;color:#1e293b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.detail-item-meta{font-size:11px;color:#64748b;margin-top:2px}
+.detail-item-problem{font-size:11px;color:#dc2626;margin-top:4px;display:flex;align-items:center;gap:4px}
+.detail-item-problem::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#dc2626;flex-shrink:0}
+.detail-item-actions{display:flex;gap:6px;flex-shrink:0}
+.detail-item-btn{padding:5px 10px;background:#fff;border:1px solid #c7d2fe;border-radius:4px;font-size:11px;color:#6366f1;cursor:pointer;transition:all .12s;white-space:nowrap}
+.detail-item-btn:hover{background:#6366f1;color:#fff;border-color:#6366f1}
+.detail-item-btn.set{background:#6366f1;color:#fff;border-color:#6366f1}
+.detail-item-full{padding:16px;border:1px solid #f1f5f9;border-radius:8px;margin-bottom:10px;background:#fafbfc;transition:all .12s}
+.detail-item-full:hover{border-color:#e2e8f0;background:#fff}
+.detail-item-full-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.detail-item-full-name{font-size:13px;font-weight:600;color:#1e293b}
+.detail-item-full-desc{font-size:12px;color:#64748b;margin-bottom:10px}
+.detail-item-full-actions{display:flex;gap:6px}
+.detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.detail-grid-card{display:flex;flex-direction:column;gap:8px;padding:14px;border:1px solid #f1f5f9;border-radius:8px;background:#fafbfc;transition:all .12s}
+.detail-grid-card:hover{border-color:#e2e8f0;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.detail-grid-card-head{display:flex;align-items:center;justify-content:space-between}
+.detail-grid-card-name{font-size:13px;font-weight:600;color:#1e293b}
+.detail-grid-card-desc{font-size:12px;color:#64748b}
+.detail-grid-card-btn{padding:7px 14px;background:#fff;border:1px solid #c7d2fe;border-radius:6px;font-size:12px;color:#6366f1;font-weight:500;cursor:pointer;transition:all .12s;align-self:flex-start}
+.detail-grid-card-btn:hover{background:#6366f1;color:#fff;border-color:#6366f1}
+.strategy-tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:600;line-height:1.4;vertical-align:middle;margin-right:4px}
+.strategy-tag.goodprice{background:#fef3c7;color:#d97706}
+.strategy-tag.subsidy{background:#dbeafe;color:#2563eb}
+.strategy-tag.seckill{background:#fce7f3;color:#db2777}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="h-l"><div class="logo">A</div><div class="h-t">商家运营中心 / 竞争洞察</div></div>
+  <div class="h-r"><span>百邦Apple授权专营店</span><div class="avatar"></div></div>
+</div>
+<div class="container">
+
+  <!-- ===== 统一面板 ===== -->
+  <div class="dash-wrap">
+    <div class="dash-body">
+
+    <!-- 1. 竞争数据模块：头部 + 筛选 + 三列内容 -->
+    <div class="dash-section">
+      <!-- 模块头部 -->
+      <div class="ci-header">
+        <div>
+          <div class="ci-title">竞争数据</div>
+          <div class="ci-meta">数据更新时间 2026-05-07 00:00 · 监控商品 128 个</div>
+        </div>
+        <div class="ci-filters">
+          <div class="ci-filter-group">
+            <span class="ci-filter-label">时间范围</span>
+            <div class="ci-filter-tabs" id="globalTimeFilter">
+              <div class="ci-filter-tab active" data-range="7">近7天</div>
+              <div class="ci-filter-tab" data-range="30">近30天</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 筛选激活标签 -->
+      <div class="filter-active" id="filterActive">
+        当前筛选：<span class="filter-active-tag" id="filterTag"></span>
+        <span class="filter-active-clear" onclick="clearFilter()">清除筛选</span>
+      </div>
+
+      <!-- 三列内容 -->
+      <div class="top-row">
+        <!-- 左列：潜在用户流失 -->
+        <div class="stat-card loss">
+          <div class="stat-card-header">
+            <span class="stat-card-title">潜在用户流失</span>
+            <span class="stat-card-trend up" data-7="较上周 +12%" data-30="较上月 +18%">较上周 +12%</span>
+          </div>
+          <div class="stat-hero">
+            <span class="stat-hero-num" data-7="867" data-30="1,243">867</span>
+            <span class="stat-hero-unit">人</span>
+          </div>
+          <div class="stat-metric-list">
+            <!-- 7天数据 -->
+            <div class="stat-metric time-data" data-range="7" data-filter="shunfeng">
+              <div class="sm-num">476</div>
+              <div class="sm-body">
+                <div class="sm-label">流向支持<strong>顺丰包邮</strong>的竞品</div>
+                <div class="sm-sub">涉及 10 个商品</div>
+                <div class="sm-bar"><div class="sm-bar-fill" style="width:55%"></div></div>
+              </div>
+              <span class="sm-toggle">▶</span>
+              <div class="sm-detail">
+                <div class="sm-detail-products">
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPhone 15 Pro Max</span></div>
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-wifi-spaceblack-202405?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPad Pro 11</span></div>
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/s9-case-unselect-gallery-1-202309?wid=48&hei=48&fmt=jpeg&qlt=90"><span>Apple Watch S9</span></div>
+                </div>
+                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 10 个商品 ›</a>
+              </div>
+            </div>
+            <div class="stat-metric time-data" data-range="7" data-filter="price">
+              <div class="sm-num">245</div>
+              <div class="sm-body">
+                <div class="sm-label">流向<strong>价格更低</strong>的竞品</div>
+                <div class="sm-sub">涉及 6 个商品</div>
+                <div class="sm-bar"><div class="sm-bar-fill" style="width:28%"></div></div>
+              </div>
+              <span class="sm-toggle">▶</span>
+              <div class="sm-detail">
+                <div class="sm-detail-products">
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=48&hei=48&fmt=jpeg&qlt=90"><span>MacBook Pro M3</span></div>
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJV3?wid=48&hei=48&fmt=jpeg&qlt=90"><span>AirPods Pro 2</span></div>
+                </div>
+                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 6 个商品 ›</a>
+              </div>
+            </div>
+            <div class="stat-metric time-data" data-range="7" data-filter="damage">
+              <div class="sm-num">146</div>
+              <div class="sm-body">
+                <div class="sm-label">流向支持<strong>破损包赔</strong>的竞品</div>
+                <div class="sm-sub">涉及 4 个商品</div>
+                <div class="sm-bar"><div class="sm-bar-fill" style="width:17%"></div></div>
+              </div>
+              <span class="sm-toggle">▶</span>
+              <div class="sm-detail">
+                <div class="sm-detail-products">
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPhone 15 Pro</span></div>
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-wifi-spaceblack-202405?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPad Pro 13</span></div>
+                </div>
+                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 4 个商品 ›</a>
+              </div>
+            </div>
+            <!-- 30天数据 -->
+            <div class="stat-metric time-data" data-range="30" data-filter="shunfeng" style="display:none">
+              <div class="sm-num">682</div>
+              <div class="sm-body">
+                <div class="sm-label">流向支持<strong>顺丰包邮</strong>的竞品</div>
+                <div class="sm-sub">涉及 14 个商品</div>
+                <div class="sm-bar"><div class="sm-bar-fill" style="width:54%"></div></div>
+              </div>
+              <span class="sm-toggle">▶</span>
+              <div class="sm-detail">
+                <div class="sm-detail-products">
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPhone 15 Pro Max</span></div>
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=48&hei=48&fmt=jpeg&qlt=90"><span>MacBook Pro M3</span></div>
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-wifi-spaceblack-202405?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPad Pro 11</span></div>
+                </div>
+                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 14 个商品 ›</a>
+              </div>
+            </div>
+            <div class="stat-metric time-data" data-range="30" data-filter="price" style="display:none">
+              <div class="sm-num">358</div>
+              <div class="sm-body">
+                <div class="sm-label">流向<strong>价格更低</strong>的竞品</div>
+                <div class="sm-sub">涉及 8 个商品</div>
+                <div class="sm-bar"><div class="sm-bar-fill" style="width:29%"></div></div>
+              </div>
+              <span class="sm-toggle">▶</span>
+              <div class="sm-detail">
+                <div class="sm-detail-products">
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-wifi-spaceblack-202405?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPad Pro 11 M4</span></div>
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJV3?wid=48&hei=48&fmt=jpeg&qlt=90"><span>AirPods Pro 2</span></div>
+                </div>
+                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 8 个商品 ›</a>
+              </div>
+            </div>
+            <div class="stat-metric time-data" data-range="30" data-filter="damage" style="display:none">
+              <div class="sm-num">203</div>
+              <div class="sm-body">
+                <div class="sm-label">流向支持<strong>破损包赔</strong>的竞品</div>
+                <div class="sm-sub">涉及 5 个商品</div>
+                <div class="sm-bar"><div class="sm-bar-fill" style="width:17%"></div></div>
+              </div>
+              <span class="sm-toggle">▶</span>
+              <div class="sm-detail">
+                <div class="sm-detail-products">
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPhone 15 Pro</span></div>
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=48&hei=48&fmt=jpeg&qlt=90"><span>MacBook Pro 14</span></div>
+                </div>
+                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 5 个商品 ›</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 中列：可挽回潜在用户 -->
+        <div class="stat-card recover">
+          <div class="stat-card-header">
+            <span class="stat-card-title">可挽回潜在用户</span>
+            <span class="stat-card-trend down" data-7="近7天可挽回 +¥8.2万 GMV" data-30="近30天可挽回 +¥15.6万 GMV">近7天可挽回 +¥8.2万 GMV</span>
+          </div>
+          <div class="stat-hero">
+            <span class="stat-hero-num" data-7="620+" data-30="1,180+">620+</span>
+            <span class="stat-hero-unit">人</span>
+          </div>
+          <div class="stat-metric-list">
+            <!-- 7天数据 -->
+            <div class="stat-metric time-data" data-range="7" data-filter="shunfeng-recover">
+              <div class="sm-num">8个</div>
+              <div class="sm-body">
+                <div class="sm-label">可加入<strong>顺丰包邮</strong>赛道获客</div>
+                <div class="sm-sub">预计流量 +35%~52%</div>
+                <div class="sm-bar"><div class="sm-bar-fill" style="width:62%"></div></div>
+              </div>
+              <span class="sm-toggle">▶</span>
+              <div class="sm-detail">
+                <div class="sm-detail-products">
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPhone 15 Pro Max</span></div>
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-wifi-spaceblack-202405?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPad Pro 11</span></div>
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/s9-case-unselect-gallery-1-202309?wid=48&hei=48&fmt=jpeg&qlt=90"><span>Apple Watch S9</span></div>
+                </div>
+                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 8 个商品 ›</a>
+              </div>
+            </div>
+            <div class="stat-metric time-data" data-range="7" data-filter="goodprice">
+              <div class="sm-num">5个</div>
+              <div class="sm-body">
+                <div class="sm-label"><span class="strategy-tag goodprice">好价卡</span>降价1.2-3.4元，即可享受<strong>好价卡</strong>专属流量扶持</div>
+                <div class="sm-sub">降价 1.2-3.4元 · 流量 +24%~44%</div>
+                <div class="sm-bar"><div class="sm-bar-fill" style="width:40%"></div></div>
+              </div>
+              <span class="sm-toggle">▶</span>
+              <div class="sm-detail">
+                <div class="sm-detail-products">
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-wifi-spaceblack-202405?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPad Pro 11 M4</span></div>
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=48&hei=48&fmt=jpeg&qlt=90"><span>MacBook Pro M3</span></div>
+                </div>
+                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 5 个商品 ›</a>
+              </div>
+            </div>
+            <div class="stat-metric time-data" data-range="7" data-filter="subsidy">
+              <div class="sm-num">3个</div>
+              <div class="sm-body">
+                <div class="sm-label"><span class="strategy-tag subsidy">百亿补贴</span>降价5-8元，即可享受<strong>百亿补贴</strong>专属流量扶持</div>
+                <div class="sm-sub">降价 5-8元 · 流量 +68%~96%</div>
+                <div class="sm-bar"><div class="sm-bar-fill" style="width:30%"></div></div>
+              </div>
+              <span class="sm-toggle">▶</span>
+              <div class="sm-detail">
+                <div class="sm-detail-products">
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=48&hei=48&fmt=jpeg&qlt=90"><span>MacBook Pro M3</span></div>
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJV3?wid=48&hei=48&fmt=jpeg&qlt=90"><span>AirPods Pro 2</span></div>
+                </div>
+                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 3 个商品 ›</a>
+              </div>
+            </div>
+            <!-- 30天数据 -->
+            <div class="stat-metric time-data" data-range="30" data-filter="shunfeng-recover" style="display:none">
+              <div class="sm-num">12个</div>
+              <div class="sm-body">
+                <div class="sm-label">可加入<strong>顺丰包邮</strong>赛道获客</div>
+                <div class="sm-sub">预计流量 +35%~52%</div>
+                <div class="sm-bar"><div class="sm-bar-fill" style="width:65%"></div></div>
+              </div>
+              <span class="sm-toggle">▶</span>
+              <div class="sm-detail">
+                <div class="sm-detail-products">
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-wifi-spaceblack-202405?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPad Pro 13 M4</span></div>
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-11-select-wifi-spaceblack-202405?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPad Pro 11 M4</span></div>
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=48&hei=48&fmt=jpeg&qlt=90"><span>MacBook Pro M3</span></div>
+                </div>
+                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 12 个商品 ›</a>
+              </div>
+            </div>
+            <div class="stat-metric time-data" data-range="30" data-filter="goodprice" style="display:none">
+              <div class="sm-num">7个</div>
+              <div class="sm-body">
+                <div class="sm-label"><span class="strategy-tag goodprice">好价卡</span>降价1.2-3.4元，即可享受<strong>好价卡</strong>专属流量扶持</div>
+                <div class="sm-sub">降价 1.2-3.4元 · 流量 +24%~44%</div>
+                <div class="sm-bar"><div class="sm-bar-fill" style="width:42%"></div></div>
+              </div>
+              <span class="sm-toggle">▶</span>
+              <div class="sm-detail">
+                <div class="sm-detail-products">
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-11-select-wifi-spaceblack-202405?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPad Pro 11 M4</span></div>
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJV3?wid=48&hei=48&fmt=jpeg&qlt=90"><span>AirPods Pro 2</span></div>
+                </div>
+                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 7 个商品 ›</a>
+              </div>
+            </div>
+            <div class="stat-metric time-data" data-range="30" data-filter="subsidy" style="display:none">
+              <div class="sm-num">4个</div>
+              <div class="sm-body">
+                <div class="sm-label"><span class="strategy-tag subsidy">百亿补贴</span>降价5-8元，即可享受<strong>百亿补贴</strong>专属流量扶持</div>
+                <div class="sm-sub">降价 5-8元 · 流量 +68%~96%</div>
+                <div class="sm-bar"><div class="sm-bar-fill" style="width:32%"></div></div>
+              </div>
+              <span class="sm-toggle">▶</span>
+              <div class="sm-detail">
+                <div class="sm-detail-products">
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=48&hei=48&fmt=jpeg&qlt=90"><span>MacBook Pro M3</span></div>
+                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJV3?wid=48&hei=48&fmt=jpeg&qlt=90"><span>AirPods Pro 2</span></div>
+                </div>
+                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 4 个商品 ›</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右列：竞品监控 / 竞品追踪 -->
+        <div class="monitor-panel">
+          <div class="mp-tabs" id="monitorTabs">
+            <div class="mp-tab active" data-tab="monitor-list">竞品监控</div>
+            <div class="mp-tab" data-tab="track-list">竞品追踪</div>
+          </div>
+
+          <!-- Tab 1: 竞品监控 -->
+          <div class="mp-track-content active" id="monitor-list">
+            <div class="mp-header">
+              <span class="mp-title" style="font-size:12px">监控清单 <span style="font-weight:400;color:#94a3b8">3家</span></span>
+              <button class="mp-add-btn" onclick="toggleAddMonitor(this)">+ 添加</button>
+            </div>
+            <div class="mp-add-row">
+              <input type="text" placeholder="粘贴竞品店铺或商品链接" class="mp-input" id="monitorInput">
+              <button class="mp-add-go" onclick="addMonitor()">添加</button>
+              <button class="mp-cancel" onclick="toggleAddMonitor()">取消</button>
+            </div>
+            <div class="monitor-list-compact">
+              <div class="mi-row">
+                <div class="mi-ico" style="background:#e0f2fe;color:#0369a1">顺</div>
+                <div class="mi-meta">
+                  <div class="mi-name">顺电数码连锁</div>
+                  <div class="mi-url">shop.jd.com/10092537</div>
+                </div>
+                <button class="mi-remove">×</button>
+              </div>
+              <div class="mi-row">
+                <div class="mi-ico" style="background:#fef3c7;color:#92400e">迪</div>
+                <div class="mi-meta">
+                  <div class="mi-name">迪信通授权店</div>
+                  <div class="mi-url">store.taobao.com/687234509</div>
+                </div>
+                <button class="mi-remove">×</button>
+              </div>
+              <div class="mi-row">
+                <div class="mi-ico" style="background:#e6f7ff;color:#1890ff">京</div>
+                <div class="mi-meta">
+                  <div class="mi-name">京东自营Apple</div>
+                  <div class="mi-url">apple.jd.com</div>
+                </div>
+                <button class="mi-remove">×</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 2: 竞品追踪 -->
+          <div class="mp-track-content" id="track-list">
+            <div class="mp-sub-toggle expanded" onclick="toggleSubTrack(this)">
+              <span class="mp-sub-toggle-text">动态订阅追踪</span>
+              <span class="mp-sub-toggle-arrow">▼</span>
+            </div>
+            <div class="mp-sub-list show">
+              <div class="sub-row">
+                <div class="sub-info">
+                  <div class="sub-t">价格波动预警</div>
+                  <div class="sub-s">竞品调价 ≥ ¥10 或 ≥ 1% 时触发</div>
+                </div>
+                <div class="toggle-sw on"></div>
+              </div>
+              <div class="sub-row">
+                <div class="sub-info">
+                  <div class="sub-t">服务策略变动</div>
+                  <div class="sub-s">配送升级、运费险、延保等策略变更</div>
+                </div>
+                <div class="toggle-sw on"></div>
+              </div>
+              <div class="sub-row">
+                <div class="sub-info">
+                  <div class="sub-t">素材与卖点更新</div>
+                  <div class="sub-s">竞品主图 / 视频 / 详情页版本更新</div>
+                </div>
+                <div class="toggle-sw on"></div>
+              </div>
+              <div class="sub-row">
+                <div class="sub-info">
+                  <div class="sub-t">新竞品入场提醒</div>
+                  <div class="sub-s">同款赛道出现新卖家时通知</div>
+                </div>
+                <div class="toggle-sw"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. 能力提升建议 -->
+    <div class="dash-section">
+      <div class="suggest-grid">
+        <!-- 补齐短板 -->
+        <div class="suggest-panel">
+          <div class="suggest-panel-header">
+            <span class="suggest-panel-title">补齐短板</span>
+            <a class="suggest-more" href="javascript:void(0)" onclick="openSuggestDetail('all-shortfall')">查看更多 ›</a>
+          </div>
+          <div class="suggest-cards-h">
+            <div class="suggest-card-h">
+              <div class="suggest-card-h-top">
+                <div class="suggest-card-h-name">顺丰包邮</div>
+                <span class="suggest-tag-h loss">用户流失</span>
+              </div>
+              <div class="suggest-card-h-desc">17个商品待支持</div>
+              <button class="suggest-detail-btn" onclick="openSuggestDetail('shunfeng')">查看明细</button>
+            </div>
+            <div class="suggest-card-h">
+              <div class="suggest-card-h-top">
+                <div class="suggest-card-h-name">破损包赔</div>
+                <span class="suggest-tag-h loss">用户流失</span>
+              </div>
+              <div class="suggest-card-h-desc">12个商品待支持</div>
+              <button class="suggest-detail-btn" onclick="openSuggestDetail('damage')">查看明细</button>
+            </div>
+          </div>
+        </div>
+        <!-- 商品机会 -->
+        <div class="suggest-panel">
+          <div class="suggest-panel-header">
+            <span class="suggest-panel-title">商品机会</span>
+            <a class="suggest-more" href="javascript:void(0)" onclick="openSuggestDetail('all-opportunity')">查看更多 ›</a>
+          </div>
+          <div class="suggest-cards-h">
+            <div class="suggest-card-h">
+              <div class="suggest-card-h-top">
+                <div class="suggest-card-h-name">好价卡</div>
+                <span class="suggest-tag-h gain">流量扶持</span>
+              </div>
+              <div class="suggest-card-h-desc">已入围 5 个 · 接近入围 8 个</div>
+              <button class="suggest-detail-btn" onclick="openSuggestDetail('goodprice')">查看明细</button>
+            </div>
+            <div class="suggest-card-h">
+              <div class="suggest-card-h-top">
+                <div class="suggest-card-h-name">百亿补贴</div>
+                <span class="suggest-tag-h gain">流量扶持</span>
+              </div>
+              <div class="suggest-card-h-desc">已入围 3 个 · 接近入围 6 个</div>
+              <button class="suggest-detail-btn" onclick="openSuggestDetail('subsidy')">查看明细</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. 商品策略表 -->
+    <div class="dash-section">
+      <div class="tab-bar">
+    <div class="tab-item active">全部商品 <span class="tab-count">128</span></div>
+    <div class="tab-item">核心商品 <span class="tab-count">42</span></div>
+    <div class="tab-item">普通商品 <span class="tab-count">86</span></div>
+  </div>
+
+  <div class="filter-bar">
+    <div class="f-g"><span class="f-l">类目:</span>
+      <span class="f-tag active">全部</span><span class="f-tag">iPhone</span><span class="f-tag">Mac</span><span class="f-tag">iPad</span><span class="f-tag">AirPods</span><span class="f-tag">Apple Watch</span><span class="f-tag">配件</span>
+    </div>
+    <div class="search-box">🔍 <input placeholder="搜索商品名称 / ID"></div>
+  </div>
+
+  <!-- Table header -->
+  <div class="th">
+    <div>商品信息</div><div>竞争洞察</div><div>竞品分析</div><div>提升建议</div>
+  </div>
+
+  <!-- Row 1 -->
+  <div class="tr" data-category="iPhone" data-type="核心" data-reason="price">
+    <div class="p-info"><div class="p-img"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=240&hei=240&fmt=jpeg&qlt=90" alt=""></div><div class="p-detail"><div class="p-name">Apple iPhone 15 Pro Max 256G 钛金属原色 5G手机</div><div class="p-meta">ID: 6802831475 · 核心商品 · ¥9,199</div></div></div>
+    <div class="insight-cell">
+      <div class="dim-row" data-dim="price"><span class="dim-label">价格</span><div class="dim-bar-wrap"><div class="dim-bar high" style="width:75%"></div></div><span class="dim-text high">优势</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-detail">
+        <div class="price-chart-header"><span class="price-chart-title">类目热销商品价格分布</span><span class="price-chart-tabs"><span class="price-chart-tab active" data-range="30">30天</span><span class="price-chart-tab" data-range="90">90天</span></span></div>
+        <div class="price-chart-data" data-range="30">
+          <div class="price-bars">
+            <div class="price-bar-row"><span class="price-bar-label">本店</span><div class="price-bar-track"><div class="price-bar-fill mine" style="width:78%">¥9,199</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品均价</span><div class="price-bar-track"><div class="price-bar-fill comp" style="width:82%">¥9,599</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品最低</span><div class="price-bar-track"><div class="price-bar-fill comp" style="width:74%">¥8,699</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">类目热销</span><div class="price-bar-track"><div class="price-bar-fill comp-ok" style="width:80%">¥9,399</div></div></div>
+          </div>
+          <div class="price-stats">
+            <div class="price-stat"><span class="price-stat-label">最低出价</span><span class="price-stat-value low-price">¥8,699</span></div>
+            <div class="price-stat"><span class="price-stat-label">本店价</span><span class="price-stat-value my-price">¥9,199</span></div>
+            <div class="price-stat"><span class="price-stat-label">想要人数</span><span class="price-stat-value">1,284</span></div>
+          </div>
+        </div>
+        <div class="price-chart-data" data-range="90" style="display:none">
+          <div class="price-bars">
+            <div class="price-bar-row"><span class="price-bar-label">本店</span><div class="price-bar-track"><div class="price-bar-fill mine" style="width:80%">¥9,199</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品均价</span><div class="price-bar-track"><div class="price-bar-fill comp" style="width:85%">¥9,899</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品最低</span><div class="price-bar-track"><div class="price-bar-fill comp" style="width:72%">¥8,499</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">类目热销</span><div class="price-bar-track"><div class="price-bar-fill comp-ok" style="width:82%">¥9,599</div></div></div>
+          </div>
+          <div class="price-stats">
+            <div class="price-stat"><span class="price-stat-label">最低出价</span><span class="price-stat-value low-price">¥8,499</span></div>
+            <div class="price-stat"><span class="price-stat-label">本店价</span><span class="price-stat-value my-price">¥9,199</span></div>
+            <div class="price-stat"><span class="price-stat-label">想要人数</span><span class="price-stat-value">2,856</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="dim-row" data-dim="service"><span class="dim-label">服务</span><div class="dim-bar-wrap"><div class="dim-bar low" style="width:25%"></div></div><span class="dim-text low">劣势</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-detail">
+        <div class="service-grid">
+          <div class="service-item"><span class="service-dot no"></span><span class="service-name">顺丰包邮</span><span class="service-status no">未设置</span></div>
+          <div class="service-item"><span class="service-dot no"></span><span class="service-name">破损包赔</span><span class="service-status no">未设置</span></div>
+          <div class="service-item"><span class="service-dot has"></span><span class="service-name">7天退货</span><span class="service-status has">已设置</span></div>
+          <div class="service-item"><span class="service-dot has"></span><span class="service-name">正品保障</span><span class="service-status has">已设置</span></div>
+        </div>
+      </div>
+      <div class="dim-row" data-dim="content"><span class="dim-label">素材</span><div class="dim-bar-wrap"><div class="dim-bar mid" style="width:50%"></div></div><span class="dim-text mid">持平</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-detail">
+        <div class="content-compare">
+          <div class="content-row"><span class="content-label">主图质量</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star empty"></span><span class="content-star empty"></span></div></div>
+          <div class="content-row"><span class="content-label">视频素材</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star empty"></span></div></div>
+          <div class="content-row"><span class="content-label">详情丰富度</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star empty"></span><span class="content-star empty"></span></div></div>
+        </div>
+      </div>
+      <div class="insight-summary">价格有优势但缺乏顺丰包邮，72个潜在用户流失</div>
+    </div>
+    <div class="comp-cell">
+      <div class="comp-item">
+        <div class="comp-thumb"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=80&hei=80&fmt=jpeg&qlt=90" alt=""></div>
+        <div class="comp-detail">
+          <div class="comp-title">Apple/苹果 iPhone 15 Pro Max 256GB</div>
+          <div class="comp-tags"><span class="c-tag t-ship">顺丰包邮</span></div>
+        </div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-thumb"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=80&hei=80&fmt=jpeg&qlt=90" alt=""></div>
+        <div class="comp-detail">
+          <div class="comp-title">【24期免息】iPhone15 Pro Max 256G</div>
+          <div class="comp-tags"><span class="c-tag t-stage">24期免息</span></div>
+        </div>
+      </div>
+      <div class="comp-extra">
+        <div class="comp-item">
+          <div class="comp-thumb"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=80&hei=80&fmt=jpeg&qlt=90" alt=""></div>
+          <div class="comp-detail">
+            <div class="comp-title">iPhone 15 Pro Max 256G【官方正品】</div>
+            <div class="comp-tags"><span class="c-tag t-price">同款低价</span><span class="c-tag t-return">15天退货</span></div>
+          </div>
+        </div>
+        <div class="comp-item">
+          <div class="comp-thumb"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=80&hei=80&fmt=jpeg&qlt=90" alt=""></div>
+          <div class="comp-detail">
+            <div class="comp-title">【顺丰速发】Apple iPhone 15 Pro Max</div>
+            <div class="comp-tags"><span class="c-tag t-ship">顺丰包邮</span><span class="c-tag t-warranty">官方质保</span></div>
+          </div>
+        </div>
+        <div class="comp-item">
+          <div class="comp-thumb"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=80&hei=80&fmt=jpeg&qlt=90" alt=""></div>
+          <div class="comp-detail">
+            <div class="comp-title">iPhone15 ProMax 256GB 钛金属原色</div>
+            <div class="comp-tags"><span class="c-tag t-stage">6期免息</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="comp-more" onclick="toggleCompMore(this)"><span class="comp-more-icon">▶</span>+3 家竞品</div>
+      <a class="comp-report" href="competitive-insight-v4-report.html">查看完整报告 ›</a>
+    </div>
+    <div class="suggest-cell">
+      <div class="sg-header">无权益 · 赛道排名提升方案</div>
+      <div class="sg-options">
+        <div class="sg-opt">
+          <div class="sg-opt-label">方案A · 服务升级</div>
+          <div class="sg-opt-title">设置「顺丰包邮」</div>
+          <div class="sg-opt-desc">赛道排名提升至第2</div>
+          <div class="sg-opt-gain">流量 +42%</div>
+          <button class="sg-opt-btn" onclick="execPlan(this)">去设置</button>
+        </div>
+        <div class="sg-opt recommended">
+          <span class="sg-opt-badge">推荐</span>
+          <div class="sg-opt-label">方案B · 服务+降价</div>
+          <div class="sg-opt-title">顺丰包邮 + 降 ¥5</div>
+          <div class="sg-opt-desc">赛道综合排名提升至 TOP 2</div>
+          <div class="sg-opt-gain">+72 用户挽回</div>
+          <button class="sg-opt-btn" onclick="execPlan(this)">去设置</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2 -->
+  <div class="tr" data-category="Mac" data-type="核心" data-reason="price">
+    <div class="p-info"><div class="p-img"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=240&hei=240&fmt=jpeg&qlt=90" alt=""></div><div class="p-detail"><div class="p-name">MacBook Pro M3 14英寸 16+512G 深空黑</div><div class="p-meta">ID: 7835452108 · 核心商品 · ¥14,499</div></div></div>
+    <div class="insight-cell">
+      <div class="dim-row" data-dim="price"><span class="dim-label">价格</span><div class="dim-bar-wrap"><div class="dim-bar low" style="width:25%"></div></div><span class="dim-text low">劣势</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-detail">
+        <div class="price-chart-header"><span class="price-chart-title">类目热销商品价格分布</span><span class="price-chart-tabs"><span class="price-chart-tab active" data-range="30">30天</span><span class="price-chart-tab" data-range="90">90天</span></span></div>
+        <div class="price-chart-data" data-range="30">
+          <div class="price-bars">
+            <div class="price-bar-row"><span class="price-bar-label">本店</span><div class="price-bar-track"><div class="price-bar-fill mine" style="width:88%">¥14,499</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品均价</span><div class="price-bar-track"><div class="price-bar-fill comp-ok" style="width:85%">¥13,990</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品最低</span><div class="price-bar-track"><div class="price-bar-fill comp" style="width:80%">¥13,299</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">类目热销</span><div class="price-bar-track"><div class="price-bar-fill comp-ok" style="width:86%">¥14,199</div></div></div>
+          </div>
+          <div class="price-stats">
+            <div class="price-stat"><span class="price-stat-label">最低出价</span><span class="price-stat-value low-price">¥13,299</span></div>
+            <div class="price-stat"><span class="price-stat-label">本店价</span><span class="price-stat-value my-price">¥14,499</span></div>
+            <div class="price-stat"><span class="price-stat-label">想要人数</span><span class="price-stat-value">856</span></div>
+          </div>
+        </div>
+        <div class="price-chart-data" data-range="90" style="display:none">
+          <div class="price-bars">
+            <div class="price-bar-row"><span class="price-bar-label">本店</span><div class="price-bar-track"><div class="price-bar-fill mine" style="width:90%">¥14,499</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品均价</span><div class="price-bar-track"><div class="price-bar-fill comp-ok" style="width:87%">¥14,290</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品最低</span><div class="price-bar-track"><div class="price-bar-fill comp" style="width:78%">¥12,999</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">类目热销</span><div class="price-bar-track"><div class="price-bar-fill comp-ok" style="width:88%">¥14,499</div></div></div>
+          </div>
+          <div class="price-stats">
+            <div class="price-stat"><span class="price-stat-label">最低出价</span><span class="price-stat-value low-price">¥12,999</span></div>
+            <div class="price-stat"><span class="price-stat-label">本店价</span><span class="price-stat-value my-price">¥14,499</span></div>
+            <div class="price-stat"><span class="price-stat-label">想要人数</span><span class="price-stat-value">1,523</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="dim-row" data-dim="service"><span class="dim-label">服务</span><div class="dim-bar-wrap"><div class="dim-bar high" style="width:75%"></div></div><span class="dim-text high">优势</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-detail">
+        <div class="service-grid">
+          <div class="service-item"><span class="service-dot has"></span><span class="service-name">顺丰包邮</span><span class="service-status has">已设置</span></div>
+          <div class="service-item"><span class="service-dot has"></span><span class="service-name">破损包赔</span><span class="service-status has">已设置</span></div>
+          <div class="service-item"><span class="service-dot has"></span><span class="service-name">7天退货</span><span class="service-status has">已设置</span></div>
+          <div class="service-item"><span class="service-dot no"></span><span class="service-name">免费刻字</span><span class="service-status no">未设置</span></div>
+        </div>
+      </div>
+      <div class="dim-row" data-dim="content"><span class="dim-label">素材</span><div class="dim-bar-wrap"><div class="dim-bar low" style="width:25%"></div></div><span class="dim-text low">劣势</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-detail">
+        <div class="content-compare">
+          <div class="content-row"><span class="content-label">主图质量</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star empty"></span><span class="content-star empty"></span><span class="content-star empty"></span></div></div>
+          <div class="content-row"><span class="content-label">视频素材</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star empty"></span><span class="content-star empty"></span><span class="content-star empty"></span></div></div>
+          <div class="content-row"><span class="content-label">详情丰富度</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star empty"></span><span class="content-star empty"></span></div></div>
+        </div>
+      </div>
+      <div class="insight-summary">价格高于竞品¥509，接近好价卡+百补双权益</div>
+    </div>
+    <div class="comp-cell">
+      <div class="comp-item">
+        <div class="comp-thumb"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=80&hei=80&fmt=jpeg&qlt=90" alt=""></div>
+        <div class="comp-detail">
+          <div class="comp-title">【12期免息】MacBook Pro M3 14英寸</div>
+          <div class="comp-tags"><span class="c-tag t-stage">12期免息</span></div>
+        </div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-thumb"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=80&hei=80&fmt=jpeg&qlt=90" alt=""></div>
+        <div class="comp-detail">
+          <div class="comp-title">Apple MacBook Pro 14 M3 16+512G</div>
+          <div class="comp-tags"><span class="c-tag t-warranty">官方质保</span></div>
+        </div>
+      </div>
+      <div class="comp-extra">
+        <div class="comp-item">
+          <div class="comp-thumb"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=80&hei=80&fmt=jpeg&qlt=90" alt=""></div>
+          <div class="comp-detail">
+            <div class="comp-title">MacBook Pro M3 14寸【教育优惠】</div>
+            <div class="comp-tags"><span class="c-tag t-price">同款低价</span><span class="c-tag t-stage">24期免息</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="comp-more" onclick="toggleCompMore(this)"><span class="comp-more-icon">▶</span>+1 家竞品</div>
+      <a class="comp-report" href="competitive-insight-v4-report.html">查看完整报告 ›</a>
+    </div>
+    <div class="suggest-cell">
+      <div class="sg-header">多权益 · 梯度方案</div>
+      <div class="sg-options">
+        <div class="sg-opt">
+          <div class="sg-opt-label">方案A · 好价卡</div>
+          <div class="sg-opt-price">降 ¥29</div>
+          <div class="sg-opt-title">入围「好价卡」</div>
+          <div class="sg-opt-desc">享受专属搜索氛围 + 筛选入口流量扶持</div>
+          <div class="sg-opt-gain">流量 +24%</div>
+          <button class="sg-opt-btn" onclick="execPlan(this)">去降价</button>
+        </div>
+        <div class="sg-opt recommended">
+          <span class="sg-opt-badge">⭐ 推荐</span>
+          <div class="sg-opt-label">方案B · 双权益</div>
+          <div class="sg-opt-price">降 ¥120</div>
+          <div class="sg-opt-title">入围「好价卡 + 百亿补贴」</div>
+          <div class="sg-opt-desc">享受双权益全量流量扶持，覆盖搜索+推荐+详情</div>
+          <div class="sg-opt-gain">流量 +68%</div>
+          <button class="sg-opt-btn" onclick="execPlan(this)">去降价</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 3 -->
+  <div class="tr" data-category="AirPods" data-type="核心" data-reason="service">
+    <div class="p-info"><div class="p-img"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJV3?wid=240&hei=240&fmt=jpeg&qlt=90" alt=""></div><div class="p-detail"><div class="p-name">Apple AirPods Pro 第二代 USB-C版 主动降噪耳机</div><div class="p-meta">ID: 6802831476 · 核心商品 · ¥1,699</div></div></div>
+    <div class="insight-cell">
+      <div class="dim-row" data-dim="price"><span class="dim-label">价格</span><div class="dim-bar-wrap"><div class="dim-bar low" style="width:25%"></div></div><span class="dim-text low">劣势</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-detail">
+        <div class="price-chart-header"><span class="price-chart-title">类目热销商品价格分布</span><span class="price-chart-tabs"><span class="price-chart-tab active" data-range="30">30天</span><span class="price-chart-tab" data-range="90">90天</span></span></div>
+        <div class="price-chart-data" data-range="30">
+          <div class="price-bars">
+            <div class="price-bar-row"><span class="price-bar-label">本店</span><div class="price-bar-track"><div class="price-bar-fill mine" style="width:85%">¥1,699</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品均价</span><div class="price-bar-track"><div class="price-bar-fill comp-ok" style="width:76%">¥1,529</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品最低</span><div class="price-bar-track"><div class="price-bar-fill comp" style="width:70%">¥1,399</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">类目热销</span><div class="price-bar-track"><div class="price-bar-fill comp-ok" style="width:78%">¥1,559</div></div></div>
+          </div>
+          <div class="price-stats">
+            <div class="price-stat"><span class="price-stat-label">最低出价</span><span class="price-stat-value low-price">¥1,399</span></div>
+            <div class="price-stat"><span class="price-stat-label">本店价</span><span class="price-stat-value my-price">¥1,699</span></div>
+            <div class="price-stat"><span class="price-stat-label">想要人数</span><span class="price-stat-value">2,156</span></div>
+          </div>
+        </div>
+        <div class="price-chart-data" data-range="90" style="display:none">
+          <div class="price-bars">
+            <div class="price-bar-row"><span class="price-bar-label">本店</span><div class="price-bar-track"><div class="price-bar-fill mine" style="width:88%">¥1,699</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品均价</span><div class="price-bar-track"><div class="price-bar-fill comp-ok" style="width:78%">¥1,599</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品最低</span><div class="price-bar-track"><div class="price-bar-fill comp" style="width:68%">¥1,299</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">类目热销</span><div class="price-bar-track"><div class="price-bar-fill comp-ok" style="width:80%">¥1,629</div></div></div>
+          </div>
+          <div class="price-stats">
+            <div class="price-stat"><span class="price-stat-label">最低出价</span><span class="price-stat-value low-price">¥1,299</span></div>
+            <div class="price-stat"><span class="price-stat-label">本店价</span><span class="price-stat-value my-price">¥1,699</span></div>
+            <div class="price-stat"><span class="price-stat-label">想要人数</span><span class="price-stat-value">3,428</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="dim-row" data-dim="service"><span class="dim-label">服务</span><div class="dim-bar-wrap"><div class="dim-bar low" style="width:25%"></div></div><span class="dim-text low">劣势</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-detail">
+        <div class="service-grid">
+          <div class="service-item"><span class="service-dot no"></span><span class="service-name">顺丰包邮</span><span class="service-status no">未设置</span></div>
+          <div class="service-item"><span class="service-dot no"></span><span class="service-name">破损包赔</span><span class="service-status no">未设置</span></div>
+          <div class="service-item"><span class="service-dot no"></span><span class="service-name">免费刻字</span><span class="service-status no">未设置</span></div>
+          <div class="service-item"><span class="service-dot has"></span><span class="service-name">7天退货</span><span class="service-status has">已设置</span></div>
+        </div>
+      </div>
+      <div class="dim-row" data-dim="content"><span class="dim-label">素材</span><div class="dim-bar-wrap"><div class="dim-bar mid" style="width:50%"></div></div><span class="dim-text mid">持平</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-detail">
+        <div class="content-compare">
+          <div class="content-row"><span class="content-label">主图质量</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star empty"></span><span class="content-star empty"></span></div></div>
+          <div class="content-row"><span class="content-label">视频素材</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star empty"></span><span class="content-star empty"></span></div></div>
+          <div class="content-row"><span class="content-label">详情丰富度</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star empty"></span><span class="content-star empty"></span><span class="content-star empty"></span></div></div>
+        </div>
+      </div>
+      <div class="insight-summary">价格高于竞品9.8%，无服务标签，118个用户流失</div>
+    </div>
+    <div class="comp-cell">
+      <div class="comp-item">
+        <div class="comp-thumb"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJV3?wid=80&hei=80&fmt=jpeg&qlt=90" alt=""></div>
+        <div class="comp-detail">
+          <div class="comp-title">AirPods Pro 2 USB-C 主动降噪蓝牙</div>
+          <div class="comp-tags"><span class="c-tag t-price">同款低价</span></div>
+        </div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-thumb"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJV3?wid=80&hei=80&fmt=jpeg&qlt=90" alt=""></div>
+        <div class="comp-detail">
+          <div class="comp-title">AirPods Pro 2 USB-C【免费刻字】</div>
+          <div class="comp-tags"><span class="c-tag t-engrave">免费刻字</span></div>
+        </div>
+      </div>
+      <div class="comp-extra">
+        <div class="comp-item">
+          <div class="comp-thumb"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJV3?wid=80&hei=80&fmt=jpeg&qlt=90" alt=""></div>
+          <div class="comp-detail">
+            <div class="comp-title">AirPods Pro2【顺丰速发】主动降噪</div>
+            <div class="comp-tags"><span class="c-tag t-ship">顺丰包邮</span><span class="c-tag t-return">破损包赔</span></div>
+          </div>
+        </div>
+        <div class="comp-item">
+          <div class="comp-thumb"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJV3?wid=80&hei=80&fmt=jpeg&qlt=90" alt=""></div>
+          <div class="comp-detail">
+            <div class="comp-title">Apple AirPods Pro 2 USB-C版</div>
+            <div class="comp-tags"><span class="c-tag t-stage">6期免息</span></div>
+          </div>
+        </div>
+        <div class="comp-item">
+          <div class="comp-thumb"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJV3?wid=80&hei=80&fmt=jpeg&qlt=90" alt=""></div>
+          <div class="comp-detail">
+            <div class="comp-title">AirPods Pro 2代 USB-C【官方正品】</div>
+            <div class="comp-tags"><span class="c-tag t-warranty">官方质保</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="comp-more" onclick="toggleCompMore(this)"><span class="comp-more-icon">▶</span>+3 家竞品</div>
+      <a class="comp-report" href="competitive-insight-v4-report.html">查看完整报告 ›</a>
+    </div>
+    <div class="suggest-cell">
+      <div class="sg-header">无权益 · 梯度可选降价方案</div>
+      <div class="sg-options">
+        <div class="sg-opt">
+          <div class="sg-opt-label">方案A · 适度</div>
+          <div class="sg-opt-price">降 ¥50</div>
+          <div class="sg-opt-desc">赛道排名提升至第5</div>
+          <div class="sg-opt-gain">流量 +18%</div>
+          <button class="sg-opt-btn" onclick="execPlan(this)">去降价</button>
+        </div>
+        <div class="sg-opt recommended">
+          <span class="sg-opt-badge">推荐</span>
+          <div class="sg-opt-label">方案B · 推荐</div>
+          <div class="sg-opt-price">降 ¥100</div>
+          <div class="sg-opt-desc">赛道排名提升至第3</div>
+          <div class="sg-opt-gain">流量 +34%</div>
+          <button class="sg-opt-btn" onclick="execPlan(this)">去降价</button>
+        </div>
+        <div class="sg-opt">
+          <div class="sg-opt-label">方案C · 冲TOP</div>
+          <div class="sg-opt-price">降 ¥170</div>
+          <div class="sg-opt-desc">赛道排名提升至第1</div>
+          <div class="sg-opt-gain">流量 +56%</div>
+          <button class="sg-opt-btn" onclick="execPlan(this)">去降价</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 4 -->
+  <div class="tr" data-category="iPad" data-type="核心" data-reason="track">
+    <div class="p-info"><div class="p-img"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-wifi-spaceblack-202405?wid=240&hei=240&fmt=jpeg&qlt=90" alt=""></div><div class="p-detail"><div class="p-name">Apple iPad Pro 11英寸 M4芯片 256G WLAN版</div><div class="p-meta">ID: 4421987603 · 核心商品 · ¥8,599</div></div></div>
+    <div class="insight-cell">
+      <div class="dim-row" data-dim="price"><span class="dim-label">价格</span><div class="dim-bar-wrap"><div class="dim-bar mid" style="width:50%"></div></div><span class="dim-text mid">持平</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-detail">
+        <div class="price-chart-header"><span class="price-chart-title">类目热销商品价格分布</span><span class="price-chart-tabs"><span class="price-chart-tab active" data-range="30">30天</span><span class="price-chart-tab" data-range="90">90天</span></span></div>
+        <div class="price-chart-data" data-range="30">
+          <div class="price-bars">
+            <div class="price-bar-row"><span class="price-bar-label">本店</span><div class="price-bar-track"><div class="price-bar-fill mine" style="width:82%">¥8,599</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品均价</span><div class="price-bar-track"><div class="price-bar-fill comp-ok" style="width:80%">¥8,399</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品最低</span><div class="price-bar-track"><div class="price-bar-fill comp" style="width:76%">¥7,999</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">类目热销</span><div class="price-bar-track"><div class="price-bar-fill comp-ok" style="width:81%">¥8,488</div></div></div>
+          </div>
+          <div class="price-stats">
+            <div class="price-stat"><span class="price-stat-label">最低出价</span><span class="price-stat-value low-price">¥7,999</span></div>
+            <div class="price-stat"><span class="price-stat-label">本店价</span><span class="price-stat-value my-price">¥8,599</span></div>
+            <div class="price-stat"><span class="price-stat-label">想要人数</span><span class="price-stat-value">672</span></div>
+          </div>
+        </div>
+        <div class="price-chart-data" data-range="90" style="display:none">
+          <div class="price-bars">
+            <div class="price-bar-row"><span class="price-bar-label">本店</span><div class="price-bar-track"><div class="price-bar-fill mine" style="width:84%">¥8,599</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品均价</span><div class="price-bar-track"><div class="price-bar-fill comp-ok" style="width:82%">¥8,599</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品最低</span><div class="price-bar-track"><div class="price-bar-fill comp" style="width:74%">¥7,799</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">类目热销</span><div class="price-bar-track"><div class="price-bar-fill comp-ok" style="width:83%">¥8,688</div></div></div>
+          </div>
+          <div class="price-stats">
+            <div class="price-stat"><span class="price-stat-label">最低出价</span><span class="price-stat-value low-price">¥7,799</span></div>
+            <div class="price-stat"><span class="price-stat-label">本店价</span><span class="price-stat-value my-price">¥8,599</span></div>
+            <div class="price-stat"><span class="price-stat-label">想要人数</span><span class="price-stat-value">1,186</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="dim-row" data-dim="service"><span class="dim-label">服务</span><div class="dim-bar-wrap"><div class="dim-bar low" style="width:25%"></div></div><span class="dim-text low">劣势</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-detail">
+        <div class="service-grid">
+          <div class="service-item"><span class="service-dot no"></span><span class="service-name">顺丰包邮</span><span class="service-status no">未设置</span></div>
+          <div class="service-item"><span class="service-dot no"></span><span class="service-name">破损包赔</span><span class="service-status no">未设置</span></div>
+          <div class="service-item"><span class="service-dot has"></span><span class="service-name">7天退货</span><span class="service-status has">已设置</span></div>
+          <div class="service-item"><span class="service-dot has"></span><span class="service-name">正品保障</span><span class="service-status has">已设置</span></div>
+        </div>
+      </div>
+      <div class="dim-row" data-dim="content"><span class="dim-label">素材</span><div class="dim-bar-wrap"><div class="dim-bar high" style="width:75%"></div></div><span class="dim-text high">优势</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-detail">
+        <div class="content-compare">
+          <div class="content-row"><span class="content-label">主图质量</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star empty"></span></div></div>
+          <div class="content-row"><span class="content-label">视频素材</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star empty"></span></div></div>
+          <div class="content-row"><span class="content-label">详情丰富度</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span></div></div>
+        </div>
+      </div>
+      <div class="insight-summary">降¥11即可参与好价卡，确定性收益明确</div>
+    </div>
+    <div class="comp-cell">
+      <div class="comp-item">
+        <div class="comp-thumb"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-wifi-spaceblack-202405?wid=80&hei=80&fmt=jpeg&qlt=90" alt=""></div>
+        <div class="comp-detail">
+          <div class="comp-title">【12期免息】iPad Pro 11寸 M4 256G</div>
+          <div class="comp-tags"><span class="c-tag t-stage">12期免息</span></div>
+        </div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-thumb"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-wifi-spaceblack-202405?wid=80&hei=80&fmt=jpeg&qlt=90" alt=""></div>
+        <div class="comp-detail">
+          <div class="comp-title">Apple iPad Pro 11 M4 256G【15天退】</div>
+          <div class="comp-tags"><span class="c-tag t-return">15天退货</span></div>
+        </div>
+      </div>
+      <div class="comp-extra">
+        <div class="comp-item">
+          <div class="comp-thumb"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-wifi-spaceblack-202405?wid=80&hei=80&fmt=jpeg&qlt=90" alt=""></div>
+          <div class="comp-detail">
+            <div class="comp-title">iPad Pro 11英寸 M4【顺丰速发】</div>
+            <div class="comp-tags"><span class="c-tag t-ship">顺丰包邮</span><span class="c-tag t-price">同款低价</span></div>
+          </div>
+        </div>
+        <div class="comp-item">
+          <div class="comp-thumb"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-wifi-spaceblack-202405?wid=80&hei=80&fmt=jpeg&qlt=90" alt=""></div>
+          <div class="comp-detail">
+            <div class="comp-title">Apple iPad Pro 11 M4 WLAN版 256G</div>
+            <div class="comp-tags"><span class="c-tag t-warranty">官方质保</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="comp-more" onclick="toggleCompMore(this)"><span class="comp-more-icon">▶</span>+2 家竞品</div>
+      <a class="comp-report" href="competitive-insight-v4-report.html">查看完整报告 ›</a>
+    </div>
+    <div class="suggest-cell">
+      <div class="sg-header">有权益 · 单权益白盒化</div>
+      <div class="sg-benefit">
+        <div class="sg-benefit-title">降 ¥11 即可入围「好价卡」，享受确定性权益透出</div>
+        <div class="sg-benefit-items">
+          <span class="sg-benefit-item">好价卡标签</span>
+          <span class="sg-benefit-item">搜索氛围标</span>
+          <span class="sg-benefit-item">筛选入口</span>
+          <span class="sg-benefit-item">详情页浮标</span>
+        </div>
+        <div class="sg-benefit-gain">预计流量 +32% · 转化率 +14%</div>
+        <div class="sg-benefit-footer">
+          <span class="sg-benefit-note">仅降 ¥11 即享受全部权益</span>
+          <button class="sg-btn" onclick="execPlan(this)">去降价</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 5 -->
+  <div class="tr" data-category="Apple Watch" data-type="核心" data-reason="benefit">
+    <div class="p-info"><div class="p-img"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/s9-case-unselect-gallery-1-202309?wid=240&hei=240&fmt=jpeg&qlt=90" alt=""></div><div class="p-detail"><div class="p-name">Apple Watch Series 9 GPS版 45毫米 午夜色 智能手表</div><div class="p-meta">ID: 3301982756 · 核心商品 · ¥3,199</div></div></div>
+    <div class="insight-cell">
+      <div class="dim-row" data-dim="price"><span class="dim-label">价格</span><div class="dim-bar-wrap"><div class="dim-bar low" style="width:25%"></div></div><span class="dim-text low">劣势</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-detail">
+        <div class="price-chart-header"><span class="price-chart-title">类目热销商品价格分布</span><span class="price-chart-tabs"><span class="price-chart-tab active" data-range="30">30天</span><span class="price-chart-tab" data-range="90">90天</span></span></div>
+        <div class="price-chart-data" data-range="30">
+          <div class="price-bars">
+            <div class="price-bar-row"><span class="price-bar-label">本店</span><div class="price-bar-track"><div class="price-bar-fill mine" style="width:85%">¥3,199</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品均价</span><div class="price-bar-track"><div class="price-bar-fill comp-ok" style="width:79%">¥2,989</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品最低</span><div class="price-bar-track"><div class="price-bar-fill comp" style="width:74%">¥2,799</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">类目热销</span><div class="price-bar-track"><div class="price-bar-fill comp-ok" style="width:80%">¥2,999</div></div></div>
+          </div>
+          <div class="price-stats">
+            <div class="price-stat"><span class="price-stat-label">最低出价</span><span class="price-stat-value low-price">¥2,799</span></div>
+            <div class="price-stat"><span class="price-stat-label">本店价</span><span class="price-stat-value my-price">¥3,199</span></div>
+            <div class="price-stat"><span class="price-stat-label">想要人数</span><span class="price-stat-value">438</span></div>
+          </div>
+        </div>
+        <div class="price-chart-data" data-range="90" style="display:none">
+          <div class="price-bars">
+            <div class="price-bar-row"><span class="price-bar-label">本店</span><div class="price-bar-track"><div class="price-bar-fill mine" style="width:87%">¥3,199</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品均价</span><div class="price-bar-track"><div class="price-bar-fill comp-ok" style="width:81%">¥3,089</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品最低</span><div class="price-bar-track"><div class="price-bar-fill comp" style="width:72%">¥2,699</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">类目热销</span><div class="price-bar-track"><div class="price-bar-fill comp-ok" style="width:82%">¥3,099</div></div></div>
+          </div>
+          <div class="price-stats">
+            <div class="price-stat"><span class="price-stat-label">最低出价</span><span class="price-stat-value low-price">¥2,699</span></div>
+            <div class="price-stat"><span class="price-stat-label">本店价</span><span class="price-stat-value my-price">¥3,199</span></div>
+            <div class="price-stat"><span class="price-stat-label">想要人数</span><span class="price-stat-value">756</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="dim-row" data-dim="service"><span class="dim-label">服务</span><div class="dim-bar-wrap"><div class="dim-bar mid" style="width:50%"></div></div><span class="dim-text mid">持平</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-detail">
+        <div class="service-grid">
+          <div class="service-item"><span class="service-dot no"></span><span class="service-name">顺丰包邮</span><span class="service-status no">未设置</span></div>
+          <div class="service-item"><span class="service-dot no"></span><span class="service-name">破损包赔</span><span class="service-status no">未设置</span></div>
+          <div class="service-item"><span class="service-dot has"></span><span class="service-name">7天退货</span><span class="service-status has">已设置</span></div>
+          <div class="service-item"><span class="service-dot has"></span><span class="service-name">正品保障</span><span class="service-status has">已设置</span></div>
+        </div>
+      </div>
+      <div class="dim-row" data-dim="content"><span class="dim-label">素材</span><div class="dim-bar-wrap"><div class="dim-bar mid" style="width:50%"></div></div><span class="dim-text mid">持平</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-detail">
+        <div class="content-compare">
+          <div class="content-row"><span class="content-label">主图质量</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star empty"></span><span class="content-star empty"></span></div></div>
+          <div class="content-row"><span class="content-label">视频素材</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star empty"></span><span class="content-star empty"></span></div></div>
+          <div class="content-row"><span class="content-label">详情丰富度</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star empty"></span><span class="content-star empty"></span></div></div>
+        </div>
+      </div>
+      <div class="insight-summary">价格高于竞品6.7%，缺乏破损包赔，46个用户流失</div>
+    </div>
+    <div class="comp-cell">
+      <div class="comp-item">
+        <div class="comp-thumb"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/s9-case-unselect-gallery-1-202309?wid=80&hei=80&fmt=jpeg&qlt=90" alt=""></div>
+        <div class="comp-detail">
+          <div class="comp-title">Apple Watch S9 41mm GPS版 午夜色</div>
+          <div class="comp-tags"><span class="c-tag t-stage">12期免息</span></div>
+        </div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-thumb"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/s9-case-unselect-gallery-1-202309?wid=80&hei=80&fmt=jpeg&qlt=90" alt=""></div>
+        <div class="comp-detail">
+          <div class="comp-title">苹果手表 Apple Watch S9【破损包赔】</div>
+          <div class="comp-tags"><span class="c-tag t-return">破损包赔</span></div>
+        </div>
+      </div>
+      <a class="comp-report" href="competitive-insight-v4-report.html">查看完整报告 ›</a>
+    </div>
+    <div class="suggest-cell">
+      <div class="sg-header">无权益 · 赛道排名提升方案</div>
+      <div class="sg-options">
+        <div class="sg-opt">
+          <div class="sg-opt-label">方案A · 服务升级</div>
+          <div class="sg-opt-title">破损包赔 + 顺丰包邮</div>
+          <div class="sg-opt-desc">赛道排名提升至第2</div>
+          <div class="sg-opt-gain">流量 +52%</div>
+          <button class="sg-opt-btn" onclick="execPlan(this)">去设置</button>
+        </div>
+        <div class="sg-opt recommended">
+          <span class="sg-opt-badge">推荐</span>
+          <div class="sg-opt-label">方案B · 服务+降价</div>
+          <div class="sg-opt-title">服务升级 + 降 ¥5</div>
+          <div class="sg-opt-desc">赛道综合排名提升至 TOP 1</div>
+          <div class="sg-opt-gain">+46 用户挽回</div>
+          <button class="sg-opt-btn" onclick="execPlan(this)">去设置</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 6 -->
+  <div class="tr" data-category="iPhone" data-type="核心" data-reason="track">
+    <div class="p-info"><div class="p-img"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-blue?wid=240&hei=240&fmt=jpeg&qlt=90" alt=""></div><div class="p-detail"><div class="p-name">Apple iPhone 15 128G 蓝色 5G双卡双待手机</div><div class="p-meta">ID: 6802831922 · 核心商品 · ¥5,499</div></div></div>
+    <div class="insight-cell">
+      <div class="dim-row" data-dim="price"><span class="dim-label">价格</span><div class="dim-bar-wrap"><div class="dim-bar high" style="width:75%"></div></div><span class="dim-text high">优势</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-detail">
+        <div class="price-chart-header"><span class="price-chart-title">类目热销商品价格分布</span><span class="price-chart-tabs"><span class="price-chart-tab active" data-range="30">30天</span><span class="price-chart-tab" data-range="90">90天</span></span></div>
+        <div class="price-chart-data" data-range="30">
+          <div class="price-bars">
+            <div class="price-bar-row"><span class="price-bar-label">本店</span><div class="price-bar-track"><div class="price-bar-fill mine" style="width:72%">¥5,499</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品均价</span><div class="price-bar-track"><div class="price-bar-fill comp" style="width:76%">¥5,799</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品最低</span><div class="price-bar-track"><div class="price-bar-fill comp" style="width:70%">¥5,399</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">类目热销</span><div class="price-bar-track"><div class="price-bar-fill comp-ok" style="width:74%">¥5,599</div></div></div>
+          </div>
+          <div class="price-stats">
+            <div class="price-stat"><span class="price-stat-label">最低出价</span><span class="price-stat-value low-price">¥5,399</span></div>
+            <div class="price-stat"><span class="price-stat-label">本店价</span><span class="price-stat-value my-price">¥5,499</span></div>
+            <div class="price-stat"><span class="price-stat-label">想要人数</span><span class="price-stat-value">3,412</span></div>
+          </div>
+        </div>
+        <div class="price-chart-data" data-range="90" style="display:none">
+          <div class="price-bars">
+            <div class="price-bar-row"><span class="price-bar-label">本店</span><div class="price-bar-track"><div class="price-bar-fill mine" style="width:74%">¥5,499</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品均价</span><div class="price-bar-track"><div class="price-bar-fill comp" style="width:78%">¥5,899</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">竞品最低</span><div class="price-bar-track"><div class="price-bar-fill comp" style="width:68%">¥5,199</div></div></div>
+            <div class="price-bar-row"><span class="price-bar-label">类目热销</span><div class="price-bar-track"><div class="price-bar-fill comp-ok" style="width:76%">¥5,699</div></div></div>
+          </div>
+          <div class="price-stats">
+            <div class="price-stat"><span class="price-stat-label">最低出价</span><span class="price-stat-value low-price">¥5,199</span></div>
+            <div class="price-stat"><span class="price-stat-label">本店价</span><span class="price-stat-value my-price">¥5,499</span></div>
+            <div class="price-stat"><span class="price-stat-label">想要人数</span><span class="price-stat-value">5,128</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="dim-row" data-dim="service"><span class="dim-label">服务</span><div class="dim-bar-wrap"><div class="dim-bar high" style="width:75%"></div></div><span class="dim-text high">优势</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-detail">
+        <div class="service-grid">
+          <div class="service-item"><span class="service-dot has"></span><span class="service-name">顺丰包邮</span><span class="service-status has">已设置</span></div>
+          <div class="service-item"><span class="service-dot has"></span><span class="service-name">破损包赔</span><span class="service-status has">已设置</span></div>
+          <div class="service-item"><span class="service-dot has"></span><span class="service-name">7天退货</span><span class="service-status has">已设置</span></div>
+          <div class="service-item"><span class="service-dot has"></span><span class="service-name">正品保障</span><span class="service-status has">已设置</span></div>
+        </div>
+      </div>
+      <div class="dim-row" data-dim="content"><span class="dim-label">素材</span><div class="dim-bar-wrap"><div class="dim-bar high" style="width:75%"></div></div><span class="dim-text high">优势</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-detail">
+        <div class="content-compare">
+          <div class="content-row"><span class="content-label">主图质量</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star empty"></span></div></div>
+          <div class="content-row"><span class="content-label">视频素材</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star empty"></span></div></div>
+          <div class="content-row"><span class="content-label">详情丰富度</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star empty"></span></div></div>
+        </div>
+      </div>
+      <div class="insight-summary">三维度均有优势，可进一步冲击好价卡</div>
+    </div>
+    <div class="comp-cell">
+      <div class="comp-item">
+        <div class="comp-thumb"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-blue?wid=80&hei=80&fmt=jpeg&qlt=90" alt=""></div>
+        <div class="comp-detail">
+          <div class="comp-title">苹果 iPhone 15 128G 蓝色 双卡双待</div>
+          <div class="comp-tags"><span class="c-tag t-price">同款低价</span></div>
+        </div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-thumb"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-blue?wid=80&hei=80&fmt=jpeg&qlt=90" alt=""></div>
+        <div class="comp-detail">
+          <div class="comp-title">Apple iPhone15 128GB 蓝色【顺丰】</div>
+          <div class="comp-tags"><span class="c-tag t-ship">顺丰包邮</span></div>
+        </div>
+      </div>
+      <div class="comp-extra">
+        <div class="comp-item">
+          <div class="comp-thumb"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-blue?wid=80&hei=80&fmt=jpeg&qlt=90" alt=""></div>
+          <div class="comp-detail">
+            <div class="comp-title">iPhone 15 128G 蓝色【24期免息】</div>
+            <div class="comp-tags"><span class="c-tag t-stage">24期免息</span><span class="c-tag t-return">破损包赔</span></div>
+          </div>
+        </div>
+        <div class="comp-item">
+          <div class="comp-thumb"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-blue?wid=80&hei=80&fmt=jpeg&qlt=90" alt=""></div>
+          <div class="comp-detail">
+            <div class="comp-title">Apple iPhone15 128GB 蓝色 5G手机</div>
+            <div class="comp-tags"><span class="c-tag t-warranty">官方质保</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="comp-more" onclick="toggleCompMore(this)"><span class="comp-more-icon">▶</span>+2 家竞品</div>
+      <a class="comp-report" href="competitive-insight-v4-report.html">查看完整报告 ›</a>
+    </div>
+    <div class="suggest-cell">
+      <div class="sg-done">
+        <div class="sg-done-title">已入围「好价卡」· 权益生效中</div>
+        <div class="sg-done-desc">享受专属氛围标+筛选入口全量流量扶持，当前流量 +38%</div>
+        <div class="sg-done-items">
+          <span class="sg-done-item">好价卡标签</span>
+          <span class="sg-done-item">搜索氛围标</span>
+          <span class="sg-done-item">筛选入口</span>
+          <span class="sg-done-item">详情页浮标</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pgn-bar">
+    <div class="pgn-info">共 128 条数据 · 当前显示 1-6</div>
+    <div class="pgn">
+      <div class="pg-btn">‹</div>
+      <div class="pg-btn active">1</div>
+      <div class="pg-btn">2</div>
+      <div class="pg-btn">3</div>
+      <div class="pg-btn">…</div>
+      <div class="pg-btn">22</div>
+      <div class="pg-btn">›</div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="exec-modal-mask" id="execMask" onclick="closeExecModal()"></div>
+<div class="exec-modal" id="execModal">
+  <div class="exec-modal-icon">✓</div>
+  <div class="exec-modal-title">设置成功</div>
+  <div class="exec-modal-desc">策略已生效，系统正在为您的商品应用新配置。</div>
+  <div class="exec-modal-highlight">请关注商品效果数据，预计 24h 内可见流量变化</div>
+  <div><button class="exec-modal-btn" onclick="closeExecModal()">我知道了</button></div>
+</div>
+
+<!-- 明细弹窗 -->
+<div class="detail-modal-mask" id="detailMask" onclick="closeDetailModal()"></div>
+<div class="detail-modal" id="detailModal">
+  <div class="detail-modal-header">
+    <div>
+      <div class="detail-modal-title" id="detailModalTitle">顺丰包邮 - 待支持商品明细</div>
+      <div class="detail-modal-sub" id="detailModalSub">共 17 个商品需要设置</div>
+    </div>
+    <button class="detail-modal-close" onclick="closeDetailModal()">✕</button>
+  </div>
+  <div class="detail-modal-actions">
+    <button class="detail-modal-batch" onclick="batchExecPlan()">一键设置全部</button>
+  </div>
+  <div class="detail-modal-list" id="detailModalList">
+    <!-- JS动态填充 -->
+  </div>
+</div>
+
+<script>
+// Global functions
+function execPlan(btn){
+  btn.textContent='已设置';
+  btn.style.background='#f0fdf4';
+  btn.style.color='#16a34a';
+  btn.style.borderColor='#86efac';
+  btn.disabled=true;
+  document.getElementById('execMask').classList.add('show');
+  document.getElementById('execModal').classList.add('show');
+}
+function closeExecModal(){
+  document.getElementById('execMask').classList.remove('show');
+  document.getElementById('execModal').classList.remove('show');
+}
+function openSuggestDetail(type, showAll){
+  const mask=document.getElementById('detailMask');
+  const modal=document.getElementById('detailModal');
+  const title=document.getElementById('detailModalTitle');
+  const sub=document.getElementById('detailModalSub');
+  const list=document.getElementById('detailModalList');
+  const actions=document.querySelector('.detail-modal-actions');
+
+  // 补齐短板 - 查看更多（展示所有短板项）
+  if(type==='all-shortfall'){
+    title.textContent='补齐短板';
+    sub.textContent='店铺中共有 5 项能力落后于竞品';
+    actions.innerHTML='<button class="detail-modal-batch" onclick="batchExecPlan()">一键设置全部</button>';
+    
+    const shortfalls=[
+      {name:'顺丰包邮',type:'shunfeng',count:17,desc:'17个商品待支持',tag:'用户流失'},
+      {name:'破损包赔',type:'damage',count:12,desc:'12个商品待支持',tag:'用户流失'},
+      {name:'7天无理由退货',count:8,desc:'8个商品待支持',tag:'用户流失'},
+      {name:'买贵必赔',count:6,desc:'6个商品待支持',tag:'用户流失'},
+      {name:'正品保障',count:4,desc:'4个商品待支持',tag:'用户流失'},
+    ];
+    
+    let html='<div class="detail-grid">';
+    shortfalls.forEach((s,i)=>{
+      html+='<div class="detail-grid-card">';
+      html+='<div class="detail-grid-card-head">';
+      html+='<div class="detail-grid-card-name">'+s.name+'</div>';
+      html+='<span class="suggest-tag-h loss">'+s.tag+'</span>';
+      html+='</div>';
+      html+='<div class="detail-grid-card-desc">'+s.desc+'</div>';
+      html+='<button class="detail-grid-card-btn" onclick="openSuggestDetail(\''+(s.type||'shunfeng')+'\')">查看明细</button>';
+      html+='</div>';
+    });
+    html+='</div>';
+    list.innerHTML=html;
+    mask.classList.add('show');
+    modal.classList.add('show');
+    return;
+  }
+
+  // 商品机会 - 查看更多（展示所有机会项）
+  if(type==='all-opportunity'){
+    title.textContent='商品机会';
+    sub.textContent='店铺中共有 4 项权益货盘可参与';
+    actions.innerHTML='';
+    
+    const opportunities=[
+      {name:'好价卡',count1:5,count2:8,desc:'已入围 5 个 · 接近入围 8 个',tag:'流量扶持'},
+      {name:'百亿补贴',count1:3,count2:6,desc:'已入围 3 个 · 接近入围 6 个',tag:'流量扶持'},
+      {name:'限时秒杀',count1:2,count2:4,desc:'已入围 2 个 · 接近入围 4 个',tag:'流量扶持'},
+      {name:'品牌新享',count1:1,count2:3,desc:'已入围 1 个 · 接近入围 3 个',tag:'流量扶持'},
+    ];
+    
+    let html='<div class="detail-grid">';
+    opportunities.forEach((s,i)=>{
+      html+='<div class="detail-grid-card">';
+      html+='<div class="detail-grid-card-head">';
+      html+='<div class="detail-grid-card-name">'+s.name+'</div>';
+      html+='<span class="suggest-tag-h gain">'+s.tag+'</span>';
+      html+='</div>';
+      html+='<div class="detail-grid-card-desc">'+s.desc+'</div>';
+      html+='<button class="detail-grid-card-btn" onclick="openSuggestDetail(\'goodprice\')">查看明细</button>';
+      html+='</div>';
+    });
+    html+='</div>';
+    list.innerHTML=html;
+    mask.classList.add('show');
+    modal.classList.add('show');
+    return;
+  }
+
+  // 单个项的明细
+  const config={
+    shunfeng:{title:'顺丰包邮 - 待支持商品明细',count:17,label:'待设置顺丰包邮'},
+    damage:{title:'破损包赔 - 待支持商品明细',count:12,label:'待设置破损包赔'},
+    goodprice:{title:'好价卡 - 入围商品明细',count:13,label:'接近好价卡'},
+    subsidy:{title:'百亿补贴 - 入围商品明细',count:9,label:'可参与百亿补贴'},
+    seckill:{title:'限时秒杀 - 入围商品明细',count:6,label:'可参与限时秒杀'}
+  };
+
+  const c=config[type]||config.shunfeng;
+  title.textContent=c.title;
+  sub.textContent='共 '+c.count+' 个商品';
+  actions.innerHTML='<button class="detail-modal-batch" onclick="batchExecPlan()">一键设置全部</button>';
+
+  // 生成模拟数据
+  const products=[
+    {name:'Apple iPhone 15 Pro Max 256G 钛金属原色',id:'6802831475',price:'¥9,199'},
+    {name:'Apple iPhone 15 Pro 128G 蓝色钛金属',id:'6802831476',price:'¥7,999'},
+    {name:'Apple MacBook Pro 14英寸 M3芯片',id:'6802831477',price:'¥12,999'},
+    {name:'Apple iPad Pro 11英寸 M4芯片',id:'6802831478',price:'¥7,499'},
+    {name:'Apple AirPods Pro 2  USB-C',id:'6802831479',price:'¥1,799'},
+    {name:'Apple Watch Series 9 45mm',id:'6802831480',price:'¥3,199'},
+  ];
+
+  let html='';
+  for(let i=0;i<Math.min(c.count,6);i++){
+    const p=products[i%products.length];
+    html+='<div class="detail-item">';
+    html+='<img class="detail-item-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=96&hei=96&fmt=jpeg&qlt=90" alt="">';
+    html+='<div class="detail-item-info">';
+    html+='<div class="detail-item-name">'+p.name+'</div>';
+    html+='<div class="detail-item-meta">ID: '+p.id+' · '+p.price+'</div>';
+    html+='<div class="detail-item-problem">'+c.label+'</div>';
+    html+='</div>';
+    html+='<div class="detail-item-actions">';
+    html+='<button class="detail-item-btn" onclick="execDetailPlan(this)">立即设置</button>';
+    html+='</div></div>';
+  }
+  if(c.count>6) html+='<div style="text-align:center;padding:8px;font-size:11px;color:#94a3b8">... 还有 '+(c.count-6)+' 个商品</div>';
+
+  list.innerHTML=html;
+  mask.classList.add('show');
+  modal.classList.add('show');
+}
+
+function closeDetailModal(){
+  document.getElementById('detailMask').classList.remove('show');
+  document.getElementById('detailModal').classList.remove('show');
+}
+
+function execDetailPlan(btn){
+  btn.textContent='已设置';
+  btn.classList.add('set');
+  btn.disabled=true;
+  // 显示成功弹窗
+  document.getElementById('execMask').classList.add('show');
+  document.getElementById('execModal').classList.add('show');
+}
+
+function batchExecPlan(){
+  // 一键设置全部
+  document.querySelectorAll('.detail-item-btn').forEach(btn=>{
+    if(!btn.disabled){
+      btn.textContent='已设置';
+      btn.classList.add('set');
+      btn.disabled=true;
+    }
+  });
+  document.getElementById('execMask').classList.add('show');
+  document.getElementById('execModal').classList.add('show');
+}
+var addMonitorVisible=false;
+function toggleAddMonitor(btn){
+  addMonitorVisible=!addMonitorVisible;
+  var addBtn=document.querySelector('.mp-add-btn');
+  var inputRow=document.querySelector('.mp-add-row');
+  if(inputRow){
+    inputRow.style.display=addMonitorVisible?'flex':'none';
+  }
+  if(addBtn) addBtn.style.display=addMonitorVisible?'none':'inline-block';
+  if(addMonitorVisible){
+    setTimeout(function(){var inp=document.getElementById('monitorInput');if(inp)inp.focus()},50);
+  }
+}
+function addMonitor(){
+  var inp=document.getElementById('monitorInput');
+  if(!inp||!inp.value.trim())return;
+  var colors=['#e0f2fe,#0369a1','#fef3c7,#92400e','#e6f7ff,#1890ff','#f6ffed,#52c41a','#fff1f0,#f5222d','#faf5ff,#7c3aed','#fef2f2,#dc2626'];
+  var c=colors[Math.floor(Math.random()*colors.length)].split(',');
+  var name=inp.value.trim();
+  var ico=name.charAt(0);
+  var list=document.querySelector('.monitor-list-compact');
+  var addBtn=document.querySelector('.mp-add-btn');
+  var inputRow=document.querySelector('.mp-add-row');
+  var newItem=document.createElement('div');
+  newItem.className='mi-row';
+  newItem.innerHTML='<div class="mi-ico" style="background:'+c[0]+';color:'+c[1]+'">'+ico+'</div><div class="mi-meta"><div class="mi-name">'+name+'</div><div class="mi-url">shop.example.com/'+Math.floor(Math.random()*10000000)+'</div></div><button class="mi-remove">×</button>';
+  list.appendChild(newItem);
+  inputRow.style.display='none';
+  addBtn.style.display='inline-block';
+  addMonitorVisible=false;
+  inp.value='';
+  var count=document.querySelector('.mp-title span');
+  if(count){count.textContent=list.querySelectorAll('.mi-row').length+'家';}
+}
+function toggleSubTrack(btn){
+  btn.classList.toggle('expanded');
+  var subList=btn.nextElementSibling;
+  if(subList&&subList.classList.contains('mp-sub-list')){
+    subList.classList.toggle('show');
+  }
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+  // 全局时间筛选
+  document.querySelectorAll('.ci-filter-tab').forEach(tab=>{
+    tab.addEventListener('click',function(){
+      const range=this.getAttribute('data-range');
+      document.querySelectorAll('.ci-filter-tab').forEach(t=>t.classList.remove('active'));
+      this.classList.add('active');
+
+      // 切换指标项显示
+      document.querySelectorAll('.time-data').forEach(item=>{
+        item.style.display=item.getAttribute('data-range')===range?'':'none';
+      });
+
+      // 切换 hero 数字
+      document.querySelectorAll('.rc-hero-num[data-7]').forEach(el=>{
+        const val=el.getAttribute('data-'+range);
+        if(val) el.textContent=val;
+      });
+
+      // 切换趋势文字
+      document.querySelectorAll('.rc-hero-trend[data-7]').forEach(el=>{
+        const val=el.getAttribute('data-'+range);
+        if(val) el.textContent=val;
+      });
+
+      console.log('时间范围切换:', range+'天');
+    });
+  });
+
+  // 竞品监控Tab切换
+  document.querySelectorAll('.mp-tab').forEach(tab=>{
+    tab.addEventListener('click',function(){
+      const targetId=this.getAttribute('data-tab');
+      document.querySelectorAll('.mp-tab').forEach(t=>t.classList.remove('active'));
+      this.classList.add('active');
+      document.querySelectorAll('.mp-track-content').forEach(c=>c.classList.remove('active'));
+      const target=document.getElementById(targetId);
+      if(target) target.classList.add('active');
+    });
+  });
+
+  // Tab switching
+  // Tab switching with actual filtering
+  let activeTab='全部商品';
+  let activeCategory='全部';
+  let searchQuery='';
+  
+  function applyFilters(){
+    document.querySelectorAll('.tr').forEach(row=>{
+      const rowCategory=row.getAttribute('data-category')||'';
+      const rowType=row.getAttribute('data-type')||'';
+      const pName=row.querySelector('.p-name')?.textContent||'';
+      
+      const matchTab=activeTab==='全部商品'||
+                     (activeTab==='核心商品'&&rowType==='核心')||
+                     (activeTab==='普通商品'&&rowType==='普通');
+      const matchCategory=activeCategory==='全部'||rowCategory===activeCategory;
+      const matchSearch=!searchQuery||pName.toLowerCase().includes(searchQuery.toLowerCase());
+      
+      row.style.display=(matchTab&&matchCategory&&matchSearch)?'':'none';
+    });
+  }
+  
+  document.querySelectorAll('.tab-item').forEach(t=>t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab-item').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    activeTab=t.textContent.replace(/\d+/g,'').trim();
+    applyFilters();
+  }));
+  
+  // Category filter with actual row filtering
+  document.querySelectorAll('.f-tag').forEach(tag=>{
+    tag.addEventListener('click',()=>{
+      const tags=tag.parentElement.querySelectorAll('.f-tag');
+      tags.forEach(t=>t.classList.remove('active'));
+      tag.classList.add('active');
+      activeCategory=tag.textContent;
+      applyFilters();
+    });
+  });
+  
+  // Search functionality
+  const searchInput=document.querySelector('.search-box input');
+  if(searchInput){
+    searchInput.addEventListener('input',function(){
+      searchQuery=this.value.trim();
+      applyFilters();
+    });
+  }
+  
+  // Pagination
+  document.querySelectorAll('.pg-btn').forEach(btn=>{
+    btn.addEventListener('click',function(){
+      const text=this.textContent.trim();
+      if(text==='…') return;
+      document.querySelectorAll('.pg-btn').forEach(b=>b.classList.remove('active'));
+      this.classList.add('active');
+      const pgnInfo=document.querySelector('.pgn-info');
+      if(pgnInfo){
+        const pageNum=parseInt(text);
+        if(!isNaN(pageNum)){
+          const start=(pageNum-1)*6+1;
+          const end=Math.min(pageNum*6,128);
+          pgnInfo.textContent='共 128 条数据 · 当前显示 '+start+'-'+end;
+        }
+      }
+    });
+  });
+  // Metric item expand/collapse
+  document.querySelectorAll('.metric-item').forEach(item=>{
+    item.addEventListener('click',function(){
+      const wasExpanded=this.classList.contains('expanded');
+      this.closest('.metric-list').querySelectorAll('.metric-item.expanded').forEach(i=>i.classList.remove('expanded'));
+      if(!wasExpanded) this.classList.add('expanded');
+    });
+  });
+  // Dimension row expand/collapse
+  document.querySelectorAll('.dim-row').forEach(row=>{
+    row.addEventListener('click',function(){
+      const detail=this.nextElementSibling;
+      if(!detail||!detail.classList.contains('dim-detail'))return;
+      const isOpen=detail.classList.contains('show');
+      // Close all open panels in this insight cell
+      const cell=this.closest('.insight-cell');
+      cell.querySelectorAll('.dim-detail.show').forEach(d=>d.classList.remove('show'));
+      cell.querySelectorAll('.dim-row.expanded').forEach(r=>r.classList.remove('expanded'));
+      // Toggle current
+      if(!isOpen){
+        detail.classList.add('show');
+        this.classList.add('expanded');
+      }
+    });
+  });
+  // Toggle switches
+  document.querySelectorAll('.toggle-sw').forEach(sw=>{
+    sw.addEventListener('click',function(){this.classList.toggle('on')});
+  });
+  // Channel chips
+  document.querySelectorAll('.channel-chip').forEach(chip=>{
+    chip.addEventListener('click',function(){this.classList.toggle('on')});
+  });
+  // Price chart tab switching
+  document.querySelectorAll('.price-chart-tabs').forEach(tabs=>{
+    tabs.querySelectorAll('.price-chart-tab').forEach(tab=>{
+      tab.addEventListener('click',function(){
+        const range=this.getAttribute('data-range');
+        const detail=this.closest('.dim-detail');
+        tabs.querySelectorAll('.price-chart-tab').forEach(t=>t.classList.remove('active'));
+        this.classList.add('active');
+        detail.querySelectorAll('.price-chart-data').forEach(d=>{
+          d.style.display=d.getAttribute('data-range')===range?'block':'none';
+        });
+      });
+    });
+  });
+  // Competitor more expand/collapse
+  window.toggleCompMore=function(btn){
+    const cell=btn.closest('.comp-cell');
+    const extra=cell.querySelector('.comp-extra');
+    if(!extra)return;
+    const isOpen=extra.classList.contains('show');
+    extra.classList.toggle('show');
+    btn.classList.toggle('expanded');
+    if(isOpen){
+      btn.innerHTML='<span class="comp-more-icon">▶</span>'+btn.textContent.replace(/[▶◢]/g,'').trim();
+    }else{
+      btn.innerHTML='<span class="comp-more-icon">◢</span>'+btn.textContent.replace(/[▶◢]/g,'').trim();
+    }
+  };
+  // "查看全部" link expand/collapse
+  window.toggleViewAll=function(link){
+    const cell=link.closest('.comp-cell');
+    const extra=cell.querySelector('.comp-extra');
+    if(!extra)return;
+    const isOpen=extra.classList.contains('show');
+    extra.classList.toggle('show');
+    link.classList.toggle('expanded');
+  };
+  // Stat metric expand/collapse
+  document.querySelectorAll('.sm-toggle').forEach(toggle=>{
+    toggle.addEventListener('click',function(e){
+      e.stopPropagation();
+      const metric=this.closest('.stat-metric');
+      if(!metric) return;
+      const detail=metric.querySelector('.sm-detail');
+      if(!detail) return;
+      const isExpanded=metric.classList.contains('expanded');
+      if(isExpanded){
+        metric.classList.remove('expanded');
+        detail.classList.remove('show');
+      }else{
+        metric.classList.add('expanded');
+        detail.classList.add('show');
+      }
+    });
+  });
+
+  // ===== 趋势图 =====
+  // 全局数据
+  var lossData=[];
+  var recoverData=[];
+
+  // 生成数据函数
+  function generateTrendData(days){
+    lossData=[];
+    recoverData=[];
+    for(let i=0;i<days;i++){
+      lossData.push(Math.floor(20+Math.random()*40+Math.sin(i/5)*15));
+      recoverData.push(Math.floor(15+Math.random()*30+Math.cos(i/5)*10));
+    }
+  }
+
+  // 绘制单线趋势图
+  function drawSingleTrend(canvasId,data,color){
+    const canvas=document.getElementById(canvasId);
+    if(!canvas) return;
+    const ctx=canvas.getContext('2d');
+    const dpr=window.devicePixelRatio||1;
+    const rect=canvas.getBoundingClientRect();
+    canvas.width=rect.width*dpr;
+    canvas.height=100*dpr;
+    ctx.scale(dpr,dpr);
+    const W=rect.width,H=100;
+
+    const pad={t:5,r:10,b:20,l:28};
+    const chartW=W-pad.l-pad.r,chartH=H-pad.t-pad.b;
+    const maxVal=Math.max(...data)*1.1;
+
+    // 生成日期标签
+    const labels=[];
+    for(let i=lossData.length-1;i>=0;i--){
+      const d=new Date();d.setDate(d.getDate()-i);
+      labels.push((d.getMonth()+1)+'/'+d.getDate());
+    }
+
+    // 网格线
+    ctx.strokeStyle='#f1f5f9';ctx.lineWidth=1;
+    for(let i=0;i<=3;i++){
+      const y=pad.t+chartH*(i/3);
+      ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(W-pad.r,y);ctx.stroke();
+      ctx.fillStyle='#94a3b8';ctx.font='9px sans-serif';ctx.textAlign='right';
+      ctx.fillText(Math.round(maxVal*(1-i/3)),pad.l-5,y+3);
+    }
+
+    // X轴标签
+    ctx.fillStyle='#94a3b8';ctx.font='9px sans-serif';ctx.textAlign='center';
+    const step=Math.max(1,Math.floor(labels.length/6));
+    for(let i=0;i<labels.length;i+=step){
+      const x=pad.l+chartW*(i/(labels.length-1));
+      ctx.fillText(labels[i],x,H-pad.b+12);
+    }
+
+    // 绘制曲线
+    ctx.strokeStyle=color;ctx.lineWidth=1.5;ctx.lineJoin='round';
+    ctx.beginPath();
+    data.forEach((v,i)=>{
+      const x=pad.l+chartW*(i/(data.length-1));
+      const y=pad.t+chartH*(1-v/maxVal);
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    });
+    ctx.stroke();
+
+    // 最新数据点
+    const last=data.length-1;
+    const lx=pad.l+chartW;
+    const ly=pad.t+chartH*(1-data[last]/maxVal);
+    ctx.beginPath();ctx.arc(lx,ly,2.5,0,Math.PI*2);
+    ctx.fillStyle=color;ctx.fill();
+    ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.stroke();
+  }
+
+  // 初始生成30天数据
+  generateTrendData(30);
+
+  // 绘制两个趋势图
+  drawSingleTrend('lossTrendChart',lossData,'#ef4444');
+  drawSingleTrend('recoverTrendChart',recoverData,'#16a34a');
+
+  // 时间筛选时重绘
+  document.querySelectorAll('.ci-filter-tab').forEach(tab=>{
+    tab.addEventListener('click',function(){
+      const range=parseInt(this.getAttribute('data-range'));
+      setTimeout(()=>{
+        generateTrendData(range);
+        drawSingleTrend('lossTrendChart',lossData,'#ef4444');
+        drawSingleTrend('recoverTrendChart',recoverData,'#16a34a');
+      },50);
+    });
+  });
+});
+</script>
+</body>
+</html>
