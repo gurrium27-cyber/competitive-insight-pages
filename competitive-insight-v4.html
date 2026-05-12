@@ -43,8 +43,91 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .ci-filter-tab:hover{color:#475569}
 .ci-filter-tab.active{background:#fff;color:#1e293b;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.08)}
 
-/* ===== 三列顶行布局 ===== */
-.top-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;padding:12px 16px;background:#fff}
+/* ===== 诊断 Hero（漏斗式） ===== */
+.diagnosis-hero{padding:18px 20px 16px;background:linear-gradient(135deg,#fff 0%,#fafbff 100%);border-bottom:1px solid #e2e8f0}
+.dh-title-row{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.dh-title-tag{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:4px;background:#eef2ff;color:#4f46e5;font-size:11px;font-weight:600}
+.dh-title-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:#4f46e5}
+.dh-title-text{font-size:14px;font-weight:600;color:#0f172a}
+.dh-title-meta{font-size:11px;color:#94a3b8;margin-left:auto}
+
+.dh-funnel{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:center;padding:0 4px}
+.dh-step{display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:10px;border:1px solid #e2e8f0;background:#fff;position:relative;transition:all .2s}
+.dh-step.problem{border-color:#fecaca;background:linear-gradient(135deg,#fff 0%,#fef2f2 100%)}
+.dh-step.action{border-color:#bfdbfe;background:linear-gradient(135deg,#fff 0%,#eff6ff 100%);box-shadow:0 2px 8px rgba(59,130,246,.08)}
+.dh-step.gain{border-color:#bbf7d0;background:linear-gradient(135deg,#fff 0%,#f0fdf4 100%)}
+.dh-step-label{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.3px}
+.dh-step-label-dot{width:6px;height:6px;border-radius:50%}
+.dh-step.problem .dh-step-label-dot{background:#ef4444}
+.dh-step.action .dh-step-label-dot{background:#3b82f6}
+.dh-step.gain .dh-step-label-dot{background:#16a34a}
+.dh-step-value{display:flex;align-items:baseline;gap:4px;margin-top:2px}
+.dh-step-num{font-size:30px;font-weight:800;line-height:1;letter-spacing:-.5px}
+.dh-step.problem .dh-step-num{color:#dc2626}
+.dh-step.action .dh-step-num{color:#2563eb}
+.dh-step.gain .dh-step-num{color:#16a34a}
+.dh-step-unit{font-size:13px;color:#64748b;font-weight:500}
+.dh-step-desc{font-size:11px;color:#64748b;line-height:1.5;margin-top:4px}
+.dh-step-desc strong{color:#1e293b;font-weight:600}
+.dh-step-trend{position:absolute;top:14px;right:14px;font-size:10px;padding:1px 6px;border-radius:3px;font-weight:600}
+.dh-step-trend.up{background:#fef2f2;color:#dc2626}
+.dh-step-trend.down{background:#f0fdf4;color:#16a34a}
+.dh-arrow{font-size:18px;color:#cbd5e1;font-weight:300;user-select:none}
+
+/* ===== 行动主线（三步法） ===== */
+.action-lane{padding:16px 20px;background:#fff;border-bottom:1px solid #e2e8f0}
+.al-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.al-head-title{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#0f172a}
+.al-head-title-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:4px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;font-size:11px;font-weight:700}
+.al-head-hint{font-size:11px;color:#94a3b8}
+.al-grid{display:grid;grid-template-columns:1.2fr 1.2fr 1fr;gap:12px}
+.al-card{position:relative;padding:14px 16px;border-radius:10px;background:#fff;border:1px solid #e2e8f0;display:flex;flex-direction:column;gap:10px;transition:all .2s}
+.al-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.06);transform:translateY(-1px)}
+.al-card.priority-1{border-left:3px solid #ef4444}
+.al-card.priority-2{border-left:3px solid #f59e0b}
+.al-card.priority-3{border-left:3px solid #6366f1}
+.al-card-head{display:flex;align-items:center;gap:8px}
+.al-step-badge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:11px;font-weight:700;color:#fff;flex-shrink:0}
+.al-card.priority-1 .al-step-badge{background:#ef4444}
+.al-card.priority-2 .al-step-badge{background:#f59e0b}
+.al-card.priority-3 .al-step-badge{background:#6366f1}
+.al-card-title{font-size:13px;font-weight:600;color:#0f172a}
+.al-card-tag{margin-left:auto;font-size:10px;padding:2px 7px;border-radius:3px;font-weight:600}
+.al-card.priority-1 .al-card-tag{background:#fef2f2;color:#dc2626}
+.al-card.priority-2 .al-card-tag{background:#fffbeb;color:#d97706}
+.al-card.priority-3 .al-card-tag{background:#eef2ff;color:#4f46e5}
+.al-card-desc{font-size:11px;color:#64748b;line-height:1.5}
+.al-card-desc strong{color:#1e293b;font-weight:600}
+.al-card-items{display:flex;flex-direction:column;gap:6px;margin-top:2px}
+.al-item{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:6px;background:#fafbfc;border:1px solid #f1f5f9;cursor:pointer;transition:all .12s}
+.al-item:hover{border-color:#c7d2fe;background:#fff}
+.al-item-num{font-size:14px;font-weight:700;color:#1e293b;min-width:32px}
+.al-card.priority-1 .al-item-num{color:#dc2626}
+.al-card.priority-2 .al-item-num{color:#d97706}
+.al-card.priority-3 .al-item-num{color:#6366f1}
+.al-item-body{flex:1;min-width:0}
+.al-item-title{font-size:11px;font-weight:500;color:#374151;line-height:1.3}
+.al-item-sub{font-size:10px;color:#94a3b8;margin-top:1px}
+.al-item-arrow{font-size:11px;color:#cbd5e1;flex-shrink:0}
+.al-item:hover .al-item-arrow{color:#6366f1}
+.al-card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px dashed #e2e8f0;margin-top:auto}
+.al-card-stat{font-size:11px;color:#64748b}
+.al-card-stat strong{color:#1e293b;font-weight:600}
+.al-card-cta{font-size:11px;padding:5px 12px;border-radius:5px;font-weight:500;cursor:pointer;border:1px solid;transition:all .12s}
+.al-card.priority-1 .al-card-cta{background:#ef4444;color:#fff;border-color:#ef4444}
+.al-card.priority-1 .al-card-cta:hover{background:#dc2626;border-color:#dc2626}
+.al-card.priority-2 .al-card-cta{background:#fff;color:#d97706;border-color:#fcd34d}
+.al-card.priority-2 .al-card-cta:hover{background:#fffbeb}
+.al-card.priority-3 .al-card-cta{background:#fff;color:#6366f1;border-color:#c7d2fe}
+.al-card.priority-3 .al-card-cta:hover{background:#eef2ff}
+
+/* 监控小卡片 */
+.al-monitor-list{display:flex;flex-direction:column;gap:5px;margin-top:2px}
+.al-monitor-item{display:flex;align-items:center;gap:7px;padding:5px 8px;border-radius:5px;background:#fafbfc;border:1px solid #f1f5f9}
+.al-monitor-ico{width:20px;height:20px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0}
+.al-monitor-name{font-size:11px;color:#475569;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.al-monitor-status{font-size:9px;color:#16a34a;display:flex;align-items:center;gap:3px}
+.al-monitor-status::before{content:"";width:5px;height:5px;border-radius:50%;background:#16a34a}
 
 /* ===== 统一数据卡片风格 ===== */
 .stat-card{padding:16px;border-radius:8px;background:#fff;border:1px solid #e2e8f0;position:relative}
@@ -453,8 +536,155 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         <span class="filter-active-clear" onclick="clearFilter()">清除筛选</span>
       </div>
 
-      <!-- 三列内容 -->
-      <div class="top-row">
+      <!-- ===== 诊断 Hero（漏斗式） ===== -->
+      <div class="diagnosis-hero">
+        <div class="dh-title-row">
+          <span class="dh-title-tag">诊断</span>
+          <span class="dh-title-text">本周竞争态势分析</span>
+          <span class="dh-title-meta">基于近7天监控 128 个商品 · 25 个竞品的数据分析</span>
+        </div>
+        <div class="dh-funnel">
+          <div class="dh-step problem">
+            <span class="dh-step-trend up">+12%</span>
+            <div class="dh-step-label"><span class="dh-step-label-dot"></span>问题</div>
+            <div class="dh-step-value">
+              <span class="dh-step-num">867</span>
+              <span class="dh-step-unit">人潜在流失</span>
+            </div>
+            <div class="dh-step-desc">用户搜索过本店商品但最终下单到了竞品店铺</div>
+          </div>
+          <div class="dh-arrow">→</div>
+          <div class="dh-step action">
+            <div class="dh-step-label"><span class="dh-step-label-dot"></span>可挽回</div>
+            <div class="dh-step-value">
+              <span class="dh-step-num">620</span>
+              <span class="dh-step-unit">人 (占 72%)</span>
+            </div>
+            <div class="dh-step-desc">通过<strong>补齐服务能力 + 价格优化</strong>即可挽回</div>
+          </div>
+          <div class="dh-arrow">→</div>
+          <div class="dh-step gain">
+            <div class="dh-step-label"><span class="dh-step-label-dot"></span>预期收益</div>
+            <div class="dh-step-value">
+              <span class="dh-step-num">¥8.2</span>
+              <span class="dh-step-unit">万 GMV</span>
+            </div>
+            <div class="dh-step-desc">完成下方<strong>三步行动</strong>后预计可恢复的销售额</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== 行动主线（三步法：止血 → 抢量 → 监控） ===== -->
+      <div class="action-lane">
+        <div class="al-head">
+          <div class="al-head-title">
+            <span class="al-head-title-icon">→</span>
+            <span>行动主线 · 按优先级执行</span>
+          </div>
+          <div class="al-head-hint">建议顺序：先止血（挽回流失） → 再抢量（争取增量） → 持续监控（防御反击）</div>
+        </div>
+        <div class="al-grid">
+
+          <!-- ① 止血 -->
+          <div class="al-card priority-1">
+            <div class="al-card-head">
+              <span class="al-step-badge">1</span>
+              <span class="al-card-title">先止血 · 补齐能力短板</span>
+              <span class="al-card-tag">最高优先</span>
+            </div>
+            <div class="al-card-desc">用户因<strong>缺少关键服务标签</strong>流失最严重，先补齐这些能力可立即挽回 <strong>622人</strong></div>
+            <div class="al-card-items">
+              <div class="al-item" onclick="openSuggestDetail('shunfeng')">
+                <div class="al-item-num">476</div>
+                <div class="al-item-body">
+                  <div class="al-item-title">流向支持「顺丰包邮」的竞品</div>
+                  <div class="al-item-sub">17 个商品待设置</div>
+                </div>
+                <span class="al-item-arrow">›</span>
+              </div>
+              <div class="al-item" onclick="openSuggestDetail('damage')">
+                <div class="al-item-num">146</div>
+                <div class="al-item-body">
+                  <div class="al-item-title">流向支持「破损包赔」的竞品</div>
+                  <div class="al-item-sub">12 个商品待设置</div>
+                </div>
+                <span class="al-item-arrow">›</span>
+              </div>
+            </div>
+            <div class="al-card-footer">
+              <span class="al-card-stat">预计挽回 <strong style="color:#dc2626">622 人</strong> · 恢复 <strong>¥5.6万</strong></span>
+              <button class="al-card-cta" onclick="openSuggestDetail('all-shortfall')">查看全部</button>
+            </div>
+          </div>
+
+          <!-- ② 抢量 -->
+          <div class="al-card priority-2">
+            <div class="al-card-head">
+              <span class="al-step-badge">2</span>
+              <span class="al-card-title">再抢量 · 入围流量权益</span>
+              <span class="al-card-tag">次优先</span>
+            </div>
+            <div class="al-card-desc">在止血基础上，<strong>小幅降价即可入围权益货盘</strong>，获得平台专属流量扶持</div>
+            <div class="al-card-items">
+              <div class="al-item" onclick="openSuggestDetail('goodprice')">
+                <div class="al-item-num">5个</div>
+                <div class="al-item-body">
+                  <div class="al-item-title">降价 ¥1.2~3.4 即可入围「好价卡」</div>
+                  <div class="al-item-sub">已入围 5 个 · 接近入围 8 个 · 流量 +24%~44%</div>
+                </div>
+                <span class="al-item-arrow">›</span>
+              </div>
+              <div class="al-item" onclick="openSuggestDetail('subsidy')">
+                <div class="al-item-num">3个</div>
+                <div class="al-item-body">
+                  <div class="al-item-title">降价 ¥5~8 即可入围「百亿补贴」</div>
+                  <div class="al-item-sub">已入围 3 个 · 接近入围 6 个 · 流量 +68%~96%</div>
+                </div>
+                <span class="al-item-arrow">›</span>
+              </div>
+            </div>
+            <div class="al-card-footer">
+              <span class="al-card-stat">预计新增流量 <strong style="color:#d97706">+45%</strong> · 增量 <strong>¥2.6万</strong></span>
+              <button class="al-card-cta" onclick="openSuggestDetail('all-opportunity')">查看全部</button>
+            </div>
+          </div>
+
+          <!-- ③ 监控 -->
+          <div class="al-card priority-3">
+            <div class="al-card-head">
+              <span class="al-step-badge">3</span>
+              <span class="al-card-title">续监控 · 竞品动态追踪</span>
+              <span class="al-card-tag">持续进行</span>
+            </div>
+            <div class="al-card-desc">监控 <strong>3 家</strong>核心竞品，订阅 <strong>3 项</strong>预警，第一时间响应反击</div>
+            <div class="al-monitor-list">
+              <div class="al-monitor-item">
+                <div class="al-monitor-ico" style="background:#e0f2fe;color:#0369a1">顺</div>
+                <div class="al-monitor-name">顺电数码连锁</div>
+                <span class="al-monitor-status">监控中</span>
+              </div>
+              <div class="al-monitor-item">
+                <div class="al-monitor-ico" style="background:#fef3c7;color:#92400e">迪</div>
+                <div class="al-monitor-name">迪信通授权店</div>
+                <span class="al-monitor-status">监控中</span>
+              </div>
+              <div class="al-monitor-item">
+                <div class="al-monitor-ico" style="background:#e6f7ff;color:#1890ff">京</div>
+                <div class="al-monitor-name">京东自营Apple</div>
+                <span class="al-monitor-status">监控中</span>
+              </div>
+            </div>
+            <div class="al-card-footer">
+              <span class="al-card-stat">价格 / 服务 / 素材 <strong>3</strong> 项预警已开启</span>
+              <button class="al-card-cta" onclick="document.querySelector('.mp-tab[data-tab=track-list]').click();document.querySelector('.top-row-legacy').scrollIntoView({behavior:'smooth'})">管理监控</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 三列内容（保留为详细数据透出，供商家钻取） -->
+      <div class="top-row top-row-legacy" style="display:none">
         <!-- 左列：潜在用户流失 -->
         <div class="stat-card loss">
           <div class="stat-card-header">
@@ -770,8 +1000,8 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
       </div>
     </div>
 
-    <!-- 3. 能力提升建议 -->
-    <div class="dash-section">
+    <!-- 3. 能力提升建议（已整合到上方"行动主线"，保留隐藏供数据钻取兼容） -->
+    <div class="dash-section" style="display:none">
       <div class="suggest-grid">
         <!-- 补齐短板 -->
         <div class="suggest-panel">
