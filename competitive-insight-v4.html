@@ -43,106 +43,8 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .ci-filter-tab:hover{color:#475569}
 .ci-filter-tab.active{background:#fff;color:#1e293b;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.08)}
 
-/* ===== 诊断 Hero + 行动主线 一体化容器 ===== */
-.hero-action-wrap{background:linear-gradient(180deg,#f5f7ff 0%,#fafbff 50%,#fff 100%);border-bottom:1px solid #e2e8f0;position:relative}
-.hero-action-wrap::before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:linear-gradient(90deg,#ef4444 0%,#ef4444 38%,#f59e0b 38%,#f59e0b 76%,#6366f1 76%,#6366f1 100%);opacity:.85}
-
-/* ===== 诊断 Hero（漏斗式，与下方行动主线视觉串联） ===== */
-.diagnosis-hero{padding:22px 24px 14px;background:transparent;border-bottom:none;position:relative}
-.dh-title-row{display:flex;align-items:center;gap:10px;margin-bottom:16px}
-.dh-title-tag{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:4px;background:linear-gradient(135deg,#eef2ff,#e0e7ff);color:#4f46e5;font-size:11px;font-weight:600}
-.dh-title-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:#4f46e5}
-.dh-title-text{font-size:14px;font-weight:600;color:#0f172a}
-.dh-title-meta{font-size:11px;color:#94a3b8;margin-left:auto}
-.dh-progress-mini{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:#fff;border:1px solid #e2e8f0;border-radius:14px;margin-left:8px}
-.dh-progress-label{font-size:10px;color:#64748b}
-.dh-progress-bar{display:inline-block;width:54px;height:5px;border-radius:3px;background:#f1f5f9;overflow:hidden;position:relative}
-.dh-progress-fill{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,#6366f1,#8b5cf6)}
-.dh-progress-num{font-size:10px;color:#475569}
-.dh-progress-num strong{color:#6366f1;font-weight:700}
-
-/* 漏斗与下方三步卡片宽度对齐：1.2 / 1.2 / 1（与 .al-grid 一致） */
-.dh-funnel{display:grid;grid-template-columns:1.2fr 28px 1.2fr 28px 1fr;gap:12px;align-items:stretch;padding:0}
-.dh-step{display:flex;flex-direction:column;gap:4px;padding:14px 16px 12px;border-radius:10px;border:1px solid #e2e8f0;background:#fff;position:relative;transition:all .2s;cursor:pointer}
-.dh-step:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.06)}
-.dh-step.problem{border-color:#fecaca;background:linear-gradient(135deg,#fff 0%,#fef2f2 100%)}
-.dh-step.action{border-color:#fde68a;background:linear-gradient(135deg,#fff 0%,#fffbeb 100%)}
-.dh-step.gain{border-color:#bbf7d0;background:linear-gradient(135deg,#fff 0%,#f0fdf4 100%)}
-.dh-step-label{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.4px}
-.dh-step-label-dot{width:6px;height:6px;border-radius:50%}
-.dh-step.problem .dh-step-label-dot{background:#ef4444}
-.dh-step.action .dh-step-label-dot{background:#f59e0b}
-.dh-step.gain .dh-step-label-dot{background:#16a34a}
-.dh-step-value{display:flex;align-items:baseline;gap:4px;margin-top:4px}
-.dh-step-num{font-size:28px;font-weight:800;line-height:1;letter-spacing:-.5px}
-.dh-step.problem .dh-step-num{color:#dc2626}
-.dh-step.action .dh-step-num{color:#d97706}
-.dh-step.gain .dh-step-num{color:#16a34a}
-.dh-step-unit{font-size:12px;color:#64748b;font-weight:500}
-.dh-step-desc{font-size:11px;color:#64748b;line-height:1.5;margin-top:4px}
-.dh-step-desc strong{color:#1e293b;font-weight:600}
-.dh-step-trend{position:absolute;top:12px;right:12px;font-size:10px;padding:1px 6px;border-radius:3px;font-weight:600}
-.dh-step-trend.up{background:#fef2f2;color:#dc2626}
-.dh-step-trend.down{background:#f0fdf4;color:#16a34a}
-/* 漏斗箭头：垂直居中、连接两个卡片 */
-.dh-arrow{display:flex;align-items:center;justify-content:center;font-size:20px;color:#cbd5e1;font-weight:300;user-select:none}
-/* 漏斗向下连接到行动主线 */
-.dh-step::after{content:"";position:absolute;left:50%;bottom:-14px;width:1px;height:14px;background:linear-gradient(to bottom,#cbd5e1,transparent);opacity:.6}
-
-/* ===== 行动主线（三步法） ===== */
-.action-lane{padding:16px 20px;background:#fff;border-bottom:1px solid #e2e8f0}
-.al-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.al-head-title{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#0f172a}
-.al-head-title-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:4px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;font-size:11px;font-weight:700}
-.al-head-hint{font-size:11px;color:#94a3b8}
-.al-grid{display:grid;grid-template-columns:1.2fr 1.2fr 1fr;gap:12px}
-.al-card{position:relative;padding:14px 16px;border-radius:10px;background:#fff;border:1px solid #e2e8f0;display:flex;flex-direction:column;gap:10px;transition:all .2s}
-.al-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.06);transform:translateY(-1px)}
-.al-card.priority-1{border-left:3px solid #ef4444}
-.al-card.priority-2{border-left:3px solid #f59e0b}
-.al-card.priority-3{border-left:3px solid #6366f1}
-.al-card-head{display:flex;align-items:center;gap:8px}
-.al-step-badge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:11px;font-weight:700;color:#fff;flex-shrink:0}
-.al-card.priority-1 .al-step-badge{background:#ef4444}
-.al-card.priority-2 .al-step-badge{background:#f59e0b}
-.al-card.priority-3 .al-step-badge{background:#6366f1}
-.al-card-title{font-size:13px;font-weight:600;color:#0f172a}
-.al-card-tag{margin-left:auto;font-size:10px;padding:2px 7px;border-radius:3px;font-weight:600}
-.al-card.priority-1 .al-card-tag{background:#fef2f2;color:#dc2626}
-.al-card.priority-2 .al-card-tag{background:#fffbeb;color:#d97706}
-.al-card.priority-3 .al-card-tag{background:#eef2ff;color:#4f46e5}
-.al-card-desc{font-size:11px;color:#64748b;line-height:1.5}
-.al-card-desc strong{color:#1e293b;font-weight:600}
-.al-card-items{display:flex;flex-direction:column;gap:6px;margin-top:2px}
-.al-item{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:6px;background:#fafbfc;border:1px solid #f1f5f9;cursor:pointer;transition:all .12s}
-.al-item:hover{border-color:#c7d2fe;background:#fff}
-.al-item-num{font-size:14px;font-weight:700;color:#1e293b;min-width:32px}
-.al-card.priority-1 .al-item-num{color:#dc2626}
-.al-card.priority-2 .al-item-num{color:#d97706}
-.al-card.priority-3 .al-item-num{color:#6366f1}
-.al-item-body{flex:1;min-width:0}
-.al-item-title{font-size:11px;font-weight:500;color:#374151;line-height:1.3}
-.al-item-sub{font-size:10px;color:#94a3b8;margin-top:1px}
-.al-item-arrow{font-size:11px;color:#cbd5e1;flex-shrink:0}
-.al-item:hover .al-item-arrow{color:#6366f1}
-.al-card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px dashed #e2e8f0;margin-top:auto}
-.al-card-stat{font-size:11px;color:#64748b}
-.al-card-stat strong{color:#1e293b;font-weight:600}
-.al-card-cta{font-size:11px;padding:5px 12px;border-radius:5px;font-weight:500;cursor:pointer;border:1px solid;transition:all .12s}
-.al-card.priority-1 .al-card-cta{background:#ef4444;color:#fff;border-color:#ef4444}
-.al-card.priority-1 .al-card-cta:hover{background:#dc2626;border-color:#dc2626}
-.al-card.priority-2 .al-card-cta{background:#fff;color:#d97706;border-color:#fcd34d}
-.al-card.priority-2 .al-card-cta:hover{background:#fffbeb}
-.al-card.priority-3 .al-card-cta{background:#fff;color:#6366f1;border-color:#c7d2fe}
-.al-card.priority-3 .al-card-cta:hover{background:#eef2ff}
-
-/* 监控小卡片 */
-.al-monitor-list{display:flex;flex-direction:column;gap:5px;margin-top:2px}
-.al-monitor-item{display:flex;align-items:center;gap:7px;padding:5px 8px;border-radius:5px;background:#fafbfc;border:1px solid #f1f5f9}
-.al-monitor-ico{width:20px;height:20px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0}
-.al-monitor-name{font-size:11px;color:#475569;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.al-monitor-status{font-size:9px;color:#16a34a;display:flex;align-items:center;gap:3px}
-.al-monitor-status::before{content:"";width:5px;height:5px;border-radius:50%;background:#16a34a}
+/* ===== 三列顶行布局 ===== */
+.top-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;padding:12px 16px;background:#fff}
 
 /* ===== 统一数据卡片风格 ===== */
 .stat-card{padding:16px;border-radius:8px;background:#fff;border:1px solid #e2e8f0;position:relative}
@@ -164,7 +66,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .stat-hero-unit{font-size:12px;color:#64748b}
 
 /* 指标列表 - 统一风格 */
-.stat-metric-list{display:flex;flex-direction:column;gap:6px;min-height:180px}
+.stat-metric-list{display:flex;flex-direction:column;gap:6px}
 .stat-metric{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;cursor:pointer;transition:all .15s}
 .stat-metric:hover{background:#f8fafc}
 .stat-metric.active{background:#f1f5f9}
@@ -215,9 +117,6 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .mi-url{font-size:9px;color:#9ca3af;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px}
 .mi-remove{background:none;border:none;color:#d1d5db;font-size:14px;cursor:pointer;padding:0 2px;flex-shrink:0}
 .mi-remove:hover{color:#ef4444}
-.mi-action{transition:color .12s}
-.mi-action:hover{color:#4338ca}
-
 
 /* 竞品追踪内容 */
 .mp-track-content{display:none}
@@ -238,39 +137,6 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .toggle-sw::before{content:"";position:absolute;left:2px;top:2px;width:11px;height:11px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 1px 2px rgba(0,0,0,.1)}
 .toggle-sw.on{background:#6366f1}
 .toggle-sw.on::before{left:17px}
-
-/* ===== 能力提升建议模块 ===== */
-.suggest-header{padding:14px 16px 10px}
-.suggest-title{font-size:15px;font-weight:700;color:#1e293b}
-.suggest-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 16px 16px}
-.suggest-panel{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:14px 16px}
-.suggest-panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.suggest-panel-title{font-size:13px;font-weight:600;color:#1e293b}
-.suggest-more{font-size:11px;color:#6366f1;cursor:pointer;text-decoration:none}
-.suggest-more:hover{text-decoration:underline}
-.suggest-cards-h{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.suggest-card-h{background:#fafbfc;border:1px solid #f1f5f9;border-radius:8px;padding:14px 16px;transition:all .12s}
-.suggest-card-h:hover{border-color:#e2e8f0;background:#fff}
-.suggest-card-h-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-.suggest-card-h-name{font-size:13px;font-weight:600;color:#1e293b}
-.suggest-tag-h{font-size:10px;padding:2px 8px;border-radius:4px;font-weight:500}
-.suggest-tag-h.loss{background:#fef2f2;color:#dc2626}
-.suggest-tag-h.gain{background:#f0fdf4;color:#16a34a}
-.suggest-card-h-desc{font-size:11px;color:#64748b;margin-bottom:10px}
-.suggest-detail-btn{width:100%;padding:6px 0;background:#fff;border:1px solid #c7d2fe;border-radius:5px;font-size:12px;color:#6366f1;cursor:pointer;font-weight:500;transition:all .12s}
-.suggest-detail-btn:hover{background:#6366f1;color:#fff;border-color:#6366f1}
-.suggest-cards{display:flex;flex-direction:column;gap:8px}
-.suggest-card{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border:1px solid #f1f5f9;border-radius:6px;background:#fafbfc;transition:all .12s}
-.suggest-card:hover{border-color:#e2e8f0;background:#fff}
-.suggest-card-left{min-width:0;flex:1}
-.suggest-card-name{font-size:12px;font-weight:600;color:#1e293b}
-.suggest-card-desc{font-size:11px;color:#64748b;margin-top:2px}
-.suggest-card-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
-.suggest-tag{font-size:10px;padding:2px 6px;border-radius:3px;font-weight:500}
-.suggest-tag.loss{background:#fef2f2;color:#dc2626}
-.suggest-tag.gain{background:#f0fdf4;color:#16a34a}
-.suggest-btn{padding:4px 10px;background:#fff;border:1px solid #c7d2fe;border-radius:4px;font-size:11px;color:#6366f1;cursor:pointer;transition:all .12s;white-space:nowrap}
-.suggest-btn:hover{background:#6366f1;color:#fff;border-color:#6366f1}
 
 /* 筛选标签联动高亮 */
 .filter-active{display:none;align-items:center;gap:6px;padding:8px 16px;background:#eef2ff;border-bottom:1px solid #c7d2fe;font-size:11px;color:#4f46e5}
@@ -313,10 +179,6 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 
 /* 竞争洞察列 */
 .insight-cell{display:flex;flex-direction:column;gap:4px}
-.dim-row{display:flex;align-items:center;gap:8px;font-size:11px;cursor:pointer;padding:4px 6px;border-radius:4px;transition:background .12s}
-.dim-row:hover{background:#f1f5f9}
-.dim-label{color:#64748b;width:32px;flex-shrink:0;font-weight:500}
-.dim-expand-icon{font-size:9px;color:#94a3b8;transition:transform .2s;margin-left:auto}
 .dim-row{display:flex;align-items:center;gap:6px;font-size:11px;cursor:pointer;padding:2px 4px;border-radius:4px;transition:background .12s}
 .dim-row:hover{background:#f1f5f9}
 .dim-label{color:#64748b;width:32px;flex-shrink:0}
@@ -469,53 +331,323 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .exec-modal-btn{padding:8px 24px;background:#6366f1;color:#fff;border:none;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;transition:background .12s}
 .exec-modal-btn:hover{background:#4f46e5}
 
-/* 明细弹窗 - 右侧抽屉 */
-.detail-modal-mask{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.3);z-index:9998;opacity:0;pointer-events:none;transition:opacity .3s}
-.detail-modal-mask.show{opacity:1;pointer-events:auto}
-.detail-modal{position:fixed;top:0;right:0;bottom:0;width:720px;background:#fff;box-shadow:-4px 0 20px rgba(0,0,0,.1);z-index:9999;transform:translateX(100%);transition:transform .3s ease;display:flex;flex-direction:column}
-.detail-modal.show{transform:translateX(0)}
-.detail-modal-header{display:flex;align-items:center;justify-content:space-between;padding:18px 20px 14px;border-bottom:1px solid #f1f5f9;flex-shrink:0}
-.detail-modal-title{font-size:15px;font-weight:700;color:#1e293b}
-.detail-modal-sub{font-size:12px;color:#64748b;margin-top:2px}
-.detail-modal-close{background:none;border:none;font-size:20px;color:#94a3b8;cursor:pointer;padding:4px 8px;line-height:1;border-radius:4px;transition:all .12s}
-.detail-modal-close:hover{background:#f1f5f9;color:#475569}
-.detail-modal-actions{padding:12px 20px;border-bottom:1px solid #f1f5f9;flex-shrink:0}
-.detail-modal-batch{padding:7px 16px;background:#6366f1;color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;transition:background .12s}
-.detail-modal-batch:hover{background:#4f46e5}
-.detail-modal-list{overflow-y:auto;flex:1;padding:14px 20px 20px}
-.detail-item{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid #f1f5f9;border-radius:8px;margin-bottom:8px;background:#fafbfc;transition:all .12s}
-.detail-item:hover{border-color:#e2e8f0;background:#fff}
-.detail-item-img{width:48px;height:48px;border-radius:6px;object-fit:cover;flex-shrink:0}
-.detail-item-info{flex:1;min-width:0}
-.detail-item-name{font-size:12px;font-weight:600;color:#1e293b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.detail-item-meta{font-size:11px;color:#64748b;margin-top:2px}
-.detail-item-problem{font-size:11px;color:#dc2626;margin-top:4px;display:flex;align-items:center;gap:4px}
-.detail-item-problem::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#dc2626;flex-shrink:0}
-.detail-item-actions{display:flex;gap:6px;flex-shrink:0}
-.detail-item-btn{padding:5px 10px;background:#fff;border:1px solid #c7d2fe;border-radius:4px;font-size:11px;color:#6366f1;cursor:pointer;transition:all .12s;white-space:nowrap}
-.detail-item-btn:hover{background:#6366f1;color:#fff;border-color:#6366f1}
-.detail-item-btn.set{background:#6366f1;color:#fff;border-color:#6366f1}
-.detail-item-full{padding:16px;border:1px solid #f1f5f9;border-radius:8px;margin-bottom:10px;background:#fafbfc;transition:all .12s}
-.detail-item-full:hover{border-color:#e2e8f0;background:#fff}
-.detail-item-full-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-.detail-item-full-name{font-size:13px;font-weight:600;color:#1e293b}
-.detail-item-full-desc{font-size:12px;color:#64748b;margin-bottom:10px}
-.detail-item-full-actions{display:flex;gap:6px}
-.detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.detail-grid-card{display:flex;flex-direction:column;gap:8px;padding:14px;border:1px solid #f1f5f9;border-radius:8px;background:#fafbfc;transition:all .12s}
-.detail-grid-card:hover{border-color:#e2e8f0;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.04)}
-.detail-grid-card-head{display:flex;align-items:center;justify-content:space-between}
-.detail-grid-card-name{font-size:13px;font-weight:600;color:#1e293b}
-.detail-grid-card-desc{font-size:12px;color:#64748b}
-.detail-grid-card-btn{padding:7px 14px;background:#fff;border:1px solid #c7d2fe;border-radius:6px;font-size:12px;color:#6366f1;font-weight:500;cursor:pointer;transition:all .12s;align-self:flex-start}
-.detail-grid-card-btn:hover{background:#6366f1;color:#fff;border-color:#6366f1}
-.strategy-tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:600;line-height:1.4;vertical-align:middle;margin-right:4px}
-.strategy-tag.goodprice{background:#fef3c7;color:#d97706}
-.strategy-tag.subsidy{background:#dbeafe;color:#2563eb}
-.strategy-tag.seckill{background:#fce7f3;color:#db2777}
+/* ============================================
+   v5 · 行动主线优化层
+   解决：流失/机会并列，缺乏行动主线
+   方案：诊断条 + 行动顺序标 + 视觉权重重排
+   ============================================ */
+
+/* —— 顶部诊断结论条 —— */
+.diag-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;
+  padding:16px 24px;
+  background:linear-gradient(120deg,#fff7ed 0%,#fef2f2 60%,#f0fdf4 100%);
+  border-bottom:1px solid #fde68a;
+  position:relative;
+}
+.diag-bar::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,#ef4444,#f59e0b,#16a34a);
+}
+.diag-bar-left{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.diag-bar-tag{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:10px;font-weight:700;color:#92400e;
+  background:#fef3c7;border:1px solid #fde68a;
+  padding:2px 8px;border-radius:10px;
+  width:fit-content;letter-spacing:.4px;
+}
+.diag-bar-tag::before{content:"●";color:#f59e0b;font-size:8px}
+.diag-bar-headline{
+  font-size:14px;color:#1e293b;font-weight:500;line-height:1.55;
+}
+.diag-bar-headline b{font-weight:800;font-variant-numeric:tabular-nums}
+.diag-bar-headline .dg-loss{color:#dc2626}
+.diag-bar-headline .dg-recover{color:#16a34a}
+.diag-bar-headline .dg-gain{color:#ea580c}
+.diag-bar-sub{font-size:11px;color:#94a3b8}
+
+/* 漏斗 */
+.diag-bar-funnel{
+  display:flex;align-items:center;gap:6px;
+  background:#fff;border:1px solid #e2e8f0;border-radius:10px;
+  padding:8px 14px;
+  box-shadow:0 1px 3px rgba(15,23,42,.04);
+  flex-shrink:0;
+}
+.dg-step{
+  display:flex;flex-direction:column;align-items:center;
+  padding:0 6px;min-width:54px;
+}
+.dg-step-num{
+  font-size:15px;font-weight:800;color:#dc2626;line-height:1;
+  font-variant-numeric:tabular-nums;letter-spacing:-.5px;
+}
+.dg-step-mid .dg-step-num{color:#16a34a}
+.dg-step-end .dg-step-num{color:#ea580c}
+.dg-step-lbl{
+  font-size:10px;color:#64748b;margin-top:3px;font-weight:500;
+}
+.dg-arrow{
+  color:#cbd5e1;font-size:13px;font-weight:700;
+}
+
+/* —— 三列重构：行动顺序 + 视觉权重 —— */
+.top-row.top-row-v6{
+  position:relative;
+  grid-template-columns:1.1fr 1.4fr 0.95fr !important;
+  padding-top:30px !important;
+  background:linear-gradient(180deg,#fafbfd 0%,#fff 60px) !important;
+}
+
+/* 顶部三步骤标签（绝对定位悬浮在卡片之上） */
+.top-row.top-row-v6 .stat-card,
+.top-row.top-row-v6 .monitor-panel{
+  position:relative;
+  margin-top:16px;
+}
+.top-row.top-row-v6 .stat-card::after,
+.top-row.top-row-v6 .monitor-panel::after{
+  position:absolute;left:14px;top:-12px;
+  font-size:10px;font-weight:700;letter-spacing:.5px;
+  padding:3px 10px;border-radius:11px;
+  display:inline-flex;align-items:center;gap:5px;
+  z-index:2;line-height:1.4;
+}
+/* 步骤①：诊断 */
+.top-row.top-row-v6 .stat-card.loss::after{
+  content:"① 诊断流失原因";
+  background:#fff;color:#64748b;
+  border:1px solid #e2e8f0;
+  box-shadow:0 2px 6px rgba(15,23,42,.06);
+}
+/* 步骤②：核心行动 —— 重点突出 */
+.top-row.top-row-v6 .stat-card.recover::after{
+  content:"② 立即抓回机会  ★ 推荐先做";
+  background:linear-gradient(135deg,#16a34a,#15803d);
+  color:#fff;
+  border:none;
+  box-shadow:0 4px 12px rgba(22,163,74,.35);
+}
+/* 步骤③：持续监控 */
+.top-row.top-row-v6 .monitor-panel::after{
+  content:"③ 持续监控竞品";
+  background:#fff;color:#64748b;
+  border:1px solid #e2e8f0;
+  box-shadow:0 2px 6px rgba(15,23,42,.06);
+}
+
+/* 视觉权重：流失卡降权（诊断依据） */
+.top-row.top-row-v6 .stat-card.loss{
+  background:#fafbfd !important;
+  opacity:.92;
+}
+.top-row.top-row-v6 .stat-card.loss::before{
+  height:2px !important;
+  background:linear-gradient(90deg,#fca5a5,#fda4af) !important;
+}
+.top-row.top-row-v6 .stat-card.loss .stat-card-title{color:#475569 !important;font-weight:600 !important}
+.top-row.top-row-v6 .stat-card.loss .stat-hero-num{font-size:26px !important;color:#94a3b8 !important}
+
+/* 视觉权重：可挽回卡升权（核心行动） */
+.top-row.top-row-v6 .stat-card.recover{
+  background:linear-gradient(180deg,#f0fdf4 0%,#ffffff 60%) !important;
+  border:1.5px solid #86efac !important;
+  box-shadow:0 4px 16px rgba(22,163,74,.12) !important;
+}
+.top-row.top-row-v6 .stat-card.recover::before{
+  height:4px !important;
+  background:linear-gradient(90deg,#16a34a,#15803d) !important;
+}
+.top-row.top-row-v6 .stat-card.recover .stat-card-title{
+  font-size:14px !important;color:#15803d !important;font-weight:700 !important;
+}
+.top-row.top-row-v6 .stat-card.recover .stat-hero-num{font-size:36px !important}
+.top-row.top-row-v6 .stat-card.recover .stat-metric{
+  background:#fff !important;border:1px solid #d1fae5 !important;
+}
+.top-row.top-row-v6 .stat-card.recover .stat-metric:hover{
+  border-color:#16a34a !important;
+  box-shadow:0 2px 8px rgba(22,163,74,.18) !important;
+  transform:translateX(2px);
+}
+
+/* 在挽回卡顶部加一个一键 CTA */
+.top-row.top-row-v6 .stat-card.recover .stat-card-header{position:relative}
+.top-row.top-row-v6 .stat-card.recover .stat-card-header::after{
+  content:"↓ 在下方商品表挑选并执行方案";
+  position:absolute;right:0;top:24px;
+  font-size:10px;color:#16a34a;font-weight:600;
+  background:#dcfce7;padding:2px 8px;border-radius:10px;
+  border:1px solid #86efac;
+  white-space:nowrap;
+}
+
+/* 视觉权重：监控面板降权（辅助工具） */
+.top-row.top-row-v6 .monitor-panel{
+  background:#fafbfd !important;
+  opacity:.95;
+}
+.top-row.top-row-v6 .monitor-panel::before{
+  height:2px !important;
+  background:linear-gradient(90deg,#c7d2fe,#ddd6fe) !important;
+}
+.top-row.top-row-v6 .monitor-panel .mp-title{color:#475569 !important;font-size:12px !important}
+
+/* 在挽回卡和流失卡之间加一个引导箭头（提示阅读顺序） */
+.top-row.top-row-v6{position:relative}
+.top-row.top-row-v6 .stat-card.loss + .stat-card.recover::before{
+  /* 已有 ::before, skip */
+}
+
+/* —— 商品表头部加"承接行动主线"提示 —— */
+.dash-section + .dash-section{position:relative}
+.dash-section + .dash-section .tab-bar::before{
+  content:"↓ 按商品维度执行：以下是 128 个商品的具体「挽回 / 提升」方案";
+  display:block;
+  padding:10px 24px;
+  background:linear-gradient(90deg,#f0fdf4 0%,#fafbfd 100%);
+  border-bottom:1px solid #d1fae5;
+  font-size:11.5px;color:#15803d;font-weight:600;
+  letter-spacing:.2px;
+}
+
+/* —— 响应式 —— */
+@media (max-width:1280px){
+  .top-row.top-row-v6{
+    grid-template-columns:1fr 1.3fr 1fr !important;
+  }
+}
+@media (max-width:1080px){
+  .top-row.top-row-v6{
+    grid-template-columns:1fr 1fr !important;
+  }
+  .top-row.top-row-v6 .monitor-panel{
+    grid-column:1 / -1;
+  }
+  .diag-bar-funnel{display:none}
+}
+@media (max-width:720px){
+  .top-row.top-row-v6{grid-template-columns:1fr !important}
+  .diag-bar{flex-direction:column;align-items:flex-start;gap:12px}
+}
+</style>
+<link rel="stylesheet" href="competitive-insight-v5-unified.css">
+<style>
+/* ============================================
+   v5 · 行动主线优化层 —— unified 之后的覆盖
+   （保证优先级高于 unified.css）
+   ============================================ */
+.top-row.top-row-v6{
+  grid-template-columns:1.1fr 1.4fr 0.95fr !important;
+  padding-top:34px !important;
+  background:linear-gradient(180deg,#fafbfd 0%,#fff 60px) !important;
+}
+.top-row.top-row-v6 .stat-card,
+.top-row.top-row-v6 .monitor-panel{
+  margin-top:18px !important;
+  position:relative;
+}
+/* 步骤标签 */
+.top-row.top-row-v6 .stat-card::after,
+.top-row.top-row-v6 .monitor-panel::after{
+  position:absolute !important;left:14px !important;top:-13px !important;
+  font-size:10.5px !important;font-weight:700 !important;letter-spacing:.4px !important;
+  padding:4px 11px !important;border-radius:12px !important;
+  display:inline-flex !important;align-items:center !important;
+  z-index:5;line-height:1.4 !important;white-space:nowrap;
+  width:auto !important;height:auto !important;
+}
+.top-row.top-row-v6 .stat-card.loss::after{
+  content:"① 诊断流失原因" !important;
+  background:#fff !important;color:#64748b !important;
+  border:1px solid #e2e8f0 !important;
+  box-shadow:0 2px 6px rgba(15,23,42,.08) !important;
+}
+.top-row.top-row-v6 .stat-card.recover::after{
+  content:"② 立即抓回机会  ★ 推荐先做" !important;
+  background:linear-gradient(135deg,#16a34a,#15803d) !important;
+  color:#fff !important;border:none !important;
+  box-shadow:0 4px 12px rgba(22,163,74,.4) !important;
+}
+.top-row.top-row-v6 .monitor-panel::after{
+  content:"③ 持续监控竞品" !important;
+  background:#fff !important;color:#64748b !important;
+  border:1px solid #e2e8f0 !important;
+  box-shadow:0 2px 6px rgba(15,23,42,.08) !important;
+}
+
+/* 流失卡降权 */
+.top-row.top-row-v6 .stat-card.loss{
+  background:#fafbfd !important;
+  opacity:.92;
+}
+.top-row.top-row-v6 .stat-card.loss .stat-card-title{
+  color:#475569 !important;font-weight:600 !important;font-size:12px !important;
+}
+.top-row.top-row-v6 .stat-card.loss .stat-hero-num{
+  font-size:26px !important;color:#94a3b8 !important;
+}
+
+/* 可挽回卡升权 */
+.top-row.top-row-v6 .stat-card.recover{
+  background:linear-gradient(180deg,#f0fdf4 0%,#ffffff 50%) !important;
+  border:1.5px solid #86efac !important;
+  box-shadow:0 6px 20px rgba(22,163,74,.14) !important;
+  transform:scale(1.02);
+}
+.top-row.top-row-v6 .stat-card.recover .stat-card-title{
+  font-size:14px !important;color:#15803d !important;font-weight:700 !important;
+}
+.top-row.top-row-v6 .stat-card.recover .stat-hero-num{
+  font-size:38px !important;color:#16a34a !important;
+}
+.top-row.top-row-v6 .stat-card.recover .stat-metric{
+  background:#fff !important;border:1px solid #d1fae5 !important;
+}
+.top-row.top-row-v6 .stat-card.recover .stat-metric:hover{
+  border-color:#16a34a !important;
+  box-shadow:0 2px 8px rgba(22,163,74,.18) !important;
+  transform:translateX(2px);
+}
+
+/* 监控面板降权 */
+.top-row.top-row-v6 .monitor-panel{
+  background:#fafbfd !important;
+  opacity:.96;
+}
+.top-row.top-row-v6 .monitor-panel .mp-title{
+  color:#475569 !important;font-size:12px !important;
+}
+
+/* 商品表头部承接提示 */
+.dash-section + .dash-section .tab-bar::before{
+  content:"↓ 按商品维度执行：以下是 128 个商品的具体「挽回 / 提升」方案" !important;
+  display:block !important;
+  padding:11px 24px !important;
+  background:linear-gradient(90deg,#f0fdf4 0%,#fafbfd 100%) !important;
+  border-bottom:1px solid #d1fae5 !important;
+  font-size:11.5px !important;color:#15803d !important;font-weight:600 !important;
+  letter-spacing:.2px;
+  margin:-14px -24px 0 !important;
+}
+
+@media (max-width:1280px){
+  .top-row.top-row-v6{grid-template-columns:1fr 1.3fr 1fr !important}
+  .top-row.top-row-v6 .stat-card.recover{transform:none !important}
+}
+@media (max-width:1080px){
+  .top-row.top-row-v6{grid-template-columns:1fr 1fr !important}
+  .top-row.top-row-v6 .monitor-panel{grid-column:1 / -1}
+  .diag-bar-funnel{display:none !important}
+}
+@media (max-width:720px){
+  .top-row.top-row-v6{grid-template-columns:1fr !important}
+  .diag-bar{flex-direction:column !important;align-items:flex-start !important;gap:12px !important}
+}
 </style>
 </head>
-<body>
 <div class="header">
   <div class="h-l"><div class="logo">A</div><div class="h-t">商家运营中心 / 竞争洞察</div></div>
   <div class="h-r"><span>百邦Apple授权专营店</span><div class="avatar"></div></div>
@@ -545,176 +677,38 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
 
+      <!-- ===== 诊断结论 + 行动漏斗 ===== -->
+      <div class="diag-bar">
+        <div class="diag-bar-left">
+          <div class="diag-bar-tag">本周诊断</div>
+          <div class="diag-bar-headline">
+            近7天 <b class="dg-loss">867 人</b> 潜在流失，其中 <b class="dg-recover">620 人（72%）可挽回</b>，预期可拉回
+            <b class="dg-gain">¥8.2 万</b> GMV
+          </div>
+          <div class="diag-bar-sub">系统建议优先按下方"行动主线"操作，可在 1 小时内完成关键动作</div>
+        </div>
+        <div class="diag-bar-funnel">
+          <div class="dg-step"><div class="dg-step-num">867</div><div class="dg-step-lbl">流失</div></div>
+          <div class="dg-arrow">→</div>
+          <div class="dg-step dg-step-mid"><div class="dg-step-num">620</div><div class="dg-step-lbl">可挽回</div></div>
+          <div class="dg-arrow">→</div>
+          <div class="dg-step dg-step-end"><div class="dg-step-num">¥8.2万</div><div class="dg-step-lbl">预期收益</div></div>
+        </div>
+      </div>
+
       <!-- 筛选激活标签 -->
       <div class="filter-active" id="filterActive">
         当前筛选：<span class="filter-active-tag" id="filterTag"></span>
         <span class="filter-active-clear" onclick="clearFilter()">清除筛选</span>
       </div>
 
-      <!-- ===== Hero + 行动主线 一体化容器 ===== -->
-      <div class="hero-action-wrap">
-
-      <!-- ===== 诊断 Hero（漏斗式） ===== -->
-      <div class="diagnosis-hero">
-        <div class="dh-title-row">
-          <span class="dh-title-tag">诊断</span>
-          <span class="dh-title-text">本周竞争态势分析</span>
-          <span class="dh-title-meta">基于近7天监控 128 个商品 · 25 个竞品的数据分析</span>
-          <span class="dh-progress-mini">
-            <span class="dh-progress-label">本周已完成</span>
-            <span class="dh-progress-bar"><span class="dh-progress-fill" style="width:25%"></span></span>
-            <span class="dh-progress-num"><strong>1</strong>/4 步</span>
-          </span>
-        </div>
-        <div class="dh-funnel">
-          <div class="dh-step problem" data-link="card-1">
-            <span class="dh-step-trend up">+12%</span>
-            <div class="dh-step-label"><span class="dh-step-label-dot"></span>问题</div>
-            <div class="dh-step-value">
-              <span class="dh-step-num">867</span>
-              <span class="dh-step-unit">人潜在流失</span>
-            </div>
-            <div class="dh-step-desc">用户搜索过本店商品但最终下单到了竞品店铺</div>
-          </div>
-          <div class="dh-arrow">→</div>
-          <div class="dh-step action">
-            <div class="dh-step-label"><span class="dh-step-label-dot"></span>可挽回</div>
-            <div class="dh-step-value">
-              <span class="dh-step-num">620</span>
-              <span class="dh-step-unit">人 (占 72%)</span>
-            </div>
-            <div class="dh-step-desc">通过<strong>补齐服务能力 + 价格优化</strong>即可挽回</div>
-          </div>
-          <div class="dh-arrow">→</div>
-          <div class="dh-step gain">
-            <div class="dh-step-label"><span class="dh-step-label-dot"></span>预期收益</div>
-            <div class="dh-step-value">
-              <span class="dh-step-num">¥8.2</span>
-              <span class="dh-step-unit">万 GMV</span>
-            </div>
-            <div class="dh-step-desc">完成下方<strong>三步行动</strong>后预计可恢复的销售额</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ===== 行动主线（三步法：止血 → 抢量 → 监控） ===== -->
-      <div class="action-lane">
-        <div class="al-head">
-          <div class="al-head-title">
-            <span class="al-head-title-icon">→</span>
-            <span>行动主线 · 按优先级执行</span>
-          </div>
-          <div class="al-head-hint">建议顺序：先止血（挽回流失） → 再抢量（争取增量） → 持续监控（防御反击）</div>
-        </div>
-        <div class="al-grid">
-
-          <!-- ① 止血 -->
-          <div class="al-card priority-1">
-            <div class="al-card-head">
-              <span class="al-step-badge">1</span>
-              <span class="al-card-title">先止血 · 补齐能力短板</span>
-              <span class="al-card-tag">最高优先</span>
-            </div>
-            <div class="al-card-desc">用户因<strong>缺少关键服务标签</strong>流失最严重，先补齐这些能力可立即挽回 <strong>622人</strong></div>
-            <div class="al-card-items">
-              <div class="al-item" onclick="openSuggestDetail('shunfeng')">
-                <div class="al-item-num">476</div>
-                <div class="al-item-body">
-                  <div class="al-item-title">流向支持「顺丰包邮」的竞品</div>
-                  <div class="al-item-sub">17 个商品待设置</div>
-                </div>
-                <span class="al-item-arrow">›</span>
-              </div>
-              <div class="al-item" onclick="openSuggestDetail('damage')">
-                <div class="al-item-num">146</div>
-                <div class="al-item-body">
-                  <div class="al-item-title">流向支持「破损包赔」的竞品</div>
-                  <div class="al-item-sub">12 个商品待设置</div>
-                </div>
-                <span class="al-item-arrow">›</span>
-              </div>
-            </div>
-            <div class="al-card-footer">
-              <span class="al-card-stat">预计挽回 <strong style="color:#dc2626">622 人</strong> · 恢复 <strong>¥5.6万</strong></span>
-              <button class="al-card-cta" onclick="openSuggestDetail('all-shortfall')">查看全部</button>
-            </div>
-          </div>
-
-          <!-- ② 抢量 -->
-          <div class="al-card priority-2">
-            <div class="al-card-head">
-              <span class="al-step-badge">2</span>
-              <span class="al-card-title">再抢量 · 入围流量权益</span>
-              <span class="al-card-tag">次优先</span>
-            </div>
-            <div class="al-card-desc">在止血基础上，<strong>小幅降价即可入围权益货盘</strong>，获得平台专属流量扶持</div>
-            <div class="al-card-items">
-              <div class="al-item" onclick="openSuggestDetail('goodprice')">
-                <div class="al-item-num">5个</div>
-                <div class="al-item-body">
-                  <div class="al-item-title">降价 ¥1.2~3.4 即可入围「好价卡」</div>
-                  <div class="al-item-sub">已入围 5 个 · 接近入围 8 个 · 流量 +24%~44%</div>
-                </div>
-                <span class="al-item-arrow">›</span>
-              </div>
-              <div class="al-item" onclick="openSuggestDetail('subsidy')">
-                <div class="al-item-num">3个</div>
-                <div class="al-item-body">
-                  <div class="al-item-title">降价 ¥5~8 即可入围「百亿补贴」</div>
-                  <div class="al-item-sub">已入围 3 个 · 接近入围 6 个 · 流量 +68%~96%</div>
-                </div>
-                <span class="al-item-arrow">›</span>
-              </div>
-            </div>
-            <div class="al-card-footer">
-              <span class="al-card-stat">预计新增流量 <strong style="color:#d97706">+45%</strong> · 增量 <strong>¥2.6万</strong></span>
-              <button class="al-card-cta" onclick="openSuggestDetail('all-opportunity')">查看全部</button>
-            </div>
-          </div>
-
-          <!-- ③ 监控 -->
-          <div class="al-card priority-3">
-            <div class="al-card-head">
-              <span class="al-step-badge">3</span>
-              <span class="al-card-title">续监控 · 竞品动态追踪</span>
-              <span class="al-card-tag">持续进行</span>
-            </div>
-            <div class="al-card-desc">监控 <strong>3 家</strong>核心竞品，订阅 <strong>3 项</strong>预警，第一时间响应反击</div>
-            <div class="al-monitor-list">
-              <div class="al-monitor-item">
-                <div class="al-monitor-ico" style="background:#e0f2fe;color:#0369a1">顺</div>
-                <div class="al-monitor-name">顺电数码连锁</div>
-                <span class="al-monitor-status">监控中</span>
-              </div>
-              <div class="al-monitor-item">
-                <div class="al-monitor-ico" style="background:#fef3c7;color:#92400e">迪</div>
-                <div class="al-monitor-name">迪信通授权店</div>
-                <span class="al-monitor-status">监控中</span>
-              </div>
-              <div class="al-monitor-item">
-                <div class="al-monitor-ico" style="background:#e6f7ff;color:#1890ff">京</div>
-                <div class="al-monitor-name">京东自营Apple</div>
-                <span class="al-monitor-status">监控中</span>
-              </div>
-            </div>
-            <div class="al-card-footer">
-              <span class="al-card-stat">价格 / 服务 / 素材 <strong>3</strong> 项预警已开启</span>
-              <button class="al-card-cta" onclick="document.querySelector('.mp-tab[data-tab=track-list]').click();document.querySelector('.top-row-legacy').scrollIntoView({behavior:'smooth'})">管理监控</button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      </div><!-- /.hero-action-wrap -->
-
-      <!-- 三列内容（保留为详细数据透出，供商家钻取） -->
-      <div class="top-row top-row-legacy" style="display:none">
+      <!-- 三列内容（重构为：行动主线 ① 抢回流失 → ② 抢量增长 → 监控辅助） -->
+      <div class="top-row top-row-v6">
         <!-- 左列：潜在用户流失 -->
         <div class="stat-card loss">
           <div class="stat-card-header">
             <span class="stat-card-title">潜在用户流失</span>
-            <span class="stat-card-trend up" data-7="较上周 +12%" data-30="较上月 +18%">较上周 +12%</span>
+            <span class="stat-card-trend up" data-7="较上期 +12%" data-30="较上月 +18%">较上期 +12%</span>
           </div>
           <div class="stat-hero">
             <span class="stat-hero-num" data-7="867" data-30="1,243">867</span>
@@ -730,14 +724,6 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
                 <div class="sm-bar"><div class="sm-bar-fill" style="width:55%"></div></div>
               </div>
               <span class="sm-toggle">▶</span>
-              <div class="sm-detail">
-                <div class="sm-detail-products">
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPhone 15 Pro Max</span></div>
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-wifi-spaceblack-202405?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPad Pro 11</span></div>
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/s9-case-unselect-gallery-1-202309?wid=48&hei=48&fmt=jpeg&qlt=90"><span>Apple Watch S9</span></div>
-                </div>
-                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 10 个商品 ›</a>
-              </div>
             </div>
             <div class="stat-metric time-data" data-range="7" data-filter="price">
               <div class="sm-num">245</div>
@@ -747,13 +733,6 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
                 <div class="sm-bar"><div class="sm-bar-fill" style="width:28%"></div></div>
               </div>
               <span class="sm-toggle">▶</span>
-              <div class="sm-detail">
-                <div class="sm-detail-products">
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=48&hei=48&fmt=jpeg&qlt=90"><span>MacBook Pro M3</span></div>
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJV3?wid=48&hei=48&fmt=jpeg&qlt=90"><span>AirPods Pro 2</span></div>
-                </div>
-                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 6 个商品 ›</a>
-              </div>
             </div>
             <div class="stat-metric time-data" data-range="7" data-filter="damage">
               <div class="sm-num">146</div>
@@ -763,13 +742,6 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
                 <div class="sm-bar"><div class="sm-bar-fill" style="width:17%"></div></div>
               </div>
               <span class="sm-toggle">▶</span>
-              <div class="sm-detail">
-                <div class="sm-detail-products">
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPhone 15 Pro</span></div>
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-wifi-spaceblack-202405?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPad Pro 13</span></div>
-                </div>
-                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 4 个商品 ›</a>
-              </div>
             </div>
             <!-- 30天数据 -->
             <div class="stat-metric time-data" data-range="30" data-filter="shunfeng" style="display:none">
@@ -780,14 +752,6 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
                 <div class="sm-bar"><div class="sm-bar-fill" style="width:54%"></div></div>
               </div>
               <span class="sm-toggle">▶</span>
-              <div class="sm-detail">
-                <div class="sm-detail-products">
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPhone 15 Pro Max</span></div>
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=48&hei=48&fmt=jpeg&qlt=90"><span>MacBook Pro M3</span></div>
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-wifi-spaceblack-202405?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPad Pro 11</span></div>
-                </div>
-                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 14 个商品 ›</a>
-              </div>
             </div>
             <div class="stat-metric time-data" data-range="30" data-filter="price" style="display:none">
               <div class="sm-num">358</div>
@@ -797,13 +761,6 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
                 <div class="sm-bar"><div class="sm-bar-fill" style="width:29%"></div></div>
               </div>
               <span class="sm-toggle">▶</span>
-              <div class="sm-detail">
-                <div class="sm-detail-products">
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-wifi-spaceblack-202405?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPad Pro 11 M4</span></div>
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJV3?wid=48&hei=48&fmt=jpeg&qlt=90"><span>AirPods Pro 2</span></div>
-                </div>
-                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 8 个商品 ›</a>
-              </div>
             </div>
             <div class="stat-metric time-data" data-range="30" data-filter="damage" style="display:none">
               <div class="sm-num">203</div>
@@ -813,13 +770,6 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
                 <div class="sm-bar"><div class="sm-bar-fill" style="width:17%"></div></div>
               </div>
               <span class="sm-toggle">▶</span>
-              <div class="sm-detail">
-                <div class="sm-detail-products">
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPhone 15 Pro</span></div>
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=48&hei=48&fmt=jpeg&qlt=90"><span>MacBook Pro 14</span></div>
-                </div>
-                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 5 个商品 ›</a>
-              </div>
             </div>
           </div>
         </div>
@@ -828,7 +778,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         <div class="stat-card recover">
           <div class="stat-card-header">
             <span class="stat-card-title">可挽回潜在用户</span>
-            <span class="stat-card-trend down" data-7="近7天可挽回 +¥8.2万 GMV" data-30="近30天可挽回 +¥15.6万 GMV">近7天可挽回 +¥8.2万 GMV</span>
+            <span class="stat-card-trend down" data-7="+¥8.2万 GMV" data-30="+¥15.6万 GMV">+¥8.2万 GMV</span>
           </div>
           <div class="stat-hero">
             <span class="stat-hero-num" data-7="620+" data-30="1,180+">620+</span>
@@ -844,46 +794,24 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
                 <div class="sm-bar"><div class="sm-bar-fill" style="width:62%"></div></div>
               </div>
               <span class="sm-toggle">▶</span>
-              <div class="sm-detail">
-                <div class="sm-detail-products">
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPhone 15 Pro Max</span></div>
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-wifi-spaceblack-202405?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPad Pro 11</span></div>
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/s9-case-unselect-gallery-1-202309?wid=48&hei=48&fmt=jpeg&qlt=90"><span>Apple Watch S9</span></div>
-                </div>
-                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 8 个商品 ›</a>
-              </div>
             </div>
             <div class="stat-metric time-data" data-range="7" data-filter="goodprice">
               <div class="sm-num">5个</div>
               <div class="sm-body">
-                <div class="sm-label"><span class="strategy-tag goodprice">好价卡</span>降价1.2-3.4元，即可享受<strong>好价卡</strong>专属流量扶持</div>
-                <div class="sm-sub">降价 1.2-3.4元 · 流量 +24%~44%</div>
+                <div class="sm-label">接近<strong>好价卡</strong>门槛，降价即可命中</div>
+                <div class="sm-sub">降价 ¥3~¥29 · 流量 +24%~44%</div>
                 <div class="sm-bar"><div class="sm-bar-fill" style="width:40%"></div></div>
               </div>
               <span class="sm-toggle">▶</span>
-              <div class="sm-detail">
-                <div class="sm-detail-products">
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-wifi-spaceblack-202405?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPad Pro 11 M4</span></div>
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=48&hei=48&fmt=jpeg&qlt=90"><span>MacBook Pro M3</span></div>
-                </div>
-                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 5 个商品 ›</a>
-              </div>
             </div>
             <div class="stat-metric time-data" data-range="7" data-filter="subsidy">
               <div class="sm-num">3个</div>
               <div class="sm-body">
-                <div class="sm-label"><span class="strategy-tag subsidy">百亿补贴</span>降价5-8元，即可享受<strong>百亿补贴</strong>专属流量扶持</div>
-                <div class="sm-sub">降价 5-8元 · 流量 +68%~96%</div>
+                <div class="sm-label">可命中<strong>百亿补贴</strong>坑位</div>
+                <div class="sm-sub">叠加后流量 +68%~96%</div>
                 <div class="sm-bar"><div class="sm-bar-fill" style="width:30%"></div></div>
               </div>
               <span class="sm-toggle">▶</span>
-              <div class="sm-detail">
-                <div class="sm-detail-products">
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=48&hei=48&fmt=jpeg&qlt=90"><span>MacBook Pro M3</span></div>
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJV3?wid=48&hei=48&fmt=jpeg&qlt=90"><span>AirPods Pro 2</span></div>
-                </div>
-                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 3 个商品 ›</a>
-              </div>
             </div>
             <!-- 30天数据 -->
             <div class="stat-metric time-data" data-range="30" data-filter="shunfeng-recover" style="display:none">
@@ -894,46 +822,24 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
                 <div class="sm-bar"><div class="sm-bar-fill" style="width:65%"></div></div>
               </div>
               <span class="sm-toggle">▶</span>
-              <div class="sm-detail">
-                <div class="sm-detail-products">
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-wifi-spaceblack-202405?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPad Pro 13 M4</span></div>
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-11-select-wifi-spaceblack-202405?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPad Pro 11 M4</span></div>
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=48&hei=48&fmt=jpeg&qlt=90"><span>MacBook Pro M3</span></div>
-                </div>
-                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 12 个商品 ›</a>
-              </div>
             </div>
             <div class="stat-metric time-data" data-range="30" data-filter="goodprice" style="display:none">
               <div class="sm-num">7个</div>
               <div class="sm-body">
-                <div class="sm-label"><span class="strategy-tag goodprice">好价卡</span>降价1.2-3.4元，即可享受<strong>好价卡</strong>专属流量扶持</div>
-                <div class="sm-sub">降价 1.2-3.4元 · 流量 +24%~44%</div>
+                <div class="sm-label">接近<strong>好价卡</strong>门槛，降价即可命中</div>
+                <div class="sm-sub">降价 ¥3~¥29 · 流量 +24%~44%</div>
                 <div class="sm-bar"><div class="sm-bar-fill" style="width:42%"></div></div>
               </div>
               <span class="sm-toggle">▶</span>
-              <div class="sm-detail">
-                <div class="sm-detail-products">
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-11-select-wifi-spaceblack-202405?wid=48&hei=48&fmt=jpeg&qlt=90"><span>iPad Pro 11 M4</span></div>
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJV3?wid=48&hei=48&fmt=jpeg&qlt=90"><span>AirPods Pro 2</span></div>
-                </div>
-                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 7 个商品 ›</a>
-              </div>
             </div>
             <div class="stat-metric time-data" data-range="30" data-filter="subsidy" style="display:none">
               <div class="sm-num">4个</div>
               <div class="sm-body">
-                <div class="sm-label"><span class="strategy-tag subsidy">百亿补贴</span>降价5-8元，即可享受<strong>百亿补贴</strong>专属流量扶持</div>
-                <div class="sm-sub">降价 5-8元 · 流量 +68%~96%</div>
+                <div class="sm-label">可命中<strong>百亿补贴</strong>坑位</div>
+                <div class="sm-sub">叠加后流量 +68%~96%</div>
                 <div class="sm-bar"><div class="sm-bar-fill" style="width:32%"></div></div>
               </div>
               <span class="sm-toggle">▶</span>
-              <div class="sm-detail">
-                <div class="sm-detail-products">
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=48&hei=48&fmt=jpeg&qlt=90"><span>MacBook Pro M3</span></div>
-                  <div class="sm-detail-prod"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJV3?wid=48&hei=48&fmt=jpeg&qlt=90"><span>AirPods Pro 2</span></div>
-                </div>
-                <a class="mi-action" href="javascript:void(0)" style="display:block;margin-top:6px;font-size:11px;color:#6366f1;cursor:pointer " onclick="toggleViewAll(this)">查看全部 4 个商品 ›</a>
-              </div>
             </div>
           </div>
         </div>
@@ -948,7 +854,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
           <!-- Tab 1: 竞品监控 -->
           <div class="mp-track-content active" id="monitor-list">
             <div class="mp-header">
-              <span class="mp-title" style="font-size:12px">监控清单 <span style="font-weight:400;color:#94a3b8">3家</span></span>
+              <span class="mp-title" style="font-size:12px">监控清单 <span style="font-weight:400;color:#94a3b8">5家</span></span>
               <button class="mp-add-btn" onclick="toggleAddMonitor(this)">+ 添加</button>
             </div>
             <div class="mp-add-row">
@@ -978,6 +884,22 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
                 <div class="mi-meta">
                   <div class="mi-name">京东自营Apple</div>
                   <div class="mi-url">apple.jd.com</div>
+                </div>
+                <button class="mi-remove">×</button>
+              </div>
+              <div class="mi-row">
+                <div class="mi-ico" style="background:#f6ffed;color:#52c41a">苏</div>
+                <div class="mi-meta">
+                  <div class="mi-name">苏宁易购自营</div>
+                  <div class="mi-url">store.suning.com/apple</div>
+                </div>
+                <button class="mi-remove">×</button>
+              </div>
+              <div class="mi-row">
+                <div class="mi-ico" style="background:#fff1f0;color:#f5222d">中</div>
+                <div class="mi-meta">
+                  <div class="mi-name">中复电讯连锁</div>
+                  <div class="mi-url">detail.tmall.com/zhongfu</div>
                 </div>
                 <button class="mi-remove">×</button>
               </div>
@@ -1025,62 +947,6 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
       </div>
     </div>
 
-    <!-- 3. 能力提升建议（已整合到上方"行动主线"，保留隐藏供数据钻取兼容） -->
-    <div class="dash-section" style="display:none">
-      <div class="suggest-grid">
-        <!-- 补齐短板 -->
-        <div class="suggest-panel">
-          <div class="suggest-panel-header">
-            <span class="suggest-panel-title">补齐短板</span>
-            <a class="suggest-more" href="javascript:void(0)" onclick="openSuggestDetail('all-shortfall')">查看更多 ›</a>
-          </div>
-          <div class="suggest-cards-h">
-            <div class="suggest-card-h">
-              <div class="suggest-card-h-top">
-                <div class="suggest-card-h-name">顺丰包邮</div>
-                <span class="suggest-tag-h loss">用户流失</span>
-              </div>
-              <div class="suggest-card-h-desc">17个商品待支持</div>
-              <button class="suggest-detail-btn" onclick="openSuggestDetail('shunfeng')">查看明细</button>
-            </div>
-            <div class="suggest-card-h">
-              <div class="suggest-card-h-top">
-                <div class="suggest-card-h-name">破损包赔</div>
-                <span class="suggest-tag-h loss">用户流失</span>
-              </div>
-              <div class="suggest-card-h-desc">12个商品待支持</div>
-              <button class="suggest-detail-btn" onclick="openSuggestDetail('damage')">查看明细</button>
-            </div>
-          </div>
-        </div>
-        <!-- 商品机会 -->
-        <div class="suggest-panel">
-          <div class="suggest-panel-header">
-            <span class="suggest-panel-title">商品机会</span>
-            <a class="suggest-more" href="javascript:void(0)" onclick="openSuggestDetail('all-opportunity')">查看更多 ›</a>
-          </div>
-          <div class="suggest-cards-h">
-            <div class="suggest-card-h">
-              <div class="suggest-card-h-top">
-                <div class="suggest-card-h-name">好价卡</div>
-                <span class="suggest-tag-h gain">流量扶持</span>
-              </div>
-              <div class="suggest-card-h-desc">已入围 5 个 · 接近入围 8 个</div>
-              <button class="suggest-detail-btn" onclick="openSuggestDetail('goodprice')">查看明细</button>
-            </div>
-            <div class="suggest-card-h">
-              <div class="suggest-card-h-top">
-                <div class="suggest-card-h-name">百亿补贴</div>
-                <span class="suggest-tag-h gain">流量扶持</span>
-              </div>
-              <div class="suggest-card-h-desc">已入围 3 个 · 接近入围 6 个</div>
-              <button class="suggest-detail-btn" onclick="openSuggestDetail('subsidy')">查看明细</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- 2. 商品策略表 -->
     <div class="dash-section">
       <div class="tab-bar">
@@ -1090,8 +956,12 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
   </div>
 
   <div class="filter-bar">
-    <div class="f-g"><span class="f-l">类目:</span>
+    <div class="f-g"><span class="f-l">品类:</span>
       <span class="f-tag active">全部</span><span class="f-tag">iPhone</span><span class="f-tag">Mac</span><span class="f-tag">iPad</span><span class="f-tag">AirPods</span><span class="f-tag">Apple Watch</span><span class="f-tag">配件</span>
+    </div>
+    <div class="f-sep"></div>
+    <div class="f-g"><span class="f-l">流失原因:</span>
+      <span class="f-tag active">全部</span><span class="f-tag">价格劣势</span><span class="f-tag">服务缺失</span><span class="f-tag">赛道机会</span><span class="f-tag">有权益可命中</span>
     </div>
     <div class="search-box">🔍 <input placeholder="搜索商品名称 / ID"></div>
   </div>
@@ -1102,10 +972,10 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
   </div>
 
   <!-- Row 1 -->
-  <div class="tr" data-category="iPhone" data-type="核心" data-reason="price">
+  <div class="tr">
     <div class="p-info"><div class="p-img"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=240&hei=240&fmt=jpeg&qlt=90" alt=""></div><div class="p-detail"><div class="p-name">Apple iPhone 15 Pro Max 256G 钛金属原色 5G手机</div><div class="p-meta">ID: 6802831475 · 核心商品 · ¥9,199</div></div></div>
     <div class="insight-cell">
-      <div class="dim-row" data-dim="price"><span class="dim-label">价格</span><div class="dim-bar-wrap"><div class="dim-bar high" style="width:75%"></div></div><span class="dim-text high">优势</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-row" data-dim="price"><span class="dim-label">价格</span><div class="dim-bar-wrap"><div class="dim-bar high" style="width:80%"></div></div><span class="dim-text high">优势</span><span class="dim-expand-icon">▶</span></div>
       <div class="dim-detail">
         <div class="price-chart-header"><span class="price-chart-title">类目热销商品价格分布</span><span class="price-chart-tabs"><span class="price-chart-tab active" data-range="30">30天</span><span class="price-chart-tab" data-range="90">90天</span></span></div>
         <div class="price-chart-data" data-range="30">
@@ -1135,7 +1005,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
           </div>
         </div>
       </div>
-      <div class="dim-row" data-dim="service"><span class="dim-label">服务</span><div class="dim-bar-wrap"><div class="dim-bar low" style="width:25%"></div></div><span class="dim-text low">劣势</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-row" data-dim="service"><span class="dim-label">服务</span><div class="dim-bar-wrap"><div class="dim-bar low" style="width:30%"></div></div><span class="dim-text low">劣势</span><span class="dim-expand-icon">▶</span></div>
       <div class="dim-detail">
         <div class="service-grid">
           <div class="service-item"><span class="service-dot no"></span><span class="service-name">顺丰包邮</span><span class="service-status no">未设置</span></div>
@@ -1144,7 +1014,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
           <div class="service-item"><span class="service-dot has"></span><span class="service-name">正品保障</span><span class="service-status has">已设置</span></div>
         </div>
       </div>
-      <div class="dim-row" data-dim="content"><span class="dim-label">素材</span><div class="dim-bar-wrap"><div class="dim-bar mid" style="width:50%"></div></div><span class="dim-text mid">持平</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-row" data-dim="content"><span class="dim-label">素材</span><div class="dim-bar-wrap"><div class="dim-bar mid" style="width:55%"></div></div><span class="dim-text mid">持平</span><span class="dim-expand-icon">▶</span></div>
       <div class="dim-detail">
         <div class="content-compare">
           <div class="content-row"><span class="content-label">主图质量</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star empty"></span><span class="content-star empty"></span></div></div>
@@ -1193,7 +1063,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="comp-more" onclick="toggleCompMore(this)"><span class="comp-more-icon">▶</span>+3 家竞品</div>
-      <a class="comp-report" href="competitive-insight-v4-report.html">查看完整报告 ›</a>
+      <a class="comp-report" href="competitive-insight-v5-report.html">查看完整报告 ›</a>
     </div>
     <div class="suggest-cell">
       <div class="sg-header">无权益 · 赛道排名提升方案</div>
@@ -1218,7 +1088,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
   </div>
 
   <!-- Row 2 -->
-  <div class="tr" data-category="Mac" data-type="核心" data-reason="price">
+  <div class="tr">
     <div class="p-info"><div class="p-img"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=240&hei=240&fmt=jpeg&qlt=90" alt=""></div><div class="p-detail"><div class="p-name">MacBook Pro M3 14英寸 16+512G 深空黑</div><div class="p-meta">ID: 7835452108 · 核心商品 · ¥14,499</div></div></div>
     <div class="insight-cell">
       <div class="dim-row" data-dim="price"><span class="dim-label">价格</span><div class="dim-bar-wrap"><div class="dim-bar low" style="width:25%"></div></div><span class="dim-text low">劣势</span><span class="dim-expand-icon">▶</span></div>
@@ -1260,7 +1130,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
           <div class="service-item"><span class="service-dot no"></span><span class="service-name">免费刻字</span><span class="service-status no">未设置</span></div>
         </div>
       </div>
-      <div class="dim-row" data-dim="content"><span class="dim-label">素材</span><div class="dim-bar-wrap"><div class="dim-bar low" style="width:25%"></div></div><span class="dim-text low">劣势</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-row" data-dim="content"><span class="dim-label">素材</span><div class="dim-bar-wrap"><div class="dim-bar low" style="width:35%"></div></div><span class="dim-text low">劣势</span><span class="dim-expand-icon">▶</span></div>
       <div class="dim-detail">
         <div class="content-compare">
           <div class="content-row"><span class="content-label">主图质量</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star empty"></span><span class="content-star empty"></span><span class="content-star empty"></span></div></div>
@@ -1268,7 +1138,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
           <div class="content-row"><span class="content-label">详情丰富度</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star empty"></span><span class="content-star empty"></span></div></div>
         </div>
       </div>
-      <div class="insight-summary">价格高于竞品¥509，接近好价卡+百补双权益</div>
+      <div class="insight-summary">价格高于竞品¥509，接近好价卡+百补双门槛</div>
     </div>
     <div class="comp-cell">
       <div class="comp-item">
@@ -1295,7 +1165,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="comp-more" onclick="toggleCompMore(this)"><span class="comp-more-icon">▶</span>+1 家竞品</div>
-      <a class="comp-report" href="competitive-insight-v4-report.html">查看完整报告 ›</a>
+      <a class="comp-report" href="competitive-insight-v5-report.html">查看完整报告 ›</a>
     </div>
     <div class="suggest-cell">
       <div class="sg-header">多权益 · 梯度方案</div>
@@ -1322,10 +1192,10 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
   </div>
 
   <!-- Row 3 -->
-  <div class="tr" data-category="AirPods" data-type="核心" data-reason="service">
+  <div class="tr">
     <div class="p-info"><div class="p-img"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJV3?wid=240&hei=240&fmt=jpeg&qlt=90" alt=""></div><div class="p-detail"><div class="p-name">Apple AirPods Pro 第二代 USB-C版 主动降噪耳机</div><div class="p-meta">ID: 6802831476 · 核心商品 · ¥1,699</div></div></div>
     <div class="insight-cell">
-      <div class="dim-row" data-dim="price"><span class="dim-label">价格</span><div class="dim-bar-wrap"><div class="dim-bar low" style="width:25%"></div></div><span class="dim-text low">劣势</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-row" data-dim="price"><span class="dim-label">价格</span><div class="dim-bar-wrap"><div class="dim-bar low" style="width:20%"></div></div><span class="dim-text low">劣势</span><span class="dim-expand-icon">▶</span></div>
       <div class="dim-detail">
         <div class="price-chart-header"><span class="price-chart-title">类目热销商品价格分布</span><span class="price-chart-tabs"><span class="price-chart-tab active" data-range="30">30天</span><span class="price-chart-tab" data-range="90">90天</span></span></div>
         <div class="price-chart-data" data-range="30">
@@ -1413,45 +1283,42 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="comp-more" onclick="toggleCompMore(this)"><span class="comp-more-icon">▶</span>+3 家竞品</div>
-      <a class="comp-report" href="competitive-insight-v4-report.html">查看完整报告 ›</a>
+      <a class="comp-report" href="competitive-insight-v5-report.html">查看完整报告 ›</a>
     </div>
     <div class="suggest-cell">
-      <div class="sg-header">场景③ 降价提升综合排名 · 三档可选</div>
+      <div class="sg-header">无权益 · 梯度可选降价方案</div>
       <div class="sg-options">
         <div class="sg-opt">
-          <div class="sg-opt-label">方案A · 试探</div>
+          <div class="sg-opt-label">方案A · 适度</div>
           <div class="sg-opt-price">降 ¥50</div>
-          <div class="sg-opt-title">综合排名升至第 5 名</div>
-          <div class="sg-opt-desc">📈 同价位优先展示 · 热销榜候选位</div>
-          <div class="sg-opt-gain">曝光 +18% · 新增 42 人</div>
-          <button class="sg-opt-btn" onclick="execPlan(this)">一键降价 ¥50</button>
+          <div class="sg-opt-desc">赛道排名提升至第5</div>
+          <div class="sg-opt-gain">流量 +18%</div>
+          <button class="sg-opt-btn" onclick="execPlan(this)">去降价</button>
         </div>
         <div class="sg-opt recommended">
-          <span class="sg-opt-badge">⭐ 推荐</span>
-          <div class="sg-opt-label">方案B · 进位</div>
+          <span class="sg-opt-badge">推荐</span>
+          <div class="sg-opt-label">方案B · 推荐</div>
           <div class="sg-opt-price">降 ¥100</div>
-          <div class="sg-opt-title">综合排名升至第 3 名</div>
-          <div class="sg-opt-desc">📈 热销榜前 3 · 同价位优先展示 · 搜索加权</div>
-          <div class="sg-opt-gain">曝光 +34% · 新增 86 人 · GMV +¥9,200</div>
-          <button class="sg-opt-btn" onclick="execPlan(this)">一键降价 ¥100</button>
+          <div class="sg-opt-desc">赛道排名提升至第3</div>
+          <div class="sg-opt-gain">流量 +34%</div>
+          <button class="sg-opt-btn" onclick="execPlan(this)">去降价</button>
         </div>
         <div class="sg-opt">
-          <div class="sg-opt-label">方案C · 冲 TOP</div>
+          <div class="sg-opt-label">方案C · 冲TOP</div>
           <div class="sg-opt-price">降 ¥170</div>
-          <div class="sg-opt-title">综合排名升至第 1 名</div>
-          <div class="sg-opt-desc">🏆 热销榜 TOP1 · 全站推荐位 · 搜索置顶</div>
-          <div class="sg-opt-gain">曝光 +56% · 新增 142 人 · GMV +¥15,200</div>
-          <button class="sg-opt-btn" onclick="execPlan(this)">一键降价 ¥170</button>
+          <div class="sg-opt-desc">赛道排名提升至第1</div>
+          <div class="sg-opt-gain">流量 +56%</div>
+          <button class="sg-opt-btn" onclick="execPlan(this)">去降价</button>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Row 4 -->
-  <div class="tr" data-category="iPad" data-type="核心" data-reason="track">
+  <div class="tr">
     <div class="p-info"><div class="p-img"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-wifi-spaceblack-202405?wid=240&hei=240&fmt=jpeg&qlt=90" alt=""></div><div class="p-detail"><div class="p-name">Apple iPad Pro 11英寸 M4芯片 256G WLAN版</div><div class="p-meta">ID: 4421987603 · 核心商品 · ¥8,599</div></div></div>
     <div class="insight-cell">
-      <div class="dim-row" data-dim="price"><span class="dim-label">价格</span><div class="dim-bar-wrap"><div class="dim-bar mid" style="width:50%"></div></div><span class="dim-text mid">持平</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-row" data-dim="price"><span class="dim-label">价格</span><div class="dim-bar-wrap"><div class="dim-bar mid" style="width:45%"></div></div><span class="dim-text mid">持平</span><span class="dim-expand-icon">▶</span></div>
       <div class="dim-detail">
         <div class="price-chart-header"><span class="price-chart-title">类目热销商品价格分布</span><span class="price-chart-tabs"><span class="price-chart-tab active" data-range="30">30天</span><span class="price-chart-tab" data-range="90">90天</span></span></div>
         <div class="price-chart-data" data-range="30">
@@ -1481,7 +1348,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
           </div>
         </div>
       </div>
-      <div class="dim-row" data-dim="service"><span class="dim-label">服务</span><div class="dim-bar-wrap"><div class="dim-bar low" style="width:25%"></div></div><span class="dim-text low">劣势</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-row" data-dim="service"><span class="dim-label">服务</span><div class="dim-bar-wrap"><div class="dim-bar low" style="width:30%"></div></div><span class="dim-text low">劣势</span><span class="dim-expand-icon">▶</span></div>
       <div class="dim-detail">
         <div class="service-grid">
           <div class="service-item"><span class="service-dot no"></span><span class="service-name">顺丰包邮</span><span class="service-status no">未设置</span></div>
@@ -1490,7 +1357,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
           <div class="service-item"><span class="service-dot has"></span><span class="service-name">正品保障</span><span class="service-status has">已设置</span></div>
         </div>
       </div>
-      <div class="dim-row" data-dim="content"><span class="dim-label">素材</span><div class="dim-bar-wrap"><div class="dim-bar high" style="width:75%"></div></div><span class="dim-text high">优势</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-row" data-dim="content"><span class="dim-label">素材</span><div class="dim-bar-wrap"><div class="dim-bar high" style="width:70%"></div></div><span class="dim-text high">优势</span><span class="dim-expand-icon">▶</span></div>
       <div class="dim-detail">
         <div class="content-compare">
           <div class="content-row"><span class="content-label">主图质量</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star empty"></span></div></div>
@@ -1498,7 +1365,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
           <div class="content-row"><span class="content-label">详情丰富度</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span></div></div>
         </div>
       </div>
-      <div class="insight-summary">降¥11即可参与好价卡，确定性收益明确</div>
+      <div class="insight-summary">降¥11即可命中好价卡，确定性收益明确</div>
     </div>
     <div class="comp-cell">
       <div class="comp-item">
@@ -1532,7 +1399,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="comp-more" onclick="toggleCompMore(this)"><span class="comp-more-icon">▶</span>+2 家竞品</div>
-      <a class="comp-report" href="competitive-insight-v4-report.html">查看完整报告 ›</a>
+      <a class="comp-report" href="competitive-insight-v5-report.html">查看完整报告 ›</a>
     </div>
     <div class="suggest-cell">
       <div class="sg-header">有权益 · 单权益白盒化</div>
@@ -1554,7 +1421,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
   </div>
 
   <!-- Row 5 -->
-  <div class="tr" data-category="Apple Watch" data-type="核心" data-reason="benefit">
+  <div class="tr">
     <div class="p-info"><div class="p-img"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/s9-case-unselect-gallery-1-202309?wid=240&hei=240&fmt=jpeg&qlt=90" alt=""></div><div class="p-detail"><div class="p-name">Apple Watch Series 9 GPS版 45毫米 午夜色 智能手表</div><div class="p-meta">ID: 3301982756 · 核心商品 · ¥3,199</div></div></div>
     <div class="insight-cell">
       <div class="dim-row" data-dim="price"><span class="dim-label">价格</span><div class="dim-bar-wrap"><div class="dim-bar low" style="width:25%"></div></div><span class="dim-text low">劣势</span><span class="dim-expand-icon">▶</span></div>
@@ -1621,7 +1488,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
           <div class="comp-tags"><span class="c-tag t-return">破损包赔</span></div>
         </div>
       </div>
-      <a class="comp-report" href="competitive-insight-v4-report.html">查看完整报告 ›</a>
+      <a class="comp-report" href="competitive-insight-v5-report.html">查看完整报告 ›</a>
     </div>
     <div class="suggest-cell">
       <div class="sg-header">无权益 · 赛道排名提升方案</div>
@@ -1646,7 +1513,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
   </div>
 
   <!-- Row 6 -->
-  <div class="tr" data-category="iPhone" data-type="核心" data-reason="track">
+  <div class="tr">
     <div class="p-info"><div class="p-img"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-blue?wid=240&hei=240&fmt=jpeg&qlt=90" alt=""></div><div class="p-detail"><div class="p-name">Apple iPhone 15 128G 蓝色 5G双卡双待手机</div><div class="p-meta">ID: 6802831922 · 核心商品 · ¥5,499</div></div></div>
     <div class="insight-cell">
       <div class="dim-row" data-dim="price"><span class="dim-label">价格</span><div class="dim-bar-wrap"><div class="dim-bar high" style="width:75%"></div></div><span class="dim-text high">优势</span><span class="dim-expand-icon">▶</span></div>
@@ -1679,7 +1546,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
           </div>
         </div>
       </div>
-      <div class="dim-row" data-dim="service"><span class="dim-label">服务</span><div class="dim-bar-wrap"><div class="dim-bar high" style="width:75%"></div></div><span class="dim-text high">优势</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-row" data-dim="service"><span class="dim-label">服务</span><div class="dim-bar-wrap"><div class="dim-bar high" style="width:70%"></div></div><span class="dim-text high">优势</span><span class="dim-expand-icon">▶</span></div>
       <div class="dim-detail">
         <div class="service-grid">
           <div class="service-item"><span class="service-dot has"></span><span class="service-name">顺丰包邮</span><span class="service-status has">已设置</span></div>
@@ -1688,7 +1555,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
           <div class="service-item"><span class="service-dot has"></span><span class="service-name">正品保障</span><span class="service-status has">已设置</span></div>
         </div>
       </div>
-      <div class="dim-row" data-dim="content"><span class="dim-label">素材</span><div class="dim-bar-wrap"><div class="dim-bar high" style="width:75%"></div></div><span class="dim-text high">优势</span><span class="dim-expand-icon">▶</span></div>
+      <div class="dim-row" data-dim="content"><span class="dim-label">素材</span><div class="dim-bar-wrap"><div class="dim-bar high" style="width:70%"></div></div><span class="dim-text high">优势</span><span class="dim-expand-icon">▶</span></div>
       <div class="dim-detail">
         <div class="content-compare">
           <div class="content-row"><span class="content-label">主图质量</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star empty"></span></div></div>
@@ -1696,7 +1563,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
           <div class="content-row"><span class="content-label">详情丰富度</span><div class="content-score"><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star filled"></span><span class="content-star empty"></span></div></div>
         </div>
       </div>
-      <div class="insight-summary">三维度均有优势，可进一步冲击好价卡</div>
+      <div class="insight-summary">三维度均有优势，可进一步冲击好价卡门槛</div>
     </div>
     <div class="comp-cell">
       <div class="comp-item">
@@ -1730,7 +1597,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
         </div>
       </div>
       <div class="comp-more" onclick="toggleCompMore(this)"><span class="comp-more-icon">▶</span>+2 家竞品</div>
-      <a class="comp-report" href="competitive-insight-v4-report.html">查看完整报告 ›</a>
+      <a class="comp-report" href="competitive-insight-v5-report.html">查看完整报告 ›</a>
     </div>
     <div class="suggest-cell">
       <div class="sg-done">
@@ -1771,26 +1638,47 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
   <div><button class="exec-modal-btn" onclick="closeExecModal()">我知道了</button></div>
 </div>
 
-<!-- 明细弹窗 -->
-<div class="detail-modal-mask" id="detailMask" onclick="closeDetailModal()"></div>
-<div class="detail-modal" id="detailModal">
-  <div class="detail-modal-header">
-    <div>
-      <div class="detail-modal-title" id="detailModalTitle">顺丰包邮 - 待支持商品明细</div>
-      <div class="detail-modal-sub" id="detailModalSub">共 17 个商品需要设置</div>
-    </div>
-    <button class="detail-modal-close" onclick="closeDetailModal()">✕</button>
-  </div>
-  <div class="detail-modal-actions">
-    <button class="detail-modal-batch" onclick="batchExecPlan()">一键设置全部</button>
-  </div>
-  <div class="detail-modal-list" id="detailModalList">
-    <!-- JS动态填充 -->
-  </div>
-</div>
-
 <script>
-// Global functions
+// 全局时间筛选
+document.querySelectorAll('.ci-filter-tab').forEach(tab=>{
+  tab.addEventListener('click',function(){
+    const range=this.getAttribute('data-range');
+    document.querySelectorAll('.ci-filter-tab').forEach(t=>t.classList.remove('active'));
+    this.classList.add('active');
+
+    // 切换指标项显示
+    document.querySelectorAll('.time-data').forEach(item=>{
+      item.style.display=item.getAttribute('data-range')===range?'':'none';
+    });
+
+    // 切换 hero 数字
+    document.querySelectorAll('.rc-hero-num[data-7]').forEach(el=>{
+      const val=el.getAttribute('data-'+range);
+      if(val) el.textContent=val;
+    });
+
+    // 切换趋势文字
+    document.querySelectorAll('.rc-hero-trend[data-7]').forEach(el=>{
+      const val=el.getAttribute('data-'+range);
+      if(val) el.textContent=val;
+    });
+
+    console.log('时间范围切换:', range+'天');
+  });
+});
+
+// 竞品监控Tab切换
+document.querySelectorAll('.mp-tab').forEach(tab=>{
+  tab.addEventListener('click',function(){
+    const targetId=this.getAttribute('data-tab');
+    document.querySelectorAll('.mp-tab').forEach(t=>t.classList.remove('active'));
+    this.classList.add('active');
+    document.querySelectorAll('.mp-track-content').forEach(c=>c.classList.remove('active'));
+    const target=document.getElementById(targetId);
+    if(target) target.classList.add('active');
+  });
+});
+
 function execPlan(btn){
   btn.textContent='已设置';
   btn.style.background='#f0fdf4';
@@ -1803,148 +1691,6 @@ function execPlan(btn){
 function closeExecModal(){
   document.getElementById('execMask').classList.remove('show');
   document.getElementById('execModal').classList.remove('show');
-}
-function openSuggestDetail(type, showAll){
-  const mask=document.getElementById('detailMask');
-  const modal=document.getElementById('detailModal');
-  const title=document.getElementById('detailModalTitle');
-  const sub=document.getElementById('detailModalSub');
-  const list=document.getElementById('detailModalList');
-  const actions=document.querySelector('.detail-modal-actions');
-
-  // 补齐短板 - 查看更多（展示所有短板项）
-  if(type==='all-shortfall'){
-    title.textContent='补齐短板';
-    sub.textContent='店铺中共有 5 项能力落后于竞品';
-    actions.innerHTML='<button class="detail-modal-batch" onclick="batchExecPlan()">一键设置全部</button>';
-    
-    const shortfalls=[
-      {name:'顺丰包邮',type:'shunfeng',count:17,desc:'17个商品待支持',tag:'用户流失'},
-      {name:'破损包赔',type:'damage',count:12,desc:'12个商品待支持',tag:'用户流失'},
-      {name:'7天无理由退货',count:8,desc:'8个商品待支持',tag:'用户流失'},
-      {name:'买贵必赔',count:6,desc:'6个商品待支持',tag:'用户流失'},
-      {name:'正品保障',count:4,desc:'4个商品待支持',tag:'用户流失'},
-    ];
-    
-    let html='<div class="detail-grid">';
-    shortfalls.forEach((s,i)=>{
-      html+='<div class="detail-grid-card">';
-      html+='<div class="detail-grid-card-head">';
-      html+='<div class="detail-grid-card-name">'+s.name+'</div>';
-      html+='<span class="suggest-tag-h loss">'+s.tag+'</span>';
-      html+='</div>';
-      html+='<div class="detail-grid-card-desc">'+s.desc+'</div>';
-      html+='<button class="detail-grid-card-btn" onclick="openSuggestDetail(\''+(s.type||'shunfeng')+'\')">查看明细</button>';
-      html+='</div>';
-    });
-    html+='</div>';
-    list.innerHTML=html;
-    mask.classList.add('show');
-    modal.classList.add('show');
-    return;
-  }
-
-  // 商品机会 - 查看更多（展示所有机会项）
-  if(type==='all-opportunity'){
-    title.textContent='商品机会';
-    sub.textContent='店铺中共有 4 项权益货盘可参与';
-    actions.innerHTML='';
-    
-    const opportunities=[
-      {name:'好价卡',count1:5,count2:8,desc:'已入围 5 个 · 接近入围 8 个',tag:'流量扶持'},
-      {name:'百亿补贴',count1:3,count2:6,desc:'已入围 3 个 · 接近入围 6 个',tag:'流量扶持'},
-      {name:'限时秒杀',count1:2,count2:4,desc:'已入围 2 个 · 接近入围 4 个',tag:'流量扶持'},
-      {name:'品牌新享',count1:1,count2:3,desc:'已入围 1 个 · 接近入围 3 个',tag:'流量扶持'},
-    ];
-    
-    let html='<div class="detail-grid">';
-    opportunities.forEach((s,i)=>{
-      html+='<div class="detail-grid-card">';
-      html+='<div class="detail-grid-card-head">';
-      html+='<div class="detail-grid-card-name">'+s.name+'</div>';
-      html+='<span class="suggest-tag-h gain">'+s.tag+'</span>';
-      html+='</div>';
-      html+='<div class="detail-grid-card-desc">'+s.desc+'</div>';
-      html+='<button class="detail-grid-card-btn" onclick="openSuggestDetail(\'goodprice\')">查看明细</button>';
-      html+='</div>';
-    });
-    html+='</div>';
-    list.innerHTML=html;
-    mask.classList.add('show');
-    modal.classList.add('show');
-    return;
-  }
-
-  // 单个项的明细
-  const config={
-    shunfeng:{title:'顺丰包邮 - 待支持商品明细',count:17,label:'待设置顺丰包邮'},
-    damage:{title:'破损包赔 - 待支持商品明细',count:12,label:'待设置破损包赔'},
-    goodprice:{title:'好价卡 - 入围商品明细',count:13,label:'接近好价卡'},
-    subsidy:{title:'百亿补贴 - 入围商品明细',count:9,label:'可参与百亿补贴'},
-    seckill:{title:'限时秒杀 - 入围商品明细',count:6,label:'可参与限时秒杀'}
-  };
-
-  const c=config[type]||config.shunfeng;
-  title.textContent=c.title;
-  sub.textContent='共 '+c.count+' 个商品';
-  actions.innerHTML='<button class="detail-modal-batch" onclick="batchExecPlan()">一键设置全部</button>';
-
-  // 生成模拟数据
-  const products=[
-    {name:'Apple iPhone 15 Pro Max 256G 钛金属原色',id:'6802831475',price:'¥9,199'},
-    {name:'Apple iPhone 15 Pro 128G 蓝色钛金属',id:'6802831476',price:'¥7,999'},
-    {name:'Apple MacBook Pro 14英寸 M3芯片',id:'6802831477',price:'¥12,999'},
-    {name:'Apple iPad Pro 11英寸 M4芯片',id:'6802831478',price:'¥7,499'},
-    {name:'Apple AirPods Pro 2  USB-C',id:'6802831479',price:'¥1,799'},
-    {name:'Apple Watch Series 9 45mm',id:'6802831480',price:'¥3,199'},
-  ];
-
-  let html='';
-  for(let i=0;i<Math.min(c.count,6);i++){
-    const p=products[i%products.length];
-    html+='<div class="detail-item">';
-    html+='<img class="detail-item-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=96&hei=96&fmt=jpeg&qlt=90" alt="">';
-    html+='<div class="detail-item-info">';
-    html+='<div class="detail-item-name">'+p.name+'</div>';
-    html+='<div class="detail-item-meta">ID: '+p.id+' · '+p.price+'</div>';
-    html+='<div class="detail-item-problem">'+c.label+'</div>';
-    html+='</div>';
-    html+='<div class="detail-item-actions">';
-    html+='<button class="detail-item-btn" onclick="execDetailPlan(this)">立即设置</button>';
-    html+='</div></div>';
-  }
-  if(c.count>6) html+='<div style="text-align:center;padding:8px;font-size:11px;color:#94a3b8">... 还有 '+(c.count-6)+' 个商品</div>';
-
-  list.innerHTML=html;
-  mask.classList.add('show');
-  modal.classList.add('show');
-}
-
-function closeDetailModal(){
-  document.getElementById('detailMask').classList.remove('show');
-  document.getElementById('detailModal').classList.remove('show');
-}
-
-function execDetailPlan(btn){
-  btn.textContent='已设置';
-  btn.classList.add('set');
-  btn.disabled=true;
-  // 显示成功弹窗
-  document.getElementById('execMask').classList.add('show');
-  document.getElementById('execModal').classList.add('show');
-}
-
-function batchExecPlan(){
-  // 一键设置全部
-  document.querySelectorAll('.detail-item-btn').forEach(btn=>{
-    if(!btn.disabled){
-      btn.textContent='已设置';
-      btn.classList.add('set');
-      btn.disabled=true;
-    }
-  });
-  document.getElementById('execMask').classList.add('show');
-  document.getElementById('execModal').classList.add('show');
 }
 var addMonitorVisible=false;
 function toggleAddMonitor(btn){
@@ -1987,114 +1733,19 @@ function toggleSubTrack(btn){
     subList.classList.toggle('show');
   }
 }
-
 document.addEventListener('DOMContentLoaded',function(){
-  // 全局时间筛选
-  document.querySelectorAll('.ci-filter-tab').forEach(tab=>{
-    tab.addEventListener('click',function(){
-      const range=this.getAttribute('data-range');
-      document.querySelectorAll('.ci-filter-tab').forEach(t=>t.classList.remove('active'));
-      this.classList.add('active');
-
-      // 切换指标项显示
-      document.querySelectorAll('.time-data').forEach(item=>{
-        item.style.display=item.getAttribute('data-range')===range?'':'none';
-      });
-
-      // 切换 hero 数字
-      document.querySelectorAll('.rc-hero-num[data-7]').forEach(el=>{
-        const val=el.getAttribute('data-'+range);
-        if(val) el.textContent=val;
-      });
-
-      // 切换趋势文字
-      document.querySelectorAll('.rc-hero-trend[data-7]').forEach(el=>{
-        const val=el.getAttribute('data-'+range);
-        if(val) el.textContent=val;
-      });
-
-      console.log('时间范围切换:', range+'天');
-    });
-  });
-
-  // 竞品监控Tab切换
-  document.querySelectorAll('.mp-tab').forEach(tab=>{
-    tab.addEventListener('click',function(){
-      const targetId=this.getAttribute('data-tab');
-      document.querySelectorAll('.mp-tab').forEach(t=>t.classList.remove('active'));
-      this.classList.add('active');
-      document.querySelectorAll('.mp-track-content').forEach(c=>c.classList.remove('active'));
-      const target=document.getElementById(targetId);
-      if(target) target.classList.add('active');
-    });
-  });
-
   // Tab switching
-  // Tab switching with actual filtering
-  let activeTab='全部商品';
-  let activeCategory='全部';
-  let searchQuery='';
-  
-  function applyFilters(){
-    document.querySelectorAll('.tr').forEach(row=>{
-      const rowCategory=row.getAttribute('data-category')||'';
-      const rowType=row.getAttribute('data-type')||'';
-      const pName=row.querySelector('.p-name')?.textContent||'';
-      
-      const matchTab=activeTab==='全部商品'||
-                     (activeTab==='核心商品'&&rowType==='核心')||
-                     (activeTab==='普通商品'&&rowType==='普通');
-      const matchCategory=activeCategory==='全部'||rowCategory===activeCategory;
-      const matchSearch=!searchQuery||pName.toLowerCase().includes(searchQuery.toLowerCase());
-      
-      row.style.display=(matchTab&&matchCategory&&matchSearch)?'':'none';
-    });
-  }
-  
   document.querySelectorAll('.tab-item').forEach(t=>t.addEventListener('click',()=>{
     document.querySelectorAll('.tab-item').forEach(x=>x.classList.remove('active'));
     t.classList.add('active');
-    activeTab=t.textContent.replace(/\d+/g,'').trim();
-    applyFilters();
   }));
-  
-  // Category filter with actual row filtering
-  document.querySelectorAll('.f-tag').forEach(tag=>{
-    tag.addEventListener('click',()=>{
-      const tags=tag.parentElement.querySelectorAll('.f-tag');
+  // Filter
+  document.querySelectorAll('.f-g').forEach(g=>{
+    const tags=g.querySelectorAll('.f-tag');
+    tags.forEach(tag=>tag.addEventListener('click',()=>{
       tags.forEach(t=>t.classList.remove('active'));
       tag.classList.add('active');
-      activeCategory=tag.textContent;
-      applyFilters();
-    });
-  });
-  
-  // Search functionality
-  const searchInput=document.querySelector('.search-box input');
-  if(searchInput){
-    searchInput.addEventListener('input',function(){
-      searchQuery=this.value.trim();
-      applyFilters();
-    });
-  }
-  
-  // Pagination
-  document.querySelectorAll('.pg-btn').forEach(btn=>{
-    btn.addEventListener('click',function(){
-      const text=this.textContent.trim();
-      if(text==='…') return;
-      document.querySelectorAll('.pg-btn').forEach(b=>b.classList.remove('active'));
-      this.classList.add('active');
-      const pgnInfo=document.querySelector('.pgn-info');
-      if(pgnInfo){
-        const pageNum=parseInt(text);
-        if(!isNaN(pageNum)){
-          const start=(pageNum-1)*6+1;
-          const end=Math.min(pageNum*6,128);
-          pgnInfo.textContent='共 128 条数据 · 当前显示 '+start+'-'+end;
-        }
-      }
-    });
+    }));
   });
   // Metric item expand/collapse
   document.querySelectorAll('.metric-item').forEach(item=>{
@@ -2157,126 +1808,6 @@ document.addEventListener('DOMContentLoaded',function(){
       btn.innerHTML='<span class="comp-more-icon">◢</span>'+btn.textContent.replace(/[▶◢]/g,'').trim();
     }
   };
-  // "查看全部" link expand/collapse
-  window.toggleViewAll=function(link){
-    const cell=link.closest('.comp-cell');
-    const extra=cell.querySelector('.comp-extra');
-    if(!extra)return;
-    const isOpen=extra.classList.contains('show');
-    extra.classList.toggle('show');
-    link.classList.toggle('expanded');
-  };
-  // Stat metric expand/collapse
-  document.querySelectorAll('.sm-toggle').forEach(toggle=>{
-    toggle.addEventListener('click',function(e){
-      e.stopPropagation();
-      const metric=this.closest('.stat-metric');
-      if(!metric) return;
-      const detail=metric.querySelector('.sm-detail');
-      if(!detail) return;
-      const isExpanded=metric.classList.contains('expanded');
-      if(isExpanded){
-        metric.classList.remove('expanded');
-        detail.classList.remove('show');
-      }else{
-        metric.classList.add('expanded');
-        detail.classList.add('show');
-      }
-    });
-  });
-
-  // ===== 趋势图 =====
-  // 全局数据
-  var lossData=[];
-  var recoverData=[];
-
-  // 生成数据函数
-  function generateTrendData(days){
-    lossData=[];
-    recoverData=[];
-    for(let i=0;i<days;i++){
-      lossData.push(Math.floor(20+Math.random()*40+Math.sin(i/5)*15));
-      recoverData.push(Math.floor(15+Math.random()*30+Math.cos(i/5)*10));
-    }
-  }
-
-  // 绘制单线趋势图
-  function drawSingleTrend(canvasId,data,color){
-    const canvas=document.getElementById(canvasId);
-    if(!canvas) return;
-    const ctx=canvas.getContext('2d');
-    const dpr=window.devicePixelRatio||1;
-    const rect=canvas.getBoundingClientRect();
-    canvas.width=rect.width*dpr;
-    canvas.height=100*dpr;
-    ctx.scale(dpr,dpr);
-    const W=rect.width,H=100;
-
-    const pad={t:5,r:10,b:20,l:28};
-    const chartW=W-pad.l-pad.r,chartH=H-pad.t-pad.b;
-    const maxVal=Math.max(...data)*1.1;
-
-    // 生成日期标签
-    const labels=[];
-    for(let i=lossData.length-1;i>=0;i--){
-      const d=new Date();d.setDate(d.getDate()-i);
-      labels.push((d.getMonth()+1)+'/'+d.getDate());
-    }
-
-    // 网格线
-    ctx.strokeStyle='#f1f5f9';ctx.lineWidth=1;
-    for(let i=0;i<=3;i++){
-      const y=pad.t+chartH*(i/3);
-      ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(W-pad.r,y);ctx.stroke();
-      ctx.fillStyle='#94a3b8';ctx.font='9px sans-serif';ctx.textAlign='right';
-      ctx.fillText(Math.round(maxVal*(1-i/3)),pad.l-5,y+3);
-    }
-
-    // X轴标签
-    ctx.fillStyle='#94a3b8';ctx.font='9px sans-serif';ctx.textAlign='center';
-    const step=Math.max(1,Math.floor(labels.length/6));
-    for(let i=0;i<labels.length;i+=step){
-      const x=pad.l+chartW*(i/(labels.length-1));
-      ctx.fillText(labels[i],x,H-pad.b+12);
-    }
-
-    // 绘制曲线
-    ctx.strokeStyle=color;ctx.lineWidth=1.5;ctx.lineJoin='round';
-    ctx.beginPath();
-    data.forEach((v,i)=>{
-      const x=pad.l+chartW*(i/(data.length-1));
-      const y=pad.t+chartH*(1-v/maxVal);
-      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
-    });
-    ctx.stroke();
-
-    // 最新数据点
-    const last=data.length-1;
-    const lx=pad.l+chartW;
-    const ly=pad.t+chartH*(1-data[last]/maxVal);
-    ctx.beginPath();ctx.arc(lx,ly,2.5,0,Math.PI*2);
-    ctx.fillStyle=color;ctx.fill();
-    ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.stroke();
-  }
-
-  // 初始生成30天数据
-  generateTrendData(30);
-
-  // 绘制两个趋势图
-  drawSingleTrend('lossTrendChart',lossData,'#ef4444');
-  drawSingleTrend('recoverTrendChart',recoverData,'#16a34a');
-
-  // 时间筛选时重绘
-  document.querySelectorAll('.ci-filter-tab').forEach(tab=>{
-    tab.addEventListener('click',function(){
-      const range=parseInt(this.getAttribute('data-range'));
-      setTimeout(()=>{
-        generateTrendData(range);
-        drawSingleTrend('lossTrendChart',lossData,'#ef4444');
-        drawSingleTrend('recoverTrendChart',recoverData,'#16a34a');
-      },50);
-    });
-  });
 });
 </script>
 </body>
